@@ -1,0 +1,25 @@
+$colorBase: #FAFAFA;
+$colorTarjeta: white;
+
+body{
+    background: $colorBase;
+}
+
+.card{
+    padding: 10px 20px;
+    background-color: $colorTarjeta;
+    border-radius: 5px;
+    border-bottom: 2px solid blue;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+
+    .formato-1{
+        border: 1px solid red;
+        border-radius: 5px;
+    }
+
+    .formato-2{
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+    }
+}

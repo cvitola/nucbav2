@@ -1,0 +1,44 @@
+{
+	"folders": [
+		{
+			"path": "clase281020"
+		},
+		{
+			"path": "landing"
+		},
+		{
+			"path": "Pruebirijilla sass"
+		},
+		{
+			"path": "portfolio"
+		},
+		{
+			"path": "js-repaso"
+		},
+		{
+			"path": "js-ejercicios-II"
+		},
+		{
+			"path": "DOM"
+		},
+		{
+			"path": "DOM2"
+		},
+		{
+			"path": "Login"
+		},
+		{
+			"path": "pruebaTW"
+		},
+		{
+			"path": "Landing-Boken"
+		},
+		{
+			"path": "festival"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Landing-Boken",
+		"compile-hero.disable-compile-files-on-did-save-code": true
+	}
+}

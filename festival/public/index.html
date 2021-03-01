@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Kavoon&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <title>FESTIVAL</title>
+</head>
+<body class="bg-fixed bg-cover bg-black bg-opacity-90 text-colorPrimario font-fuenteBase"  style="background-image: linear-gradient(rgba(32, 32, 32, 0.3),rgb(0, 0, 0)),url(https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80);">
+    <header class="bg-cover text-center" style="background-image: url(images/bg_menu.png);">
+        <nav class="flex flex-col sm:flex-row sm:justify-between">
+            <img class="block m-auto sm:inline sm:m-4 sm:rounded-full h-24 w-24" src="images/logo_festival.png" alt="Logo Festival">
+            <ul class="flex flex-col m-4 text-4xl sm:flex-row sm:justify-between">
+                <!--
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" <p class="hidden sm:block rounded-lg p-2">INICIO</a><p class="hidden sm:block rounded-lg p-2">INICIO</a></li>
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" class="sm:hidden"><i class="far fa-calendar-alt"></i></p><p class="hidden sm:block rounded-lg p-2">AGENDA</a></li>
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" class="sm:hidden"><i class="fas fa-users"></i></p><p class="hidden sm:block rounded-lg p-2">NOSOTROS</a></li>
+                    -->
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#"><p class="sm:hidden"><i class="fas fa-home"></i></p><p class="hidden sm:block rounded-lg p-2">INICIO</p></a></li>    
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#agenda"><p class="sm:hidden"><i class="far fa-calendar-alt"></i></p><p class="hidden sm:block rounded-lg p-2">AGENDA</p></a></li>    
+                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#nosotros"><p class="sm:hidden"><i class="fas fa-users"></i></p><p class="hidden sm:block rounded-lg p-2">NOSOTROS</p></a></li>    
+            </ul>
+            <a href=""></a>
+        </nav>
+    </header>
+    <section class="flex flex-col md:flex-row space-x-10 m-4 p-4 text-center">
+        
+        <img  class="object-contain h-96 mb-8" src="images/flyer_inicio.PNG" alt="Flayer">
+
+        <div class="flex flex-col justify-center space-y-4">
+            <h2 class="font-fuenteTitulo text-2xl sm:text-4xl">Descubrí cuales son los próximos eventos!</h2>
+            <article class=" flex-auto flex space-x-8 ">
+                <a class="w-3/4 h-14 text-lg flex items-center justify-center rounded-md bg-colorTerciario1 text-white hover:text-colorTerciario1 hover:bg-white" href="#">LineUP!</a>
+                <a class="w-3/4 h-14 flex items-center justify-center rounded-md bg-colorSecundario1 text-white hover:bg-white hover:text-colorSecundario1" href="#">Eventos</a>
+            </article>
+            <div class="flex flex-col">
+                <div class="relative">
+                    <i class="h-16 fas fa-search"></i>
+                    <input class="p-2 m-2 h-16 w-5/6 rounded-lg bg-gray-200 bg-opacity-5" type="text" placeholder="buscá tu evento...">
+                </div>
+                <button class="p-2 m-2 h-16 rounded-lg bg-colorTerciario2">Buscar</button>
+            </div>
+        </div>
+
+    </section>
+
+    <main class="flex flex-col">
+        <article class="m-4 p-4"> 
+            <div class="p-4 bg-colorSecundario1 rounded-lg box-border border-4">
+                <h1 class="bg-colorTerciario1 rounded-lg text-center font-fuenteTitulo">INFORMACION IMPORTANTE</h1>
+            </div>
+            <p>Ante los hechos de público conocimiento, lo resuelto por autoridades gubernamentales y las recomendaciones sanitarias existentes, comunicamos la nueva reprogramación del festival Lollapalooza Argentina para los días 26, 27 y 28 de marzo de 2021. 
+                Nos hubiera encantado poder ofrecerles otra edición memorable este año, pero la salud y seguridad de los fans, artistas, staff, sponsors y nuestra comunidad continúa siendo nuestra máxima prioridad.</p> 
+        </article>
+
+        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4" id="agenda">
+            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Primer semestre</h2>
+        </article>
+
+        <section class="flex flex-col m-2 p-2 md:flex-row text-xs">
+           
+            <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
+                <div class="">
+                    <img class=""src="images/lolla.jpg" alt="lollar">
+                    <p class="p-2 m-auto bg-colorSecundario1">Lollapalooza</p>
+                </div>
+                <div class="">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>San Isidro, BA</p>
+                </div>
+                <div class="">
+                    <i class="far fa-calendar-check"></i>
+                    <p>28, 29 y 30 de Marzo</p>
+                </div>
+                <div class="invisible sm:visible">
+                    <img src="images/publicidad1.png" alt="Publicidad">
+                </div>
+            </article>
+
+            <article class="bg-white bg-opacity-5 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
+                <div class="">
+                    <img class=""src="images/creamField.jpg" alt="lollar">
+                    <p class="p-2 m-auto bg-colorSecundario1">CreamFields</p>
+                </div>
+                <div class="">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>California, USA</p>
+                </div>
+                <div class="">
+                    <i class="far fa-calendar-check"></i>
+                    <p>16,17,18,19 de Mayo</p>
+                </div>
+                <div class="invisible sm:visible">
+                    <img src="images/publicidad2.png" alt="Publicidad">
+                </div>
+            </article>
+
+            <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
+                <div class="">
+                    <img class=""src="images/ultra.jpg" alt="lollar">
+                    <p class="p-2 m-auto bg-colorSecundario1">Ultra</p>
+                </div>
+                <div class="">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Miami, USA</p>
+                </div>
+                <div class="">
+                    <i class="far fa-calendar-check"></i>
+                    <p>28, 29 y 30 de Junio</p>
+                </div>
+                <div class="invisible sm:visible">
+                    <img src="images/publicidad3.png" alt="Publicidad">
+                </div>
+            </article>
+    
+        </section>
+
+        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4" >
+            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Segundo semestre</h2>
+        </article>
+
+        <section class="flex flex-col m-2 p-2 md:flex-row text-xs">
+           
+            <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
+                <div class="">
+                    <img class="" src="images/tomorrow.jpg" alt="lollar">
+                    <p class="p-2 m-auto bg-colorSecundario1">Tomorrow Land</p>
+                </div>
+                <div class="">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Berlin, Alemania</p>
+                </div>
+                <div class="">
+                    <i class="far fa-calendar-check"></i>
+                    <p>28, 29 y 30 de Julio</p>
+                </div>
+                <div class="hidden sm:block">
+                    <img src="images/publicidad4.png" alt="Publicidad">
+                </div>
+            </article>
+
+            <article class="bg-white bg-opacity-5 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
+                <div class="">
+                    <img class=""src="images/vitoFest.jpg" alt="lollar">
+                    <p class="p-2 m-auto bg-colorSecundario1">Vito Fest</p>
+                </div>
+                <div class="">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Moron, Buenos Aires</p>
+                </div>
+                <div class="">
+                    <i class="far fa-calendar-check"></i>
+                    <p>32 de Noviembre</p>
+                </div>
+                <div class="invisible sm:visible">
+                    <img src="images/publicidad5.png" alt="Publicidad">
+                </div>
+            </article>
+
+        </section>
+
+    </main>
+    <div class="flex flex-col justify-center p-2">
+        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4">
+            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Te contamos sobre Nosotros</h2>
+        </article>
+        <p>Somos un grupo de amigos que conocemos la movida de las mejoras fiestas y por eso decidimos compartirlas con vos</p>
+        <p>A continuacion te mostramos un recorrido por las mejores festivales</p>
+    </div>
+   
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center text-center" id="nosotros">
+
+
+        <article class="flex flex-col justify-center">
+            <div>
+                <iframe class="w-auto h-auto" width="560" height="315" src="https://www.youtube.com/embed/tX52W4JFE6Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <p class="p-2 bg-gray-50 text-colorSecundario1 rounded-lg text-sm">CreamFields!</p>
+            </div>
+        </article>
+
+        <article class="flex flex-col justify-center">
+            <div>
+                <iframe class="w-auto h-auto" width="560" height="315" src="https://www.youtube.com/embed/VFTUVknbrJ8?start=212" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <p class="p-2 bg-gray-50 text-colorSecundario1 rounded-lg text-sm">Summertime Ball 2019</p>
+            </div>
+        </article>
+
+        <article class="flex flex-col justify-center">
+            <div>
+                <iframe class="w-auto h-auto" width="560" height="315" src="https://www.youtube.com/embed/ScYoXjpQgcc?start=212" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <p class="p-2 bg-gray-50 text-colorSecundario1 rounded-lg text-sm"> Tomorrowland 2019</p>
+            </div>
+        </article>
+
+        <article class="flex flex-col justify-center">
+            <div>
+                <iframe class="w-auto h-auto" width="560" height="315" src="https://www.youtube.com/embed/Wvq4lL29D2s?start=1522" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div>
+                <p class="p-2 bg-gray-50 text-colorSecundario1 rounded-lg text-sm">Mr Belt & Wezol 2019</p>
+            </div>
+        </article>
+    </section>
+    
+    <footer class="p-6 flex justify-center sm:justify-end">
+        <div class="animate-hacerGirar0 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-facebook-f text-2xl"></i></div>
+        <div class="animate-hacerGirar1 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-twitter text-2xl"></i></div>
+        <div class="animate-hacerGirar0 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-instagram text-2xl"></i></div>
+        <div class="animate-hacerGirar1 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-whatsapp text-2xl"></i></div>
+        <div class="animate-hacerGirar0 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-pinterest text-2xl"></i></div>
+        <div class="animate-hacerGirar1 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="far fa-envelope text-2xl"></i></div>
+    </footer>
+</body>
+</html>

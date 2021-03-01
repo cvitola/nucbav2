@@ -1,0 +1,7 @@
+Color de fondo: #312ac6
+Color de textos: #fff
+Fuente {
+Titulo: Montserrat black
+Texto: Montserrat regular
+Botón: Montserrat bold
+}
