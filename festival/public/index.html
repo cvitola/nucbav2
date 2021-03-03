@@ -14,11 +14,6 @@
         <nav class="flex flex-col sm:flex-row sm:justify-between">
             <img class="block m-auto sm:inline sm:m-4 sm:rounded-full h-24 w-24" src="images/logo_festival.png" alt="Logo Festival">
             <ul class="flex flex-col m-4 text-4xl sm:flex-row sm:justify-between">
-                <!--
-                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" <p class="hidden sm:block rounded-lg p-2">INICIO</a><p class="hidden sm:block rounded-lg p-2">INICIO</a></li>
-                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" class="sm:hidden"><i class="far fa-calendar-alt"></i></p><p class="hidden sm:block rounded-lg p-2">AGENDA</a></li>
-                <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"><a href="#" class="sm:hidden"><i class="fas fa-users"></i></p><p class="hidden sm:block rounded-lg p-2">NOSOTROS</a></li>
-                    -->
                 <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#"><p class="sm:hidden"><i class="fas fa-home"></i></p><p class="hidden sm:block rounded-lg p-2">INICIO</p></a></li>    
                 <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#agenda"><p class="sm:hidden"><i class="far fa-calendar-alt"></i></p><p class="hidden sm:block rounded-lg p-2">AGENDA</p></a></li>    
                 <li class="rounded-lg m-2 p-2 hover:bg-colorPrimario hover:text-colorSecundario1"> <a href="#nosotros"><p class="sm:hidden"><i class="fas fa-users"></i></p><p class="hidden sm:block rounded-lg p-2">NOSOTROS</p></a></li>    
@@ -50,22 +45,25 @@
     <main class="flex flex-col">
         <article class="m-4 p-4"> 
             <div class="p-4 bg-colorSecundario1 rounded-lg box-border border-4">
-                <h1 class="bg-colorTerciario1 rounded-lg text-center font-fuenteTitulo">INFORMACION IMPORTANTE</h1>
+                <h1 class="bg-colorTerciario1 text-center font-fuenteTitulo">INFORMACION IMPORTANTE</h1>
             </div>
             <p>Ante los hechos de público conocimiento, lo resuelto por autoridades gubernamentales y las recomendaciones sanitarias existentes, comunicamos la nueva reprogramación del festival Lollapalooza Argentina para los días 26, 27 y 28 de marzo de 2021. 
                 Nos hubiera encantado poder ofrecerles otra edición memorable este año, pero la salud y seguridad de los fans, artistas, staff, sponsors y nuestra comunidad continúa siendo nuestra máxima prioridad.</p> 
         </article>
 
-        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4" id="agenda">
-            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Primer semestre</h2>
+        <article class="m-4 p-4"> 
+            <div class="p-4 bg-colorSecundario1 rounded-lg box-border border-4">
+                <h1 class="bg-colorTerciario1 text-center font-fuenteTitulo">PRIMER SEMESTRE</h1>
+            </div>
+            <p>Apuntate estos eventos.</p> 
         </article>
 
-        <section class="flex flex-col m-2 p-2 md:flex-row text-xs">
+        <section class="flex flex-col m-2 p-2 text-xs text-center">
            
             <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
                 <div class="">
                     <img class=""src="images/lolla.jpg" alt="lollar">
-                    <p class="p-2 m-auto bg-colorSecundario1">Lollapalooza</p>
+                    <p class="p-2 m-auto bg-colorPrimario text-colorTerciario2">Lollar</p>
                 </div>
                 <div class="">
                     <i class="fas fa-map-marker-alt"></i>
@@ -75,15 +73,20 @@
                     <i class="far fa-calendar-check"></i>
                     <p>28, 29 y 30 de Marzo</p>
                 </div>
-                <div class="invisible sm:visible">
+                <div class="hidden sm:block">
                     <img src="images/publicidad1.png" alt="Publicidad">
                 </div>
+                <article class="hidden md:flex md:flex-row col-span-4">
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorSecundario1 text-white hover:text-colorTerciario1 hover:bg-white" >Ticket</button>
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorTerciario2 text-white hover:bg-white hover:text-colorSecundario2" >Sitio Oficial</button>
+                </article>
+                
             </article>
 
             <article class="bg-white bg-opacity-5 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
                 <div class="">
                     <img class=""src="images/creamField.jpg" alt="lollar">
-                    <p class="p-2 m-auto bg-colorSecundario1">CreamFields</p>
+                    <p class="p-2 m-auto bg-colorPrimario text-colorTerciario2">Cream!</p>
                 </div>
                 <div class="">
                     <i class="fas fa-map-marker-alt"></i>
@@ -93,15 +96,19 @@
                     <i class="far fa-calendar-check"></i>
                     <p>16,17,18,19 de Mayo</p>
                 </div>
-                <div class="invisible sm:visible">
+                <div class="hidden sm:block">
                     <img src="images/publicidad2.png" alt="Publicidad">
                 </div>
+                <article class="hidden md:flex md:flex-row col-span-4">
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorSecundario1 text-white hover:text-colorTerciario1 hover:bg-white" >Ticket</button>
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorTerciario2 text-white hover:bg-white hover:text-colorSecundario2" >Sitio Oficial</button>
+                </article>
             </article>
 
             <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
                 <div class="">
                     <img class=""src="images/ultra.jpg" alt="lollar">
-                    <p class="p-2 m-auto bg-colorSecundario1">Ultra</p>
+                    <p class="p-2 m-auto bg-colorPrimario text-colorTerciario2">Ultra</p>
                 </div>
                 <div class="">
                     <i class="fas fa-map-marker-alt"></i>
@@ -111,23 +118,30 @@
                     <i class="far fa-calendar-check"></i>
                     <p>28, 29 y 30 de Junio</p>
                 </div>
-                <div class="invisible sm:visible">
+                <div class="hidden sm:block">
                     <img src="images/publicidad3.png" alt="Publicidad">
                 </div>
+                <article class="hidden md:flex md:flex-row col-span-4">
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorSecundario1 text-white hover:text-colorTerciario1 hover:bg-white" >Ticket</button>
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorTerciario2 text-white hover:bg-white hover:text-colorSecundario2" >Sitio Oficial</button>
+                </article>
             </article>
     
         </section>
 
-        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4" >
-            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Segundo semestre</h2>
+        <article class="m-4 p-4"> 
+            <div class="p-4 bg-colorSecundario1 rounded-lg box-border border-4">
+                <h1 class="bg-colorTerciario1 text-center font-fuenteTitulo">SEGUNDO SEMESTRE</h1>
+            </div>
+            <p>Apuntate estos eventos.</p> 
         </article>
-
-        <section class="flex flex-col m-2 p-2 md:flex-row text-xs">
+       
+        <section class="flex flex-col m-2 p-2 text-xs items-center text-center">
            
             <article class="bg-white bg-opacity-10 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
                 <div class="">
                     <img class="" src="images/tomorrow.jpg" alt="lollar">
-                    <p class="p-2 m-auto bg-colorSecundario1">Tomorrow Land</p>
+                    <p class="p-2 m-auto bg-colorPrimario text-colorTerciario2">Tomorrow!</p>
                 </div>
                 <div class="">
                     <i class="fas fa-map-marker-alt"></i>
@@ -140,12 +154,16 @@
                 <div class="hidden sm:block">
                     <img src="images/publicidad4.png" alt="Publicidad">
                 </div>
+                <article class="hidden md:flex md:flex-row col-span-4">
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorSecundario1 text-white hover:text-colorTerciario1 hover:bg-white" >Ticket</button>
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorTerciario2 text-white hover:bg-white hover:text-colorSecundario2" >Sitio Oficial</button>
+                </article>
             </article>
 
             <article class="bg-white bg-opacity-5 rounded-md p-1 grid grid-cols-3 sm:grid-cols-4 gap-1">
                 <div class="">
                     <img class=""src="images/vitoFest.jpg" alt="lollar">
-                    <p class="p-2 m-auto bg-colorSecundario1">Vito Fest</p>
+                    <p class="p-2 m-auto bg-colorPrimario text-colorTerciario2">Vito Fest</p>
                 </div>
                 <div class="">
                     <i class="fas fa-map-marker-alt"></i>
@@ -155,20 +173,27 @@
                     <i class="far fa-calendar-check"></i>
                     <p>32 de Noviembre</p>
                 </div>
-                <div class="invisible sm:visible">
+                <div class="hidden sm:block">
                     <img src="images/publicidad5.png" alt="Publicidad">
                 </div>
+                <article class="hidden md:flex md:flex-row col-span-4">
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorSecundario1 text-white hover:text-colorTerciario1 hover:bg-white" >Ticket</button>
+                    <button class="flex-grow p-2 m-2 h-8 rounded-lg bg-colorTerciario2 text-white hover:bg-white hover:text-colorSecundario2" >Sitio Oficial</button>
+                </article>
             </article>
 
         </section>
 
     </main>
     <div class="flex flex-col justify-center p-2">
-        <article class=" bg-colorSecundario2 rounded-lg m-4 p-4">
-            <h2 class="p-2 bg-colorTerciario1 font-fuenteTitulo shadow-xl rounded-lg">Te contamos sobre Nosotros</h2>
+        <article class="m-4 p-4"> 
+            <div class="p-4 bg-colorSecundario1 rounded-lg box-border border-4">
+                <h1 class="bg-colorTerciario1 text-center font-fuenteTitulo">SOBRE NOSOTROS</h1>
+            </div>
+            <p>Somos un grupo de amigos que conocemos la movida de las mejoras fiestas y por eso decidimos compartirlas con vos.</p> 
+            <p>A continuacion te mostramos un recorrido por las mejores festivales</p>
         </article>
-        <p>Somos un grupo de amigos que conocemos la movida de las mejoras fiestas y por eso decidimos compartirlas con vos</p>
-        <p>A continuacion te mostramos un recorrido por las mejores festivales</p>
+       
     </div>
    
     <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 justify-items-center text-center" id="nosotros">
@@ -211,6 +236,9 @@
         </article>
     </section>
     
+
+
+
     <footer class="p-6 flex justify-center sm:justify-end">
         <div class="animate-hacerGirar0 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-facebook-f text-2xl"></i></div>
         <div class="animate-hacerGirar1 m-1 border-colorTexto border-2 rounded-full h-12 w-12 flex items-center justify-center hover:text-colorSecundario1 hover:border-colorSecundario1"><i class="fab fa-twitter text-2xl"></i></div>
