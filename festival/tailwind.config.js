@@ -16,10 +16,8 @@ module.exports = {
     
       colors:{
         colorPrimario: '#F1FAEE',
-        colorSecundario1: '#FCA311',
-        colorSecundario2:'#f5dd90',
-        colorTerciario1: '#E63946',
-        colorTerciario2:'#ffadad',
+        colorSecundario: '#FCA311',
+        colorTerciario: '#E63946',
       },
       fontFamily:{
         fuenteBase:['Roboto Mono', 'monospace'],
