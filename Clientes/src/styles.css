@@ -1,0 +1,56 @@
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 700px;
+}
+#formulario{
+    border-style: solid;
+    border-color: darkblue;
+    background-color:lightgrey;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+h2{
+    color: darkgoldenrod;
+    font-family: monospace;
+}
+
+input, select{
+    padding: 0.5rem;
+}
+
+button{
+    padding: 0.5rem;
+    border-color: blanchedalmond;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 80px;
+    border-radius: 5px;
+}
+#eliminar{
+    background-color:brown; 
+}
+#agregar{
+    background-color:cornflowerblue;
+}
+#error{
+    font-size: 1rem;
+    color: crimson;
+    display: block;
+}
+.item{
+    color: darkgreen;
+}
+.item-titulo{
+    font-size: 1.5rem;
+    color: darkslateblue;
+}
+ul li{
+    padding: 0.5rem;
+    list-style: none;
+    text-align: center;
+    background-color: navajowhite;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

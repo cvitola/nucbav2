@@ -35,6 +35,9 @@
 		},
 		{
 			"path": "festival"
+		},
+		{
+			"path": "Clientes"
 		}
 	],
 	"settings": {
