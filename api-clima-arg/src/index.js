@@ -16,17 +16,22 @@ function devolverCiudad(lista,unaCiudad){
 
 function listarCiudades(lista){
     const select = document.getElementById('ciudad');
+    let ciudades = []; //las quiero ordenar alfabeticamente por prov.
     lista.forEach(element => {
         const opcional = (element.province+" - "+element.name);
+        ciudades.push(opcional);
+        ciudades.sort();
+    });
+    ciudades.forEach(element =>{
         const opc = document.createElement('option');
-        opc.value = element.name; //muajaja
-        opc.innerHTML = opcional;
+        const estado = element.split("-")
+        opc.value = estado[1].trim();
+        opc.innerHTML = element;
         select.appendChild(opc);
-    })
+    });
 }
 function determinarIconoClima(estado,elementoImg,diaNoche){
     const clave = estado.toLowerCase();
-   
     if(clave.includes('lluv')){
         elementoImg.src = 'src/images/lluvioso.png';
     }else if (clave.includes('nublado')) {
@@ -49,6 +54,7 @@ function determinarIconoClima(estado,elementoImg,diaNoche){
         elementoImg.src = 'src/images/pregunta.png'
     }
 }
+
 function pintarTarjeta(clima, parametro){
     //Genero los elementos que necesito
     const rejilla = document.getElementById('rejilla');
@@ -71,7 +77,6 @@ function pintarTarjeta(clima, parametro){
     const pVientoValor = document.createElement('p');
     
     //Determino si es de dia o noche
-
     const diaNoche = determinarDiaNoche();
 
     //agrego estilos a los elementos
@@ -140,13 +145,11 @@ function eliminarBusquedaAnterior(){
     }
 }
 
-const levantarDatos = async () => {
-        
+const levantarDatos = async () => {   
     try {
         const response = await fetch('https://ws.smn.gob.ar/map_items/weather');
         if (!response.ok){
             throw new Error("Se pudrio TODO!!!")
-            
         }
         datos = await response.json();
         //Setea por defecto las 3 primeras tarjetas
@@ -155,19 +158,15 @@ const levantarDatos = async () => {
             const datosMeteorologicosCiudad = devolverCiudad(datos, element)
             pintarTarjeta(datosMeteorologicosCiudad,"carga");
         });
-        listarCiudades(datos)
+        listarCiudades(datos);
     } catch (error) {
         console.log("Estamos en el bloque catch");
         console.log(error);
     }
-    
+}
 
- 
-   // return datos;
-};
-let datos;
+let datos; //me quedo con lo descargado de la API
 levantarDatos();
-//Busqueda
 const botonBuscar = document.querySelector("#busca"); 
 botonBuscar.addEventListener("click", realizarBusqueda)
 
