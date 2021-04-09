@@ -1,0 +1,105 @@
+body{
+    margin-left: auto;
+    margin-right: auto;
+    width: 75rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#cabecera{
+    background-color: rgb(247 222 130);
+    padding: 1rem;
+
+}
+#menu{
+    color: darkblue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 5rem;
+}
+#menu ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 10px;
+}
+
+#inicio{
+    display: flex;
+    justify-content: space-around;
+}
+.contenido{
+    width: 570px;
+}
+.btn{
+    padding: 0.7rem;
+    margin: 0.8rem;
+    border-radius: 0.5rem;
+    background-color: rgb(12 77 162);
+    color: white;
+    border-style: none;
+}
+.informacion{
+    background-color: rgb(12 77 162);
+    text-align: center;
+    color: white;
+}
+.sin-stock{
+    position: absolute;
+
+    background-color: red;
+    color: white;
+    border-radius: 0.5rem;
+}
+.caracteristica{
+    display: flex;
+    justify-content: space-around;
+    text-justify: auto;
+}
+.tarjeta-caracteristica{
+    width: 10rem;
+}
+.grilla{
+    display: grid;
+    grid-gap: 0.1rem;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+.grilla h2{
+    grid-column-start: 1;
+    grid-column-end: 4;
+    text-align: center;
+}
+.card-poke{
+    display: flex;
+    flex-direction: column;
+    width: 12rem;
+    border-radius: 1rem;
+    box-shadow:  0px 0px 10px 0px #b1b1b1;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+}
+.card-poke p{
+    padding: 0.2rem;
+    margin: 0;
+    text-align: center;
+}
+.card-poke .btn{
+    background-color: rgb(247 222 130);
+}
+#footer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(12 77 162);
+}
+.sub-contorno{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+.sub-contorno i{
+    margin-right: 1rem;
+}
+.contorno{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}

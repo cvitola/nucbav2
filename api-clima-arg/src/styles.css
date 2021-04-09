@@ -1,0 +1,113 @@
+body{
+    font-family: 'Gurajada', serif;
+    width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url(https://images.unsplash.com/photo-1590314841865-b1d2e19844b8?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjR8fHN1bnxlbnwwfDJ8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);
+    background-size: cover;
+}
+#cabecera{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+}
+#rejilla{
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+.tarjeta{
+    width: 10rem;
+    background-color: beige;
+    border-radius: 0.5rem;
+    text-align: center;
+    box-shadow: 0.5rem 0.5rem 0.5rem darkgrey;
+    margin: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.tarjeta:hover{
+    box-shadow: 0.5rem 0.5rem 0.5rem rgb(212, 114, 168);
+}
+
+.titulo{
+    font-size: 1.5rem;
+    color: royalblue;
+}
+.avatar{
+    width: 6rem;
+    height: 6rem;
+}
+.avatar-grande{
+    width: 8rem;
+    height: 8rem;
+}
+p{
+    
+    padding: 0;
+    margin: 0;
+}
+h2{
+    margin: 0;
+}
+h3{
+    margin: 0;
+}
+.tarjeta .imagen{
+    font-size: 3rem;
+    
+}
+.contorno{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#busca{
+    font-family: 'Gurajada', serif;
+    background-color: blue;
+    border-style: none;
+    box-shadow: 0.5rem 0.5rem 0.5rem grey;
+    border-radius: 0.3rem;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+}
+#ciudad{
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem;
+    border-style: none;
+    font-family: sans-serif;
+
+}
+
+.busqueda{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-style: none;
+    box-shadow: 0.9rem 0.9rem 0.9rem grey;
+    margin: 1rem;
+}
+.principal{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    body{
+        width: 20rem;
+    }
+    .principal{
+        flex-direction: column;
+    }
+    #rejilla{
+        flex-direction: column;
+        align-items: center;
+    }
+    #cabecera{
+        flex-direction: column;
+    }
+}

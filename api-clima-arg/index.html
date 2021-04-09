@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gurajada&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <header id="cabecera">
+        <img class="avatar-grande" src="src/images/logo.png" alt="logo">
+        <h1>API Servicio Meteorologico Nacional Argentino</h1>
+    </header>
+    <main class="principal">
+        <h1>Condiciones actuales en las siguientes Ciudades</h1>
+        <section id="rejilla"></section>
+        <h1>Seleccione una Ciudad</h1>
+        <form action="" class="busqueda">
+            <select name="ciudad" id="ciudad"></select>
+            <button id="busca">Buscar</button>
+            <div id="resultado-busqueda"></div>
+        </form>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="src/index.js"></script>
+</body>
+</html>

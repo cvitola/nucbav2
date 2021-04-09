@@ -44,6 +44,9 @@
 		},
 		{
 			"path": "pedimonYA"
+		},
+		{
+			"path": "api-clima-arg"
 		}
 	],
 	"settings": {

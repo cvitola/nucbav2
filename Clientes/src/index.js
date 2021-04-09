@@ -48,7 +48,7 @@ function eliminarCliente(event){
           (valor) => valor.id !== Number(idABuscar)
         );
         listaClientes = nuevoArray;
-        escribirHtml();
+        escribirHtml(listaClientes, listarClientes);
       }
 }
 
