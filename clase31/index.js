@@ -12,7 +12,7 @@ const getSongs = (valor) => {
         .then((resultado) => resultado.json())
         .then((data) => pintarCanciones(data));
 };
-
+console.log(data);
 const pintarCanciones = (arrayDeCanciones) => {
     const codigoHtml = `
             <h1>Busquedas relacionadas a ${search.value}</h1>
@@ -22,7 +22,7 @@ const pintarCanciones = (arrayDeCanciones) => {
                         <li>
                             <p><strong>${valor.artist.name}</strong> - ${valor.title}</p>
                             <audio controls>
-                                <source src=${valor.preview} type="audio/mp3"
+                                <source src=${valor.preview} type="audio/mp3">
                             </audio>
                         </li>`
                 )
