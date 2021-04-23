@@ -47,6 +47,9 @@
 		},
 		{
 			"path": "api-clima-arg"
+		},
+		{
+			"path": "API-Tarjetas"
 		}
 	],
 	"settings": {
