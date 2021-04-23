@@ -10,9 +10,11 @@ const getSongs = (valor) => {
     
     fetch(`${URL}/suggest/${valor}`)
         .then((resultado) => resultado.json())
-        .then((data) => pintarCanciones(data));
+        .then((data) => {pintarCanciones(data)
+        console.log(data)
+    });
 };
-console.log(data);
+
 const pintarCanciones = (arrayDeCanciones) => {
     const codigoHtml = `
             <h1>Busquedas relacionadas a ${search.value}</h1>
