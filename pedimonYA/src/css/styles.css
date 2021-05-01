@@ -1,13 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
-    margin-left: auto;
-    margin-right: auto;
-    width: 75rem;
+    min-height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 #cabecera{
     background-color: rgb(247 222 130);
-    padding: 1rem;
-
+    padding: 50px;
 }
 #menu{
     color: darkblue;
@@ -21,13 +24,17 @@ body{
     display: inline-block;
     padding: 10px;
 }
-
+#menu ul li:hover{
+    background-color: blanchedalmond;
+}
 #inicio{
     display: flex;
     justify-content: space-around;
 }
+
 .contenido{
-    width: 570px;
+    display: flex;
+    flex-direction: column;
 }
 .btn{
     padding: 0.7rem;
@@ -38,16 +45,25 @@ body{
     border-style: none;
 }
 .informacion{
+    display: flex;
+    flex-direction: column;
     background-color: rgb(12 77 162);
     text-align: center;
     color: white;
+    padding: 50px;
+}
+.informacion .subtitulo{
+    margin-bottom: 20px;
+}
+.subtitulo h2{
+    margin-bottom: 10px;
 }
 .sin-stock{
     position: absolute;
-
     background-color: red;
     color: white;
     border-radius: 0.5rem;
+    visibility: hidden;
 }
 .caracteristica{
     display: flex;
@@ -57,16 +73,22 @@ body{
 .tarjeta-caracteristica{
     width: 10rem;
 }
+.tarjeta-caracteristica p{
+    padding: 15px;
+}
 .grilla{
     display: grid;
     grid-gap: 0.1rem;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    padding: 50px;
+
 }
 .grilla h2{
     grid-column-start: 1;
     grid-column-end: 4;
     text-align: center;
+    padding: 20px 0;
 }
 .card-poke{
     display: flex;
@@ -85,10 +107,33 @@ body{
 .card-poke .btn{
     background-color: rgb(247 222 130);
 }
+
+#carro{
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: blueviolet;
+}
+.carro-item{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    border-color: rgba(255, 248, 150, 0.788);
+    border-style: solid;
+    width: 250px;
+}
+.carro-item img{
+    height: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 #footer{
     display: flex;
     flex-direction: column;
     background-color: rgb(12 77 162);
+    padding: 50px;
 }
 .sub-contorno{
     display: flex;
@@ -102,4 +147,42 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+}
+
+/*Puntos de quiebre*/
+
+@media screen and (max-width: 500px) {
+    #menu{
+        flex-direction: column;
+    }
+    #inicio{
+        flex-direction: column;
+    }
+    #cabecera{
+        padding: 10px;
+    }
+    .informacion{
+        padding: 10px;
+    }
+    #carro{
+        padding: 10px;
+    }
+    .caracteristica{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .grilla{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    #footer{
+        padding: 10px;
+    }
+    .contorno{
+        flex-direction: column;
+
+    }
 }

@@ -1,0 +1,148 @@
+program {
+    
+}
+
+/*
+1. Moviendo tres veces al Norte
+    Escribir un procedimiento Mover3VecesAlNorte() que mueva el cabezal tres posiciones al Norte de
+    la actual.
+*/
+procedure Mover3VecesAlNorte() {
+    /*
+        PROPÓSITO: Mover el cabezal 3 celdas al norte de la celda actual.
+        PRECONDICIONES: Debe existir al menos 2 celdas al norte.
+    */
+    repeat (3) {
+        Mover(Norte)
+    }
+}
+/*
+2. Moviendo tres veces al Este
+Escribir un procedimiento Mover3VecesAlEste() que mueva el cabezal tres posiciones al Este de la
+actual.
+a. ¿Qué similitudes encuentra entre este procedimiento y el anterior? Que se deberá mover el cabezal 3 posiciones pero a otra direccion.
+b. ¿Qué cambiaría si quisiera hacer un procedimiento que mueva tres veces al Oeste, o tres al
+Sur? Justamente el valor literal que recibe Mover
+*/
+procedure Mover3VecesAlEste() {
+    /*
+        PROPÓSITO: Mover el cabezal 3 celdas al Este de la celda actual.
+        PRECONDICIONES: Debe existir al menos 2 celdas al Este
+    */    
+    repeat (3) {
+        Mover(Este)
+    }
+}
+
+/*
+3. Y Ahora para algo completamente distinto
+Escribir un procedimiento Poner6DeColorNegro() que ponga 6 bolitas de color Negro en la celda
+actual.*/
+procedure Poner6DeColorNegro() {
+    /*
+        PROPÓSITO: Poner 6 bolitas de color negro en la celda actual.
+        PRECONDICIONES: No tiene
+    */  
+    repeat (6) {
+        Poner(Negro)
+    }
+}
+
+/*
+4. Y 6 Verdes
+Escribir un procedimiento Poner6DeColorVerde() que ponga 6 bolitas de color Verde en la celda
+actual.
+*/
+procedure Poner6DeColorVerde() {
+    /*
+        PROPÓSITO: Poner 6 bolitas de color Verde en la celda actual.
+        PRECONDICIONES: No tiene
+    */  
+    repeat (6) {
+        Poner(Verde)
+    }
+}
+
+/*
+5. Dibujando un rectangulo con repeticiones
+Escribir un procedimiento DibujarRectánguloRojoYNegroDe5x3() que dibuje un rectangulo
+sólido de 5 celdas de largo por 3 de alto, símilar al realizado en “P2. 2. Por Arriba”, pero esta vez, utilice
+repetición para solucionar el problema.
+*/
+
+procedure DibujarRectánguloRojoYNegroDe5x3() {
+    /*
+        PROPÓSITO: Dibujar un rectangulo solido de 5 celdas de largo por 3 de alto con una bolita roja y negra en cada celda.
+        PRECONDICIONES: 
+            *Debe existir al menos 4 celdas al este y 2 celdas al norte de la celda actual.
+            *Las celdas deben estar vacías.
+    */ 
+    repeat(3){
+        DibujarLineaRojaYNegraDe5()
+        Mover(Norte)
+    }
+
+}
+
+procedure DibujarLineaRojaYNegraDe5() {
+    /*
+        PROPÓSITO: Dibujar una linea solida de 5 celdas de largo con una bolita roja y negra en cada celda.
+        PRECONDICIONES: 
+            *Debe existir al menos 4 celdas al este.
+            *Las celdas deben estar vacías.
+    */ 
+    repeat(4){
+        PonerUnaDeCada()
+        Mover(Este)
+    }
+    PonerUnaDeCada() //situacion de borde..
+    IrAlBorde(Oeste)
+}
+
+procedure PonerUnaDeCada() {
+    /*
+        PROPÓSITO: Poner una bolita de color Negro y una bolita de color Rojo en la celda actual
+        PRECONDICIONES: la celda debe estar vacía
+    */ 
+    Poner(Rojo)
+    Poner(Negro)
+}
+
+/*
+6. Pintando el tablero
+Escribir un procedimiento PintarElTableroDeAzul() que, asumiendo que el tablero tiene 10
+celdas de largo y 7 celdas de alto, pinte absolutamente todo el tablero con bolitas azules, dejando
+exactamente una bolita azul en cada celda.
+a. ¿Cuál es la precondición del procedimiento? //Que el tablero debe estar vacío.
+b. ¿Se le ocurre otra estrategia para resolver el problema?
+Importante Recuerde que la estrategia de solución debe quedar clara a partir de la lectura del código.
+Use subtareas con nombres apropiados para dicho objetivo.
+*/
+
+procedure PintarElTableroDeAzul() {
+    /*
+        PROPÓSITO: Pintar el tablero con 1 bolita azul en cada una de sus celdas.
+        PRECONDICIONES: 
+            *El tablero debe estar vacío.
+            *El cabezal debe iniciar en la posicion 0,0
+    */     
+    repeat(9){
+        DibujarColumnaAzul()
+        Mover(Este)
+    }
+}
+
+procedure DibujarColumnaAzul {
+    /*
+        PROPÓSITO: Pintar toda la columna con una bolita azul en cada una de sus celdas.
+        PRECONDICIONES: la columna debe estar vacía.
+    */    
+    repeat(6){
+        Poner(Azul)
+        Mover(Norte)
+    }
+    Poner(Azul)
+    IrAlBorde(Sur)
+}
+
+
