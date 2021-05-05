@@ -43,6 +43,10 @@ body{
     background-color: rgb(12 77 162);
     color: white;
     border-style: none;
+    cursor: pointer;
+}
+.btn:hover{
+    box-shadow: 2px 2px 2px palevioletred;
 }
 .informacion{
     display: flex;
@@ -64,6 +68,7 @@ body{
     color: white;
     border-radius: 0.5rem;
     visibility: hidden;
+    transform: rotate(-0.1turn);
 }
 .caracteristica{
     display: flex;
@@ -93,7 +98,6 @@ body{
 .card-poke{
     display: flex;
     flex-direction: column;
-    width: 12rem;
     border-radius: 1rem;
     box-shadow:  0px 0px 10px 0px #b1b1b1;
     margin-top: 0.2rem;

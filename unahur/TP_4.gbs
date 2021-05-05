@@ -1,0 +1,413 @@
+/*1. Moviendo tres veces a donde quieras
+Escribir un procedimiento Mover3VecesAl_(direcciónAMover) que dada una dirección
+direcciónAMover mueva el cabezal tres posiciones en dicha dirección.
+a. ¿Qué hay que hacer ahora para mover el cabezal tres veces al Norte?
+b. ¿Qué beneficios trae el uso de parámetros?
+c. ¿Cuántos procedimientos puedo ahorrarme haciendo un único procedimiento con un
+parámetros?
+¡Recordar! No olvidar escribir el contrato del procedimiento ANTES de realizar el código (y que los parámetros
+son parte del mismo); también discutir la precondición escrita con sus compañeros para verificar que la misma
+es adecuada y correcta.*/
+
+program {
+    Mover3VecesAl_(Norte)
+    Poner6DeColor_(Verde)
+    Poner_Al_(Negro, Norte)
+}
+
+procedure Mover3VecesAl_(direcciónAMover) {
+    /*
+        PROPOSITO: Mover el cabezal 3 posiciones hacia **direcciónAMover**
+        PARAMETROS:
+            *direcciónAMover: Dirección - la dirección a la cual se moverá el cabezal
+        PRECONDICIONES: 
+            Debe existir al menos 3 celdas hacia **direcciónAMover**
+    */
+    repeat (3) {
+        Mover(direcciónAMover)
+    }
+    
+}
+
+/*
+2. Y 6 de lo que quieras
+Escribir un procedimiento Poner6DeColor_(colorAPoner) que dado un color colorAPoner
+ponga 6 bolitas del color dado.
+*/
+
+procedure Poner6DeColor_(colorAPoner) {
+    /*
+        PROPOSITO: Poner 6 bolitas de **colorAPoner** en la celda actual.
+        PARAMETROS:
+            *colorAPoner: Color - el color de las bolitas a poner
+        PRECONDICIONES: 
+            No tiene
+    */    
+    repeat (6) {
+        Poner(colorAPoner)
+    }
+}
+/*
+MÚLTIPLES PARÁMETROS Y PARÁMETROS COMO ARGUMENTOS
+3. Moviendo y poniendo
+Escribir un procedimiento Poner_Al_(colorAPoner, direcciónDondePoner) que dado un color
+colorAPoner y una dirección direcciónDondePoner, ponga una bolita del color dado en la celda
+vecina en la dirección dada, dejando el cabezal en dicha celda.
+a. ¿Cuántos casos distintos habría que considerar si no se usaran parámetros en este caso?
+b. ¿Cómo debería invocar al procedimiento para que ponga una bolita Azul en la celda al Norte?
+c. ¿Y sí quisiera una Azul y una Roja?*/
+
+procedure Poner_Al_(colorAPoner, direcciónDondePoner) {
+    /*
+        PROPOSITO: Poner una bolita de color **colorAPoner** en la celda vecina a la direccion dada **direcciónDondePoner**
+        PARAMETROS:
+            *colorAPoner: Color - el color de la bolita a poner.
+            *direcciónDondePoner: Direccion - la dirección a la cual se moverá el cabezal
+        PRECONDICIONES: 
+            Debe existir al menos 1 celda hacia la direccion **direcciónDondePoner**
+    */      
+    Mover(direcciónDondePoner)
+    Poner(colorAPoner)
+}
+
+/*4. Reemplazando colores
+Escribir ReemplazarUnaDe_Por_(colorAReemplazar, colorPorElCualReemplazar), un
+procedimiento que dado un primer color colorAReemplazar y un segundo color
+colorPorElCualReemplazar, reemplaza una bolita del primer color por una del segundo color (En la
+celda actual).
+*/
+procedure ReemplazarUnaDe_Por_(colorAReemplazar, colorPorElCualReemplazar) {
+    /*
+        PROPOSITO: Reemplazar una bolita de color **colorAReemplazar** por otra bolita de color **colorPorElCualReemplazar** en la celda actual.
+        PARAMETROS:
+            *colorAReemplazar: Color - el color de la bolita a reemplazar
+            *colorPorElCualReemplazar: Color - el color de la bolita reemplazada
+        PRECONDICIONES: 
+            Debe existir en la celda actual una bolita de color **colorAReemplazar**
+    */
+    Sacar(colorAReemplazar)     
+    Poner(colorPorElCualReemplazar)
+}
+
+/*5. El regreso de Nova
+¿Se acuerdan de Nova? Es el nuevo compañero del equipo, que no tiene formación profesional, y su
+código está lleno de malas prácticas de programación. Esta vez, en su código se encontró un
+procedimiento que tiene el código hecho, pero no el contrato, y no está indentado.
+a. En primer lugar, se pide corregir los errores de Nova. No olvidar indicar en qué posición queda
+el cabezal, ni de establecer para qué son los parámetros. El código de Nova es el siguiente:
+procedure Poner_ADistancia3Al_(color, dirección) {
+Mover3VecesAl_(dirección) Poner(color) }
+b. En segundo lugar, se pide contestar la siguiente pregunta que realizó Nova: ¿Cuál es la relación
+entre el parámetro dirección de este procedimiento con el parámetro direcciónAMover de
+Mover3VecesAl_?*/
+
+procedure Poner_ADistancia3Al_(colorAPoner, direcciónAMover) {
+    /*
+        PROPOSITO: Poner una bolita de color **colorAPoner** 3 posiciones en direccion **direcciónAlMover** de la celda actual.
+        PARAMETROS:
+            *colorAPoner: Color - el color de la bolita a poner en la celda.
+            *direcciónAMover: Direccion - la direccion hacia donde se mueve el cabezal
+        PRECONDICIONES: 
+            Debe existir al menos 3 celdas en direccion al **direcciónAlMover**
+    */    
+    Mover3VecesAl_(direcciónAMover) 
+    Poner(colorAPoner)
+}
+
+/*
+6. Los 3 puntos de Nova
+Al continuar revisando código, encontramos otro procedimiento de Nova que carece de contrato y no
+sigue buenas prácticas de programación.
+a. Escribir el contrato faltante y corregir las malas prácticas:
+procedure Pintar3PuntosAzules() {
+Poner(Azul)
+Poner_ADistancia3Al_(Azul, Este)
+Poner_ADistancia3Al_(Azul, Este)
+Mover3VecesAl_(Oeste) Mover3VecesAl_(Oeste)
+}
+b. Ayudar a Nova a contestar la siguiente pregunta: ¿Hay alguna relación entre los parámetros de
+Poner_ADistancia3Al_ y Mover3VecesAl_? //SI, ES LA UBICACION EN QUE SE ENCUENTRA CADA PUNTO
+Dado que Nova no pensó en código general, basándose en el procedimiento corregido recién,
+generalizarlo para que, dado un color colorPunto, dibuje los puntos de ese color. El nuevo
+procedimiento debe llamarse Pintar3Puntos_.
+
+
+*/
+
+procedure Pintar3PuntosAzules() {
+    /*
+        PROPOSITO: Pintar 3 puntos de color azul empezando por la celda actual el siguiente a 3 celdas hacia Este y el siguiente a 3 celdas hacia Este volviendo el cabezal donde empezó.
+        PRECONDICIONES:
+            *Debe existir al menos 6 celdas hacia el Este.
+    */
+    Poner(Azul)
+    repeat (2) {
+        Poner_ADistancia3Al_(Azul, Este)
+    }
+    repeat (2) {
+        Mover3VecesAl_(Oeste)
+    }
+}
+procedure Pintar3Puntos_(colorAPoner) {
+    /*
+        PROPOSITO: Pintar 3 puntos de color **colorAPoner** empezando por la celda actual el siguiente a 3 celdas hacia Este y el siguiente a 3 celdas hacia Este volviendo el cabezal donde empezó.
+        PARAMETROS: 
+            *colorAPoner: Color - color del punto a ubicar en la celda actual.
+        PRECONDICIONES:
+            *Debe existir al menos 6 celdas hacia el Este.
+
+    */
+    Poner(colorAPoner)
+    repeat (2) {
+        Poner_ADistancia3Al_(colorAPoner, Este)
+    }
+    repeat (2) {
+        Mover3VecesAl_(Oeste)
+    }
+}
+
+/*7. Multi Arcoiris
+Utilizando el procedimiento Pintar3Puntos_, construir el procedimiento PintarArcoIris() que
+ponga el tablero de la derecha cuando el tablero inicial es el de la izquierda. ¡A no ser como Nova, y
+empezar escribiendo el contrato!
+*/
+procedure PintarArcoIris() {
+    /*
+        PROPOSITO: Dibujar un Arco Iris que comience poniendo un punto Negro en la celda actual, uno Azul en la siguiente, uno verde encima del azul y otro rojo al siguiente del Azul 
+            repitiendo esta operacion 3 veces.
+        PRECONDICIONES: 
+            *debe existir al menos 1 celda al Norte de la actual 
+            *debe existir al menos 8 celdas al Este de la actual.    
+    */
+    Pintar3Puntos_(Negro)
+    Mover_VecesAl_(1,Este)
+    Pintar3Puntos_(Azul)
+    Mover_VecesAl_(1,Este)
+    Pintar3Puntos_(Rojo)
+    Mover_VecesAl_(1,Oeste)
+    Mover_VecesAl_(1,Norte)
+    Pintar3Puntos_(Verde)
+}
+
+/*EJERCICIO 10 =)*/
+procedure Mover_VecesAl_(cantidadAMover, direccionAMover){
+    /*
+        PROPOSITO: Mover el cabezal **cantidadAMover** veces hacia la direccion **direccionAMover**
+        PARAMETROS:
+            cantidadAMover: Numero - representa la cantidad de celdas que se moverá el cabezal.
+            direccionAMover: Direccion - representa hacia que direccion se moverá el cabezal.
+        PRECONDICIONES: 
+            *debe existir al menos **cantidadAMover** hacía **direccionAMover**
+    */
+    repeat (cantidadAMover) {
+        Mover(direcciónAMover)
+    }
+}
+
+/*8. Y ahora, muchas Rojas
+Escribir un procedimiento Poner_DeColorRojo(cantidadAPoner) que dado un número
+cantidadAPoner, ponga tantas bolitas como se indica de color Rojo en la celda actual.
+a. ¿Cuántos casos posibles habría que considerar si no se usaran parámetros en este caso o el
+anterior?
+*/
+procedure Poner_DeColorRojo(cantidadAPoner) {
+    /*
+        PROPOSITO: Poner en la celda actual **cantidadAPoner** de bolitas rojas.
+        PARAMETROS: 
+            *cantidadAPoner: Numero - se refiere a la cantidad de bolitas a ubicar.
+        PRECONDICIONES:
+            *No tiene.    
+    */
+    repeat (cantidadAPoner) {
+        Poner(Rojo)
+    }
+}
+
+/*9. Poner de a muchas
+BIBLIOTECA Escribir un procedimiento Poner_DeColor_(cantidadAPoner, colorAPoner) que
+dado un número cantidadAPoner y un color colorAPoner, ponga tantas bolitas como se indica del
+color dado de la celda actual.*/
+procedure Poner_DeColor_(cantidadAPoner, colorAPoner) {
+    /*
+        PROPOSITO: Poner en la celda actual **cantidadAPoner** de color **colorAPoner**
+        PARAMETROS: 
+            *cantidadAPoner: Numero - se refiere a la cantidad de bolitas a ubicar.
+            *colorAPoner: Color - se refiere al color de la bolita a poner
+        PRECONDICIONES:
+            *No tiene.    
+    */
+    repeat (cantidadAPoner) {
+        Poner(colorAPoner)
+    }
+}
+
+/*11.Sacar de a muchas
+BIBLIOTECA Escribir un procedimiento Sacar_DeColor_(cantidadASacar, colorASacar) que
+dado un número cantidadASacar y un color colorASacar, saque tantas bolitas como se indica del
+color dado de la celda actual.*/
+procedure Sacar_DeColor_(cantidadASacar, colorASacar) {
+    /*
+        PROPOSITO: Sacar de la celda actual la cantidad de **cantidadASacar** de color **colorASacar**
+        PARAMETROS: 
+            *cantidadASacar: Numero - se refiere a la cantidad de bolitas a sacar.
+            *colorASacar: Color - se refiere al color de la bolita a sacar.
+        PRECONDICIONES:
+            *La cantidad de bolitas de **colorASacar** en la celda actual debe ser mayor o igual a **cantidadASacar**
+    */
+    repeat (cantidadASacar) {
+        Sacar(colorASacar)
+    }
+}
+
+/*12.Escribiendo fechas
+Construir un procedimiento EscribirFechaConDía_Mes_Año_(día, mes, año), que permita
+representar cualquier fecha dados el día, mes y año (como números). La representación debe ser la
+misma utilizada en el ejercicio anterior donde se registró el Día de la Memoria (Azul para el día, Rojo
+para el mes y Verde para el año, en tres celdas hacia el Este).
+¡Recordar! Debe comenzarse por escribir el contrato; en este caso puede resultar útil escribir también una
+observación con la representación a utilizar.
+*/
+
+procedure EscribirFechaConDía_Mes_Año_(día, mes, año) {
+    /*
+        PROPOSITO: Escribir una fecha dada el dia **dia** mes **mes** y año **año**
+        PARAMETROS: 
+            *dia: Numero - se refiere al dia
+            *mes: Numero - se refiere al mes
+            *año: Numero - se refiere al año
+        PRECONDICIONES:
+            *Debe existir al menos 2 celdas al Este de la celda actual.
+        Observaciones:
+            El día es representado por bolitas Verdes.
+            El mes es representado por bolitas Rojas.
+            El año es representado por bolitas Negras.    
+    */
+
+}
+procedure RegistrarDía(día) {
+    /*
+        PROPOSITO: Escribir el día de la fecha en cantidad **día**
+        PARAMETROS: 
+            *dia: Numero - se refiere al dia
+        PRECONDICIONES:
+            *La celda actual debe estar vacía.
+        Observaciones:
+            El día es representado por bolitas Verdes.  
+    */    
+    Poner_De_Color(día, Verde)
+    Mover_VecesAl_(1, Norte)
+}
+
+procedure RegistrarMes(mes) {
+    /*
+        PROPOSITO: Escribir el mes de la fecha en cantidad **mes**
+        PARAMETROS: 
+            *mes: Numero - se refiere al mes
+        PRECONDICIONES:
+            *La celda actual debe estar vacía.
+        Observaciones:
+            El mes es representado por bolitas Rojas.  
+    */    
+    Poner_De_Color(mes, Rojo)
+    Mover_VecesAl_(1, Norte)
+}
+
+procedure RegistrarAño(año) {
+    /*
+        PROPOSITO: Escribir el Año de la fecha en cantidad **año**
+        PARAMETROS: 
+            *año: Numero - se refiere al año
+        PRECONDICIONES:
+            *La celda actual debe estar vacía.
+        Observaciones:
+            El mes es representado por bolitas Rojas.  
+    */    
+    Poner_De_Color(mes, Rojo)
+    Mover_VecesAl_(2,Sur)
+}
+
+/*13.Listado de fechas
+Construir un programa que escriba un listado vertical con las siguientes fechas:
+● Inicio de la Reforma Universitaria.
+● Reglamentación del voto femenino en Argentina.
+● Fecha en la que ocurrieron los hechos conmemorados en el Día Internacional de los
+Trabajadores.
+● Creación del Ministerio de Ciencia y Tecnología argentino.
+● Primera celebración del Día de la Mujer.
+¿Es necesario pensar procedimientos para escribir cada una de las fechas o sirve algo de lo realizado
+con anterioridad? SIRVE ALGO DE LO REALIZADO CON ANTERIORIDAD*/
+
+program{
+    /*
+        PROPOSITO: Escribir un listado vertical con las siguientes fechas:
+            ● Inicio de la Reforma Universitaria.
+            ● Reglamentación del voto femenino en Argentina.
+            ● Fecha en la que ocurrieron los hechos conmemorados en el Día Internacional de los
+            Trabajadores.
+            ● Creación del Ministerio de Ciencia y Tecnología argentino.
+            ● Primera celebración del Día de la Mujer.
+        PRECONDICIONES:
+            *La celda actual debe estar vacía.
+ 
+    */
+    EscribirFechaConDía_Mes_Año_(15,6,1918)
+    Mover_VecesAl_(1,Este)
+    EscribirFechaConDía_Mes_Año_(11,11,1951)
+    Mover_VecesAl_(1,Este)
+    EscribirFechaConDía_Mes_Año_(01,05,1889)
+    Mover_VecesAl_(1,Este)
+    EscribirFechaConDía_Mes_Año_(20,05,1997)
+    Mover_VecesAl_(1,Este)
+    EscribirFechaConDía_Mes_Año_(19,3,1911)
+
+
+}
+
+/*
+14.Reloj analógico simplificado generalizado
+Generalizar el ejercicio del reloj analógico simplificado de la práctica anterior para que se pueda pasar
+el radio como parámetro. O sea, se le pide escribir un procedimiento llamado
+DibujarRelojAnalógicoSimplificadoDeRadio_(radio) que ponga los números del reloj
+como en el programa original, pero donde el radio recibido por parámetro indica la distancia al centro
+del reloj: mientras más grande es el radio, más alejados están los números del centro.
+Por ejemplo, el programa del ejercicio anterior podría obtenerse invocando al procedimiento con el
+comando DibujarRelojAnalógicoSimplificadoDeRadio_(2).
+*/
+procedure DibujarRelojAnalógicoSimplificadoDeRadio_(radio) {
+    /*
+        PROPOSITO: Dibujar un reloj analógico simplicado representando solamente las horas: 12 3 6 y 9 horas y el radio del reloj estará represensado por **radio**
+        PRECONDICIONES: 
+            -Debe existir al menos **radio** celdas al Norte, 
+            -Debe existir al menos **radio** celdas al Sur, 
+            -Debe existir al menos **radio** celdas al Oeste 
+            -Debe existir al menos **radio** celdas al Este
+        PARAMETRO:
+            -radio: Numero - representa el radio del reloj analogico.    
+        OBSERVACIONES:La cantidad de bolitas representan el numero de la hora.
+    */
+    DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(12, Norte, radio, Sur)
+    DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(3, Este, radio, Oeste)
+    DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(6, Sur, radio, Norte)
+    DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(9, Oeste, radio, Este)
+}
+
+procedure DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(unaHora, haciaDireccion, radio, direccionCentro) {
+    /*
+        PROPOSITO: Dibujar la hora **unaHora** en direccion **haciaDireccion** con una distancia al centro de **radio** y retornando al centro en **direccionCentro**
+        PARAMETROS
+            -unaHora: Numero - representa la hora del reloj analogico.
+            -haciaDireccion: Direccion - indica la direccion en que debe moverse el cabezal.
+            -radio: Numero - representa el radio del reloj analogico.  
+            -direccionCentro: - Direccion - indica la direccion del centro del reloj
+        PRECONDICIONES: 
+            -La celda debe estar vacía. 
+            -Debe existir al menos **radio** celdas en direccion al **unaDireccion*
+            -la direccion **direccionCentro** debe ser opuesta a **haciaDireccion*
+        OBSERVACIONES:La cantidad de bolitas representan el numero de la hora.
+    */
+    Mover_VecesAl_(radio, haciaDireccion)
+    Poner_DeColor_(unaHora, Rojo)
+    Mover_VecesAl_(radio,direccionCentro)
+
+}
+
