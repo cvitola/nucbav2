@@ -120,12 +120,13 @@ body{
     align-items: center;
     background-color: blueviolet;
 }
+#carro ul li{
+    list-style: none;
+}
 .carro-item{
     display: flex;
     justify-content:space-around;
     align-items: center;
-    border-color: rgba(255, 248, 150, 0.788);
-    border-style: solid;
     width: 250px;
 }
 .carro-item img{
