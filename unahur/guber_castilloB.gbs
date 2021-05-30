@@ -1,0 +1,66 @@
+procedure RecogerSolicitanteConId_(numeroDeID) {
+    /*
+    PROPÓSITO: Subir al vehículo el solicitante con **numeroDeID**
+    PARAMETROS: 
+        -numeroDeID; Número - se refiere al solicitante que se identifica con este valor.
+    PRECONDICIONES:
+        -El vehículo no debe tener pasajeros.
+    */
+    EliminarSolicitudConId_(numeroDeID)
+    LevantarPasajeroConId_AlVehiculo(numeroDeID)
+}
+
+procedure EliminarSolicitudConId_(numeroDeIdASacar) {
+    /*
+    PROPÓSITO: Sacar la solicitud **numeroDeIdASacar**
+    PARAMETROS: 
+        -numeroDeIdASacar: Número - se refiere al solicitante que se identifica con este valor.
+    PRECONDICIONES:
+        -Debe existir un solicitante **numeroDeIdASacar**
+    OBSERVACIONES:
+        -Un solicitante es identificado por tantas bolitas azules como **numeroDeIdASacar** haya.    
+    */    
+    repeat (numeroDeIdASacar) {
+        Sacar(Azul)
+    }
+}
+
+procedure LevantarPasajeroConId_AlVehiculo(numeroDeIDAPoner){
+    /*
+    PROPÓSITO: Poner el pasajero con ID **numeroDeIDAPoner** en el vehiculo.
+    PARAMETROS: 
+        -numeroDeIDAPoner: Número - se refiere al solicitante que se identifica con este valor.
+    PRECONDICIONES:
+        -Debe existir un solicitante **numeroDeIdASacar**
+        -El vehiculo no debe tener pasajeros.
+    OBSERVACIONES:
+        -Un pasajero es identificado por tantas bolitas verdes como **numeroDeIDAPoner** haya.    
+    */    
+    Poner(Negro)
+    repeat (numeroDeIDAPoner) {
+        Poner(Verde)
+    }
+}
+
+
+procedure RecogerSolicitanteEnUbicación() {
+    /*
+    PROPÓSITO: Recoger al solicitante que se encuentra en la ubicación actual.
+    PRECONDICIONES:
+        -Debe existir un solicitante en la ubicacion actual.
+        -El vehiculo no debe tener pasajeros.
+    */  
+    RecogerSolicitanteConId_(idDeSolicitanteEnUbicación)     
+}
+
+
+procedure LlevarPasajeroActualADestinoEnLínea() {
+    /*
+    PROPÓSITO: Llevar al pasajero actual hacia el destino que se encuentra en linea.
+    PRECONDICIONES:
+        -El vehiculo debe contener un pasajero.
+    */      
+    repeat (distanciaADestinoDe_Hacia_(idDePasajero,direcciónADestinoEnLíneaDe_(idDePasajero))) {
+        MoverVehiculoAl_(direcciónADestinoEnLíneaDe_(idDePasajero))
+    }
+}

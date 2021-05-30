@@ -1,0 +1,194 @@
+procedure IntercambiarEstrellaPorCírculoAlEste() {
+   /*
+        PROPÓSITO:
+            Intercambiar la ficha estrella de la ubicación actual
+            con la ficha círculo de la ubicación lindante al Este.
+        PRECONDICIONES:
+            Debe existir una ficha estrella en la ubicación actual
+            y una ficha círculo en la ubicación lindante al Este.
+    */
+    CambiarEstrellaPorCírculo()
+    MoverAlEste()
+    CambiarCírculoPorEstrella()
+}
+
+procedure CambiarEstrellaPorCírculo() {
+    /*
+        PROPÓSITO: 
+            Reemplazar la ficha estrella por una ficha círculo 
+            en la ubicación actual.
+        PRECONDICIÓN:
+            Debe existir una ficha estrella en la ubicación actual
+    */
+    SacarEstrella()
+    PonerCírculo()
+}
+
+procedure SacarEstrella() {
+    /*
+        PROPÓSITO:
+            Quitar la ficha estrella de la ubicación actual.
+        PRECONDICIONES:
+            Debe existir una ficha estrella en la ubicación actual
+        OBSERVACIONES: 
+            La ficha estrella es representada por 1 bolita negra
+            y 5 azules
+    */
+    Sacar(Negro)
+    Sacar(Azul)
+    Sacar(Azul)
+    Sacar(Azul)
+    Sacar(Azul)
+    Sacar(Azul)
+}
+
+procedure PonerCírculo() {
+    /*
+        PROPÓSITO:
+            Poner una ficha círculo en la ubicación actual.
+        PRECONDICIONES:
+            La ubicación actual debe estar vacía.
+        OBSERVACIONES: 
+            La ficha círculo es representada por 1 bolita negra
+            y 2 azules.
+    */
+    Poner(Negro)
+    Poner(Azul)
+    Poner(Azul)
+}
+
+procedure MoverAlEste() {
+    /*
+        PROPÓSITO:
+            Dirigirse a la ubicación inmediata al Este.
+        PRECONDICIONES:
+            Que exista al menos una ubicación hacia el Este.
+    */
+    Mover(Este);
+}
+
+procedure CambiarCírculoPorEstrella() {
+    /*
+        PROPÓSITO: 
+            Reemplazar la ficha círculo por una ficha estrella 
+            en la ubicación actual.
+        PRECONDICIÓN:
+            Debe existir una ficha círculo en la ubicación actual
+    */
+    SacarCírculo()
+    PonerEstrella()
+}
+
+procedure SacarCírculo() {
+    /*
+        PROPÓSITO:
+            Quitar la ficha círculo en la ubicación actual.
+        PRECONDICIONES:
+            Debe existir una ficha círculo en la ubicación actual
+        OBSERVACIONES: 
+            La ficha círculo está representada por 1 bolita negra
+            y 2 azules
+    */
+    Sacar(Negro)
+    Sacar(Azul)
+    Sacar(Azul)
+}
+
+procedure PonerEstrella() {
+    /*
+        PROPÓSITO:
+            Poner una ficha estrella en la ubicación actual.
+        PRECONDICIONES:
+            La ubicación actual debe estar vacía.
+        OBSERVACIONES: 
+            La ficha estrella es representada por 1 bolita negra
+            y 5 azules.
+    */
+    Poner(Negro)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+    Poner(Azul)
+}
+
+
+
+procedure QuemarSucesiónDe3RombosAlNorte() {
+    /*
+        PROPÓSITO:
+            Eliminar la línea de tres fichas consecutivas 
+            de rombos desde la ubicación actual hacia el Norte
+            y volver a la ubicación inicial.
+        PRECONDICIONES:
+            -Deben existir al menos 2 ubicaciones al Norte de la actual.
+            -Deben existir una ficha rombo en la ubicación actual y en 
+            las dos ubicaciones subsiguientes hacia el Norte.
+    */
+    SacarRombo()
+    MoverAlNorte()
+    SacarRombo()
+    MoverAlNorte()
+    SacarRombo()
+    Mover2UbicacionesAlSur()
+}
+
+procedure SacarRombo() {
+    /*
+        PROPÓSITO:
+            Quitar una ficha rombo en la ubicación actual.  
+        PRECONDICIONES:
+            Debe existir una ficha rombo en la ubicación actual.
+        OBSERVACIONES:
+            La ficha rombo está representada por 1 bolita negra y 4 azules.
+    */
+    Sacar(Negro)
+    Sacar(Azul)
+    Sacar(Azul)
+    Sacar(Azul)
+    Sacar(Azul)
+}
+
+procedure MoverAlNorte() {
+    /*
+        PROPÓSITO:
+            Dirigirse a la ubicación inmediata al Norte.
+        PRECONDICIONES:
+            Que exista al menos una ubicación hacia el Norte.
+    */
+    Mover(Norte)
+}
+
+procedure Mover2UbicacionesAlSur() {
+    /*
+        PROPÓSITO:
+            Mover 2 ubicaciones al sur de la ubicación actual.
+        PRECONDICIONES:
+            Que existan al menos 2 ubicaciones hacia el Sur.
+    */
+    Mover(Sur)
+    Mover(Sur)
+}
+
+
+
+procedure ReponerFichasAlNorte() {
+    /*
+        PROPÓSITO:
+            Agregar una línea de tres fichas consecutivas 
+            aleatorias desde la ubicación actual hacia el Norte
+             y volver a la ubicación inicial.
+        PRECONDICIONES:
+            -Deben existir al menos dos ubicaciones al Norte de la ubicación actual.
+            -La celda actual y las dos subsiguientes al Norte deben estar vacías.
+    */
+    PonerFichaAleatoria()
+    MoverAlNorte()
+    PonerFichaAleatoria()
+    MoverAlNorte()
+    PonerFichaAleatoria()
+    Mover2UbicacionesAlSur()
+}
+
+
+

@@ -1,0 +1,96 @@
+Representaremos las grilla del juego con el tablero de gobstones, donde cada celda se corresponde con la ubicación en donde puede haber o bien una ficha o bien un obstáculo. 
+Las fichas se representan con una bolita de color Negro, y tantas bolitas de color Azul como su forma:
+1 Negra + 2 Azul => Círculo, 
+1 Negra + 3 Azul => Triangulo, 
+1 Negra + 4 Azul => Rombo
+1 Negra + 5 Azul => Estrella
+2 Negras => Obstaculo
+
+/*Se pide escriba el código de las funciones (previamente dadas como primitivas) fichaActual, fichaCirculo, fichaTriángulo, fichaRombo y fichaEstrella.*/
+
+function fichaActual() {
+    /*
+    PROPOSITO:
+        Describe la ficha que se encuentra en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Número
+    OBSERVACIONES: 
+        
+    */     
+    return ()
+}
+
+function fichaCirculo() {
+    /*
+    PROPOSITO:
+        Describe la ficha que se encuentra en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Número
+    OBSERVACIONES: 
+        
+    */     
+    return ()
+}
+
+/*Se pide desarrolle la función haySucesiónAl_ que indica si hay una sucesión de al menos 3 fichas hacia la dirección dada, 
+comenzando por la ficha en la celda actual. Puede asumir que hay al menos 2 celdas en la dirección dada.
+
+Para solucionar este problema puede hacer uso de la siguiente primitiva:
+
+fichaA_Al_
+PROPÓSITO: Describe la forma de la ficha (número) que se encuentra tantos lugares hacia **direcciónAMirar** como **distanciaAMirar**. Describe 0 si no hay una ficha en esa celda.
+PARÁMETROS:
+   * distanciaAMirar: Número - La distancia a la cual mirar la forma de la ficha.
+   * direcciónAMirar: Dirección - La dirección hacia la cual mirar.
+TIPO: Número.
+PRECONDICIONES:
+   * Hay una celda a **distanciaAMirar** en dirección **direcciónAMirar**.*/
+
+function haySucesiónAl_ (direccionAMirar) {
+    /*
+    PROPOSITO:
+        Indica si hay al menos una sucesion de al menos 3 hacia la direccion **direccionAMirar**.
+    PARAMETROS:
+        *direccionAMirar - Direccion: Indica la direccion hacia donde se encontraría la sucesion.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    OBSERVACIONES: 
+    */    
+    return (fichaActual == fichaA_Al_(1,direccionAMirar && fichaActual == fichaA_Al_(2,direccionAMirar)))
+}
+
+Se pide escriba el procedimiento QuemarSucesiónSiHubiera que quema la sucesión de fichas que comienza en la celda actual, si hubiera una, 
+y sino, no hace nada. 
+Notar que la sucesión comienza en la celda actual, y va hacia alguna dirección sin determinar a priori, y que puede ser de 3 o más fichas.
+
+procedure QuemarSucesiónSiHubiera() {
+   /*
+    PROPOSITO:
+        Quemar la sucesión de fichas que comienza en la celda actual, si hubiera una, y sino, no hace nada.
+    PRECONDICIONES:
+        No tiene.
+    */
+
+    if (haySucesiónAl_(Norte) || haySucesiónAl_(Sur) || haySucesiónAl_(Este) || haySucesiónAl_(Oeste)) {
+        QuemarSucesión()
+    }
+
+    o 
+
+
+     if (haySucesiónAl_(Norte)) {
+         QuemarSucesión()
+     elseif ((haySucesiónAl_(Sur))) {
+         QuemarSucesión()
+     } elseif ((haySucesiónAl_(Este))) {
+         QuemarSucesión()
+     } elseif (haySucesiónAl_(Oeste)) {
+         QuemarSucesión()
+     }
+}

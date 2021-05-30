@@ -30,11 +30,13 @@ body{
 #inicio{
     display: flex;
     justify-content: space-around;
+    gap: 45px;
 }
 
 .contenido{
     display: flex;
     flex-direction: column;
+    max-width: 50%;
 }
 .btn{
     padding: 0.7rem;
@@ -67,7 +69,7 @@ body{
     background-color: red;
     color: white;
     border-radius: 0.5rem;
-    visibility: hidden;
+   /* visibility: hidden;*/
     transform: rotate(-0.1turn);
 }
 .caracteristica{
@@ -81,7 +83,7 @@ body{
 .tarjeta-caracteristica p{
     padding: 15px;
 }
-.grilla{
+#grilla{
     display: grid;
     grid-gap: 0.1rem;
     grid-template-columns: repeat(3, 1fr);
@@ -89,7 +91,7 @@ body{
     padding: 50px;
 
 }
-.grilla h2{
+#grilla h2{
     grid-column-start: 1;
     grid-column-end: 4;
     text-align: center;
@@ -102,6 +104,10 @@ body{
     box-shadow:  0px 0px 10px 0px #b1b1b1;
     margin-top: 0.2rem;
     margin-bottom: 0.2rem;
+}
+.card-poke img{
+    height: 215px;
+    width: 215px;
 }
 .card-poke p{
     padding: 0.2rem;
@@ -119,6 +125,10 @@ body{
     justify-content: center;
     align-items: center;
     background-color: blueviolet;
+}
+#lista-pokemones{
+    list-style: none;
+
 }
 #carro ul li{
     list-style: none;
@@ -163,6 +173,9 @@ body{
     #inicio{
         flex-direction: column;
     }
+    .contenido{
+        max-width: 100%;
+    }
     #cabecera{
         padding: 10px;
     }
@@ -177,7 +190,7 @@ body{
         justify-content: center;
         align-items: center;
     }
-    .grilla{
+    #grilla{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -188,6 +201,6 @@ body{
     }
     .contorno{
         flex-direction: column;
-
+        max-width: 70%;
     }
 }

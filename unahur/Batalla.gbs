@@ -1,0 +1,61 @@
+// a. EnviarAliadosParaDuplicarEnemigos(), que agrega soldados aliados en la celda actual
+// en cantidad suficiente para que haya el doble de aliados que de soldados enemigos.
+// b. PelearLaBatalla(), que simula una batalla, suponiendo que hay suficiente cantidad de
+// soldados aliados como para ganar la batalla. Durante una batalla, 2 soldados enemigos pelean
+// contra 3 soldados aliados y todos mueren. Por ejemplo, si hay 6 enemigos y 10 aliados, mueren
+// los 6 enemigos y 9 de los aliados; si hay 10 enemigos y 21 aliados, mueren los 10 enemigos y
+// 15 soldados aliados.
+
+procedure EnviarAliadosParaDuplicarEnemigos() {
+    /*
+        PROPÓSITO:
+            Coloca el doble de aliados que de enemigos en la celda actual.
+        PRECONDICIONES:
+            Ninguna.
+        OBSERVACIONES:
+            Los aliados son representados con bolitas negras y los enemigos con bolitas rojas.
+    */
+
+    repeat(nroBolitas(Rojo) * 2) {
+        Poner(Negro)
+    }
+}
+
+procedure PelearLaBatalla() {
+    /*
+        PROPÓSITO:
+            Eliminar a todos los enemigos y a parte de los aliados.
+        PRECONDICIONES:
+            Deben existir más aliados que enemigos en la celda actual.
+    */
+    EliminarEnemigos()
+    EliminarAliados()
+}
+
+procedure EliminarEnemigos() {
+    /*
+        PROPÓSITO:
+            Eliminar a todos los enemigos en la celda actual.
+        PRECONDICIONES:
+            Ninguna
+        OBSERVACIONES:
+            Los aliados son representados con bolitas negras y los enemigos con bolitas rojas.
+    */
+    repeat(nroBolitas(Rojo)) {
+        Sacar(Rojo);
+    }
+}
+
+procedure EliminarAliados() {
+    /*
+        PROPÓSITO:
+            Elimina tantos aliados como la cantidad correspondiente al 150% de enemigos.
+        PRECONDICIONES:
+            Ninguna
+        OBSERVACIONES:
+            Los aliados son representados con bolitas negras y los enemigos con bolitas rojas.
+    */
+    repeat((nroBolitas(Rojo) * 150) div 100) {
+        Sacar(Negro)
+    }
+}

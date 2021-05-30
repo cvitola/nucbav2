@@ -1,0 +1,26 @@
+procedure QuemarSucesiónDe_De_Al_(cantidadAQuemar, fichaAEliminar, direccionAQuemar) {
+    /*
+        PROPÓSITO:
+            Eliminar la línea de **cantidadAQuemar** fichas consecutivas 
+            de **fichaAEliminar** desde la ubicación actual hacia **direccionAQuemar**.
+        PRECONDICIONES:
+            -Deben existir **cantidadAQuemar** ubicaciones al **direccionAQuemar** incluyendo la actual.*********
+            -En cada ubicacion debe existir **fichaAEliminar**
+        PARÁMETROS:
+        *cantidadAQuemar: Número - Cantidad de fichas a eliminar
+        *direcciónAQuemar: Dirección - Hacia donde eliminar
+        *fichaAEliminar: Número - Ficha que elimina
+                   
+    */
+    
+    repeat(cantidadAQuemar-1){
+        Eliminar_(fichaAEliminar)
+        Mover(direccionAQuemar)
+    }
+    Eliminar_(fichaAEliminar)
+    Mover_VecesAl_(cantidadAQuemar-1, opuesto(direccionAQuemar))
+}
+procedure Mover_VecesAl_() {
+    /*COMPLETAR DESDE BIBLIOTECA*/
+ 
+}

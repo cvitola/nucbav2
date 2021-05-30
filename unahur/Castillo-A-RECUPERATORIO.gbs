@@ -1,0 +1,150 @@
+/*Una bolita de color Azul representa al encargado del depósito; 
+una bolita de color Negro representa una pared; 
+una bolita de color Verde representa un marcador de meta, y dós bolitas de ese color una caja. 
+Una bolita de color rojo representa una caja que se encuentra sobre un marcador de meta. 
+Notar como, al empujar una caja sobre un marcador de meta, la representación de ambos elementos cambia, para pasar a ser una única bolita roja./*
+
+/*Realice el procedimiento EmpujarCajaHaciaElEste que empuja la caja que se encuentra en la celda lindante al Este una ubicación más hacia esa dirección. 
+Se asume que el cabezal se encuentra sobre el encargado, que no hay un marcador en la celda dos lugares al Este de la actual, y que las reglas de juego adicionales se cumplen. 
+Notar que el estado final correcto es aquel que deja el encargado en la ubicación donde antes estaba la caja y la caja ahora un lugar más al Este de donde se encontraba previamente.*/
+
+procedure EmpujarCajaHaciaElEste() {
+   /*
+        PROPÓSITO:
+            Empujar la caja que se encuentra en la celda lindante al Este una ubicación más hacia dicha dirección.
+        PRECONDICIONES:
+            Deben existir al menos dos ubicaciones al Este.
+    */
+    
+    SacarEncargado()
+    Mover(Este)
+    SacarCaja()
+    PonerEncargado()
+    Mover(Este)
+    PonerCaja()
+    Mover(Oeste)
+
+}
+
+procedure SacarEncargado() {
+   /*
+        PROPÓSITO: Sacar al Encargado de la ubicacion actual.
+        PRECONDICIONES: Que exista el encargado en la celda actual
+        OBSERVACIONES: El encargado se representa como una bolita de color
+            
+    */    
+    Sacar(Azul)
+}
+
+procedure PonerEncargado() {
+   /*
+        PROPÓSITO: Poner al Encargado en la ubicacion actual.
+        PRECONDICIONES: No debe existir una caja en la celda actual.
+        OBSERVACIONES: El encargado se representa como una bolita de color
+    */    
+    Poner(Azul)
+}
+
+procedure SacarCaja() {
+   /*
+        PROPÓSITO: Sacar la caja de la ubicacion actual.
+        PRECONDICIONES: Que exista una caja en la celda actual.
+        OBSERVACIONES: Una caja es representada por dos bolitas Verdes.
+            
+    */    
+    Sacar(Verde)
+    Sacar(Verde)
+}
+
+procedure PonerCaja() {
+   /*
+        PROPÓSITO: Poner la caja de la ubicacion actual.
+        PRECONDICIONES: 
+            No debe existir una caja en la ubicacion actual.
+            No debe existir una pared en la ubicacion actual.
+            No debe existir un encargado en la ubicacion actual.
+        OBSERVACIONES: Una caja es representada por dos bolitas Verdes.
+            
+    */    
+    Poner(Verde)
+    Poner(Verde)
+}
+
+/*Realice el procedimiento SacarCajaDeMarcadorAlNorte que mueve una caja de su ubicación actual en la celda lindante al Norte una ubicación en dicha dirección. 
+Se asume que el cabezal se encuentra sobre el encargado, que se cumplen las reglas de juego, y que no hay un marcador de meta en la celda dos lugares al norte. 
+Notar nuevamente que el estado final correcto es aquel que deja el encargado una celda al Norte de la actual, sobre el marcador de meta, y la caja, dos lugares al Norte.*/
+
+procedure SacarCajaDeMarcadorAlNorte() {
+   /*
+        PROPÓSITO:
+            Empujar la caja que se encuentra en la celda lindante al Norte una ubicación más hacia dicha dirección.
+        PRECONDICIONES:
+            Deben existir al menos dos ubicaciones al Norte. 
+            Debe existir una caja al lindante al Norte de la ubicacion actual sobre un marcado de meta.
+    */    
+    SacarEncargado()
+    Mover(Norte)
+    SacarCajaDelMarcador()
+    PonerEncargado()
+    Mover(Norte)
+    PonerCaja()
+    Mover(Sur)
+}
+
+procedure SacarCajaDelMarcador() {
+   /*
+        PROPÓSITO: Sacar la caja del marcador de meta actual.
+        PRECONDICIONES:
+            Deben existir una caja en la celda actual
+            Debe existir un marcador de meta en la celda actual.
+        OBSERVACIONES:
+            Una caja sobre el marcador de meta se representa con una bolita Roja.
+            Un marcado de meta se representa con una bolita verde
+    */     
+    Sacar(Rojo)
+    Poner(Verde)
+    
+}
+/*Realice el procedimiento MoverCajaSobreMarcadorAlEste que mueve la caja de la celda lindante al Este, una celda más en dicha dirección, 
+ubicación en la que se sabe, hay un marcador de meta.
+Se asume que el cabezal se encuentra sobre el encargado, y que se cumplen las reglas de juego.
+
+
+Para solucionar este problema DEBE hacer uso del siguiente procedimiento primitivo.
+Reemplazar3De_PorUnaDe_
+PROPÓSITO: Reemplaza 3 bolitas del primer color dado, por una única bolita del segundo color dado.
+PRECONDICIONES:
+   * La celda actual debe contener al menor 3 bolitas del primero de los colores.*/
+
+procedure MoverCajaSobreMarcadorAlEste() { 
+   /*
+        PROPÓSITO: Mover una caja a la ubicacion da inmediata al Este sobre el marcador de meta.
+        PRECONDICIONES:
+            Deben existir al menos 2 ubicaciones al Este.
+            Debe existir un marcador en la ubicacion lindante al Este de la caja.
+    */  
+    SacarEncargado()
+    Mover(Este)
+    SacarCaja()
+    PonerEncargado()
+    Mover(Este)
+    PonerCajaSobreMarcador()
+    Mover(Oeste)
+}
+
+procedure PonerCajaSobreMarcador() {
+/*
+    PROPOSITO: Poner una caja sobre el mercador de meta en la celda actual.
+    PRECONDICIONES: 
+            Debe existir el marcador en la celda actual.
+            No debe existir una caja en la ubicacion actual.
+            No debe existir una pared en la ubicacion actual.
+            No debe existir un encargado en la ubicacion actual.
+    OBSERVACIONES: 
+        Un Marcador de meta es representado por una bolita verde //NOSE SI VA ....
+        Una caja sobre el marcador se representa con una bolita Roja
+*/
+    Poner(Verde)
+    Poner(Verde)
+    Reemplazar3De_PorUnaDe_(Verde, Rojo)
+}

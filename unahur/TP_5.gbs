@@ -1,0 +1,246 @@
+/*2. Moviendo según me indican las bolitas
+Escribir el procedimiento Mover_SegúnColor_(dirección,color), que mueve el cabezal en la
+dirección dada tantas celdas como bolitas de color dado hay en la celda actual. Como ejemplos se
+ofrecen los resultados de evaluar el comando Mover_SegúnColor_(Este, Negro), en diferentes
+tableros iniciales..*/
+
+program {
+    Mover_SegúnColor_(Este,Negro)
+}
+
+procedure Mover_SegúnColor_(dirección,color) {
+    /*
+        PROPOSITO: Mover el cabezal en direccion al **direccion** tantas celdas como bolitas de color **color** hay en la celda actual.
+        PARAMETROS:
+        -dirección: Dirección - Indica la direccion en la que se moverá el cabezal actual.
+        -color: Color - Indica el color de las bolitas que evaluará el cabezal para determinar cuantas posiciones moverse.
+        PRECONDICIONES:
+        -Debe haber al menos tantos lugares hacia la direccion **direccion** como numero de bolitas de color **color** hay en la celda actual.
+    */
+    repeat (nroBolitas(color)) {
+        Mover(direccion)
+    }
+    
+}
+
+/*
+2. En este ejercicio continuaremos con nuestro bosque, esta vez colocando semillas y árboles en la celda
+lindante hacia alguna dirección, y dejando el cabezal en la celda inicial.
+*/
+
+procedure Poner_SemillasAl_(cantidadDeSemillas, direcciónAPoner){
+    /*
+        PROPOSITO: Colocar la cantidad de semillas **cantidadDeSemillas** en direccion a **direcciónAPoner**
+        PARAMETROS:
+        -cantidadDeSemillas - Numero: Indica la cantidad de semillas a poner en la posición actual.
+        -direcciónAPoner: Dirección - Indica la dirección a la cual moverse.
+        PRECONDICIONES:
+        -Debe haber al menos un lugar en dirrección a **direccionAPoner**
+    */   
+    Mover(direcciónAPoner) 
+    repeat (cantidadDeSemillas) {
+        Poner(COLOR??)
+    }
+    Mover(opuesto(direcciónAPoner))
+}
+
+/*
+4. La banda de la gloriosa River Plate
+Escribir DibujarLaBandaGloriosaDeAncho_(ancho) que dibuja una banda diagonal de color
+Rojo de cuatro celdas de alto y de tantas celdas de largo como indique el parámetro ancho (dibujando
+hacia arriba y hacia la derecha). El procedimiento debe poder ser ejecutado en tableros en donde la
+banda entra justa en el tablero como se muestra a continuación*/
+
+procedure DibujarLaBandaGloriosaDeAncho_(ancho){
+    /*
+        PROPOSITO: Dibujar una banda solida de color Rojo y de ancho **ancho** y de 4 celdas de alto.
+        PARAMETROS:
+            *ancho: Numero - es el ancho de la banda
+        PRECONDICIONES: 
+            Debe existir al menos **ancho** celdas hacia el Este
+            Deben existir al menos 3 celdas hacia el norte de la posicion actual.
+    */      
+    repeat (ancho - 1) {
+            DibujarLineaVertical(4)
+    Mover(Este)
+    Mover(Norte)
+    }
+}
+
+procedure DibujarLineaVertical(cantidad) {
+       /*
+        PROPOSITO: Dibujar una banda solida de color Rojo y de ancho **ancho** y de 4 celdas de alto.
+        PARAMETROS:
+            *ancho: Numero - es el ancho de la banda
+        PRECONDICIONES: 
+            Debe existir al menos **ancho** celdas hacia el Este
+            Deben existir al menos 3 celdas hacia el norte de la posicion actual.
+    */  
+    repeat (cantidad) {
+        Poner(Rojo)
+        Mover(Norte)
+    }
+}
+
+/*5. ¡A la batalla!, parte 1
+Suponiendo que se está programando un juego donde en las celdas del tablero se representan
+Soldados (los aliados con una bolita de color Negro y los enemigos con una bolita de color Rojo por
+cada soldado), escribir los siguientes procedimientos:
+a. EnviarAliadosParaDuplicarEnemigos(), que agrega soldados aliados en la celda actual
+en cantidad suficiente para que haya el doble de aliados que de soldados enemigos.
+b. PelearLaBatalla(), que simula una batalla, suponiendo que hay suficiente cantidad de
+soldados aliados como para ganar la batalla. Durante una batalla, 2 soldados enemigos pelean
+contra 3 soldados aliados y todos mueren. Por ejemplo, si hay 6 enemigos y 10 aliados, mueren
+los 6 enemigos y 9 de los aliados; si hay 10 enemigos y 21 aliados, mueren los 10 enemigos y
+15 soldados aliados.
+PISTA: ¿Qué cuenta hay que hacer para saber cuántos soldados aliados morirán?
+*/
+
+procedure EnviarAliadosParaDuplicarEnemigos() {
+    /*
+    PROPOSITO: agregar soldados aliados en cantidad al doble de los soldados enemigos.
+    PRECONDICIONES: No tiene
+    OBSERVACIONES: Los soldados aliados son representados por bolitas negras y los soldados enemigos por bolitas rojas.
+    */
+        Poner_DeColor_(2 * nroBolitas(Rojo),Negro)
+
+}
+
+procedure PelearLaBatalla() {
+    /*
+    PRECONDICIONES: Pelear una batalla en la que se enfrentarán 2 soldados enemigos contra 3 aliados y todos morirán.
+    PRECONDICIONES: La batalla se ejecutará si la cantidad de Soldados aliados es mayor a la cantidad de enemigos.
+    OBSERVACIOONES: Los soldados aliados son representados por bolitas negras y los soldados enemigos por bolitas rojas.
+    */
+    //Obtengo la cantidad de ciclos del repeat dependiendo la cantidad de Enemigos.
+    repeat (nroBolitas(Rojo) div 2) {
+        Sacar_DeColor(2,Rojo)
+        Sacar_DeColor(3,Negro)
+    }
+}
+
+/*6. Sacando todas las de un color
+BIBLIOTECA Escribir un procedimiento SacarTodasLasDeColor_(colorASacar), que quite de la
+celda actual todas las bolitas del color indicado por el parámetro.
+PISTA: Considerar utilizar el procedimiento Sacar_DeColor_, definido en la práctica anterior. ¿Qué argumentos
+se le deberían pasar?*/
+
+procedure SacarTodasLasDeColor_(colorASacar) {
+    /*
+    PROPOSITO: Sacar todas las bolitas de color **colorASacar**
+    PARAMETROS:
+        *colorASacar: Color - el color de la bolita a sacar de lacelda actual.
+    PRECONDICIONES: 
+        Debe haber al menos una bolita de color **colorASacar**
+    */    
+    Sacar_DeColor_(nroBolitas(colorASacar),colorASacar)
+}
+
+/*7. La banda ahora es para todos
+Los hinchas de otros clubes se quejaron de que la banda que hicimos solo vale para River, y quieren
+poder hacer otras bandas. Escribir entonces DibujarBandaDeAlto_YAncho_DeColor_(alto,
+ancho, color) que dibuja una banda diagonal con los parámetros dados
+*/
+
+procedure DibujarLineaVertical(cantidad, color) {
+       /*
+        PROPOSITO: Dibujar una banda solida de color Rojo y de ancho **ancho** y de 4 celdas de alto.
+        PARAMETROS:
+            *ancho: Numero - es el ancho de la banda
+        PRECONDICIONES: 
+            Debe existir al menos **ancho** celdas hacia el Este
+            Deben existir al menos 3 celdas hacia el norte de la posicion actual.
+    */  
+    repeat (cantidad) {
+        Poner(color)
+        Mover(Norte)
+    }
+}
+
+procedure DibujarBandaDeAlto_YAncho_DeColor_(alto, ancho, color) {
+    /*
+    PROPOSITO: Dibujar una banda solida de color **color**, de ancho **ancho** y alto **alto**
+    PARAMETROS:
+        *ancho: Numero - es el ancho de la banda.
+        *color: Color - es el color de la banda.
+        *alto: Numero - es el alto de la banda.
+    PRECONDICIONES: 
+            Debe existir al menos **ancho** celdas hacia el Este.
+            Debe existir al menos **alto** celdas hacia el Norte.
+    */   
+
+
+    repeat (ancho-1) {
+        DibujarLineaVertical(alto, color) //Ya lo habia hecho antes.
+        VolerALaBaseDeLaLinea(alto)
+        MoverseAlNO()
+
+    }
+            DibujarLineaVertical(alto, color) //Ya lo habia hecho antes.
+        VolerALaBaseDeLaLinea(alto)
+
+}
+procedure VolerALaBaseDeLaLinea(cantidad) {
+    /*
+    PROPOSITO: Regresar a la base de la linea
+    PARAMETROS:
+        *cantidad: Numero - Es el largo de la linea.
+    PRECONDICIONES: 
+            Debe existir al menos **cantidad** celdas hacia el Sur.
+    */
+    repeat (cantidad) {
+        Mover(Sur)
+    }
+    
+}
+procedure MoverseAlNO() {
+    /*
+    PROPOSITO: Mover el cabezal en posicion al Noroeste de la celda actual.
+    PRECONDICIONES: Debe existir al menos una celda al Norte y otra al Este de la celda actual.
+    */
+    Mover(Este)
+    Mover(Norte)
+}
+
+/*
+Hacer el procedimiento PasarPalabraActualAMayúsculas() que suponiendo que en la fila actual
+se codifica una palabra en minúsculas usando bolitas, ponga la misma palabra en mayúsculas en la
+fila al Norte.
+- Cada letra se representa con una cantidad diferente de bolitas negras, según un código
+numérico llamado ASCII.
+- En la celda más al Oeste de la fila actual se codifica la cantidad de letras de la palabra, usando
+bolitas rojas.
+- La primera letra de la palabra está en la celda lindante al Este de la que contiene la cantidad de
+letras.
+- En el código ASCII si las letras mayúsculas se codifican con un número N entonces la misma
+letra minúscula se representa con N+32 (ej. la ‘a’ minúsculas se representa con el número 97 y
+la ‘A’ mayúsculas, con el 65).
+- El cabezal se encuentra en la celda más al Oeste de una fila donde hay una palabra
+representada.
+
+*/
+
+procedure PasarPalabraActualAMayúsculas() {
+    /*
+    PROPOSITO: Escribir un programa que pase la palabra actual en minuscula a mayusculas en la fila superior actual.
+    PRECONDICIONES: 
+        *Debe existir al menos una posicion al Norte
+    */
+    repeat (nroBolitas(Rojo)) {
+        PasarLetraAMayuscula(nroBolitas(Negro))
+        Mover(Este)
+ 
+    }
+}
+
+procedure PasarLetraAMayuscula(cantidadDeNegras) {
+    /*
+    PROPOSITO: Pasar la letra de minúscula a mayuscula y escribirla en la celda superior volviendo a la celda actual
+    PARAMETROS: 
+        *cantidadDeNegras: Número - la cantidad de bolitas representará la letra en codigo ASCII
+    PRECONDICIONES: Debe existir una celda al norte de la celda actual
+    */
+    Mover(Norte)
+    Poner_DeColor_(cantidadDeNegras-32,Negro)
+    Mover(Sur)
+}

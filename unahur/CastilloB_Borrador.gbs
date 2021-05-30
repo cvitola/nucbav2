@@ -1,0 +1,122 @@
+procedure Intercambiar_Por_Al_(primerFicha, segundaFicha, direcciónAIntercambiar) {
+    /*
+        PROPÓSITO:
+            Intercambia la ficha **primerFicha** que se encuentra en la celda actual,
+            por la ficha **segundaFicha** que se encuentra en la celda lindante al **direcciónAIntercambiar**
+        PARÁMETROS:
+            primerFicha: Número - representa a la ficha en la celda actual
+            segundaFicha: Número - representa a la ficha en la celda lindante a **direcciónAIntercambiar**
+            direcciónAIntercambiar:  Dirección - indica la dirección de la ficha **segundaFicha**
+        PRECONDICIONES:
+            Que exista al menos una celda al **direcciónAIntercambiar** 
+    */
+   /*  Desplazar_Al_(primerFicha, direcciónAIntercambiar)
+       Desplazar_Al_(segundaFicha, opuesto(direcciónAIntercambiar)) */
+    
+    Cambiar_Por_(primerFicha, segundaFicha)
+    Mover(direcciónAIntercambiar)
+    Cambiar_Por_(segundaFicha, primerFicha)
+}
+
+procedure Cambiar_Por_(fichaASacar, fichaAponer) {
+    /*
+        PROPÓSITO:
+            Sacar **fichaASacar** y poner **fichaAPoner**
+        PARÁMETROS:
+            fichaASacar: Número - indica la ficha a sacar
+            fichaAponer: Número - indica la ficha a poner
+        PRECONDICIONES: 
+            Que exista **fichaASacar** en la celda actual
+    */
+    Eliminar_(fichaASacar)
+    Agregar_(fichaAPoner)
+}
+
+procedure Eliminar_(ficha) {
+    /*
+        PROPÓSITO:
+            Eliminar **ficha**
+        PARÁMETROS:
+            ficha: Número - indica la ficha a eliminar
+        PRECONDICIONES: 
+            Que exista **ficha** en la celda actual
+        OBSERVACIONES: 
+            La ficha se representa con una bolita negra y tantas azules indique **ficha**
+    */
+    Sacar(Negro)
+    repeat(ficha)  {
+        Sacar(Azul)
+    }
+}
+
+procedure Agregar_(ficha) {
+    /*
+        PROPÓSITO:
+            Agregar **ficha**
+        PARÁMETROS:
+            ficha: Número - indica la ficha a agregar
+        PRECONDICIONES: 
+            Que la celda esté vacía*******
+        OBSERVACIONES: 
+            La ficha se representa con una bolita negra y tantas azules indique **ficha**
+    */
+    Poner(Negro)
+    repeat(ficha)  {
+        Poner(Azul)
+    }
+}
+
+procedure QuemarSucesiónDe_De_Al_(cantidadAQuemar, fichaAEliminar, direccionAQuemar) {
+    /*
+        PROPÓSITO:
+            Eliminar la línea de **cantidadAQuemar** fichas consecutivas 
+            de **fichaAEliminar** desde la ubicación actual hacia **direccionAQuemar**.
+        PRECONDICIONES:
+            -Deben existir **cantidadAQuemar** ubicaciones al **direccionAQuemar** incluyendo la actual.*********
+            -En cada ubicacion debe existir **fichaAEliminar**
+        PARÁMETROS:
+        *cantidadAQuemar: Número - Cantidad de fichas a eliminar
+        *direcciónAQuemar: Dirección - Hacia donde eliminar
+        *fichaAEliminar: Número - Ficha que elimina
+                   
+    */
+    
+    repeat(cantidadAQuemar-1){
+        Eliminar_(fichaAEliminar)
+        Mover(direccionAQuemar)
+    }
+    Eliminar_(fichaAEliminar)
+    Mover_VecesAl_(cantidadAQuemar-1, opuesto(direccionAQuemar))
+}
+
+/*BIBLIOTECA*/
+procedure Mover_VecesAl_(cantidadAMover, direccionAMover){
+    /*
+        PROPOSITO: Mover el cabezal **cantidadAMover** veces hacia la direccion **direccionAMover**
+        PARAMETROS:
+            cantidadAMover: Numero - representa la cantidad de celdas que se moverá el cabezal.
+            direccionAMover: Direccion - representa hacia que direccion se moverá el cabezal.
+        PRECONDICIONES: 
+            *debe existir al menos **cantidadAMover** hacía **direccionAMover**
+    */
+    repeat (cantidadAMover) {
+        Mover(direcciónAMover)
+    }
+}
+
+procedure QuemarSucesión(){
+    /*
+     PROPÓSITO:
+            Quemar la suseción de fichas a con la misma 
+            forma que comienza en la celda actual
+    PRECONDICIONES:
+            -Existe una sucedion de al menos 3 fichas
+            de la misma forma
+        
+    */
+    repeat(cantidadDeFichasDeEnSucesiónAl(fichaActual()), direcciónDeLaSucesiónDe(fichaActual())-1) {
+        Eliminar(fichaActual)
+        Mover(direcciónDeLaSucesiónDe(fichaActual())
+    }
+    Eliminar_(fichaActual)
+}

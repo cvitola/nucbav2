@@ -1,0 +1,17 @@
+procedure QuemarSucesión(){
+    /*
+     PROPÓSITO:
+            Quemar la suseción de fichas a con la misma 
+            forma que comienza en la celda actual
+    PRECONDICIONES:
+            -Existe una sucedion de al menos 3 fichas
+            de la misma forma
+        
+    */
+    repeat(cantidadDeFichasDeEnSucesiónAl(fichaActual()), direcciónDeLaSucesiónDe(fichaActual())-1) {
+        Eliminar(fichaActual)
+        Mover(direcciónDeLaSucesiónDe(fichaActual())
+    }
+    Eliminar_(fichaActual)
+}
+

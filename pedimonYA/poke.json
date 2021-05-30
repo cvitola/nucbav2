@@ -1,0 +1,83 @@
+[
+    {
+        "idPokemon": 1010,
+        "nombre": "Pikachu",
+        "urlImagen": "src/images/pikachu.png",
+        "cantidad": 0,
+        "importe": 865,
+        "peso": 6.0,
+        "tipo": "Electrico"
+    },
+    {
+        "idPokemon": 2200,
+        "nombre": "Bulbasaur",
+        "urlImagen": "src/images/bulbasaur.png",
+        "cantidad": 15,
+        "importe": 665,
+        "peso": 6.9,
+        "tipo": "Planta"
+    },
+    {
+        "idPokemon": 8010,
+        "nombre": "Caterpie",
+        "urlImagen": "src/images/caterpie.png",
+        "cantidad": 0,
+        "importe": 555,
+        "peso": 2.9,
+        "tipo": "Bicho"
+    },
+    {
+        "idPokemon": 9730,
+        "nombre": "Charmander",
+        "urlImagen": "src/images/charmander.png",
+        "cantidad": 50,
+        "importe": 900,
+        "peso": 8.5,
+        "tipo": "Fuego"
+    },
+    {
+        "idPokemon": 3210,
+        "nombre": "Pidgeotto",
+        "urlImagen": "src/images/pidgeotto.png",
+        "cantidad": 10,
+        "importe": 1120,
+        "peso": 30.0,
+        "tipo": "Volador"
+    },
+    {
+        "idPokemon": 7076,
+        "nombre": "Pidgey",
+        "urlImagen": "src/images/pidgey.png",
+        "cantidad": 30,
+        "importe": 899,
+        "peso": 3.0,
+        "tipo": "Volador"
+    },
+    {
+        "idPokemon": 4635,
+        "nombre": "Squirtle",
+        "urlImagen": "src/images/squirtle.png",
+        "cantidad": 2,
+        "importe": 666,
+        "peso": 9.0,
+        "tipo": "Agua"
+    },
+    {
+        "idPokemon": 9567,
+        "nombre": "Raichu",
+        "urlImagen": "src/images/raichu.png",
+        "cantidad": 4,
+        "importe": 1045,
+        "peso": 30.0,
+        "tipo": "Electrico"
+    },
+    {
+        "idPokemon": 2466,
+        "nombre": "Nidoran",
+        "urlImagen": "src/images/nidoran.png",
+        "cantidad": 2,
+        "importe": 740,
+        "peso": 9.0,
+        "tipo": "Veneno"
+    }
+]

@@ -1,0 +1,484 @@
+/*1. Definiendo mis primeras funciones
+Definir funciones totales que describen cada uno de las siguientes casos:
+Atención: Es conveniente utilizar funciones para expresar subtareas, de forma que las expresiones utilizadas
+resulten fáciles de entender. Recordar además escribir los contratos.
+a. La cantidad total de bolitas de la celda actual.*/
+function obtenerTotalDeBolitas() {
+    /*
+    PROPOSITO:
+        Describe la cantidad total de bolitas en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Número
+    */
+    return (nroBolitas(Rojo) + nroBolitas(Azul) + nroBolitas(Verde) + nroBolitas(Negro))
+}
+
+/*b. Sí hay más de 5 bolitas en total en la celda actual.*/
+
+function hayMasDe5Bolitas() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay mas de 5 bolitas.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */    
+    return (obtenerTotalDeBolitas() > 5)
+}
+/*c. Sí hay exactamente 5 bolitas en la celda actual.*/
+function hay5Bolitas() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay 5 bolitas.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */       
+    return (obtenerTotalDeBolitas() == 5)
+}
+/*d. Sí hay al menos 5 bolitas en la celda actual.*/
+function hayMenosDe5Bolitas() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay menos de 5 bolitas.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */       
+    return (obtenerTotalDeBolitas() < 5)
+}
+/*e. Sí hay bolitas de todos los colores en la celda actual.*/
+function hayBolitasDeCadaColor() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay bolitas de cada tipo de color.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */     
+    return ((nroBolitas(Rojo) /= 0 && nroBolitas(Verde) /= 0 && nroBolitas(Negro) /= 0 && nroBolitas(Azul) /= 0))
+}
+
+/*f. Si la celda actual está vacía.*/
+
+function estáVacíaLaCelda() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual está vacía.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */     
+    return ((nroBolitas(Rojo) == 0 && nroBolitas(Verde) == 0 && nroBolitas(Negro) == 0 && nroBolitas(Azul) == 0))
+}
+/*g. Sí a la celda actual le faltan bolitas de alguno de los colores y no está vacía.*/
+
+function teFaltanBolitas() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual falta alguna bolita y no está vacía
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */      
+    return (not(estáVacíaLaCelda()) && not(hayBolitasDeCadaColor()))
+}
+/*2. Algunas funciones útiles
+BIBLIOTECA Escribir las siguientes funciones, para agregarlas a la biblioteca.
+a. esCeldaVacía(), que indica si la celda actual se encuentra vacía.*/
+
+function esCeldaVacia() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual está vacía.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */     
+    return ((nroBolitas(Rojo) == 0 && nroBolitas(Verde) == 0 && nroBolitas(Negro) == 0 && nroBolitas(Azul) == 0))
+}
+/*b. tieneUnaDeCada(), que indica si la celda actual tiene al menos una bolita de cada color.*/
+
+function tieneUnaDeCada() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay al menos una bolita de cada color.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */      
+    return ((nroBolitas(Rojo) == 1 && nroBolitas(Verde) == 1 && nroBolitas(Negro) == 1 && nroBolitas(Azul) == 1))
+}
+/*c. esCeldaConBolitas(), que indica si la celda actual tiene al menos una bolita, de cualquier
+color.*/
+
+function esCeldasConBolitas() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual hay al menos una bolita de un color.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */       
+    return ((nroBolitas(Rojo) == 1 || nroBolitas(Verde) == 1 || nroBolitas(Negro) == 1 || nroBolitas(Azul) == 1))
+}
+
+/*3. ¡A la batalla!, parte 2
+Escribir las siguientes funciones para el juego ¡A la batalla! de la práctica anterior, donde en las celdas
+del tablero se representan soldados (los aliados con una bolita de color Negro y los enemigos con una
+bolita de color Rojo por cada soldado).
+a. cantidadDeSoldadosDe_(colorDelEjército), que describe la cantidad de soldados de
+la celda actual del ejército dado.*/
+
+function cantidadDeSoldadosDe_(colorDelEjército) {
+    /*
+    PROPOSITO:
+        Describe la cantidad de soldados de la celda actual dado un ejercito **colorDelEjercito**
+    PARAMETROS:
+        *colorDelEjercito - Color: Identifica al color del ejercito en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Número
+    OBSERVACIONES: 
+
+    */       
+    return (nroBolitas(colorDeEjército))
+}
+
+/*b. Vuelva a escribir EnviarAliadosParaDuplicarEnemigos(), y PelearLaBatalla(), que
+realizó en la práctica anterior, ahora haciendo uso de la función hecha en el punto a, y luego
+conteste: ¿Realizó procedimientos auxiliares para resolver el problema? ¿Cuál de los códigos
+(entre este y el de la práctica anterior) comunica mejor la solución al problema? ¿Por qué?*/
+
+procedure EnviarAliadosParaDuplicarEnemigos() {
+    /*
+    PROPOSITO: 
+        Agregar soldados aliados en cantidad al doble de los soldados enemigos.
+    PRECONDICIONES: 
+        No tiene
+    OBSERVACIONES: Los soldados aliados son representados por bolitas negras y los soldados enemigos por bolitas rojas.
+    */
+
+        Poner_DeColor_(2 * cantidadDeSoldadosDe_(Rojo),Negro)
+}
+
+
+
+procedure PelearLaBatalla() {
+    /*
+    PRECONDICIONES: Pelear una batalla en la que se enfrentarán 2 soldados enemigos contra 3 aliados y todos morirán.
+    PRECONDICIONES: La batalla se ejecutará si la cantidad de Soldados aliados es mayor a la cantidad de enemigos.
+    OBSERVACIOONES: Los soldados aliados son representados por bolitas negras y los soldados enemigos por bolitas rojas.
+    */
+    //Obtengo la cantidad de ciclos del repeat dependiendo la cantidad de Enemigos.
+    repeat (nroBolitas(Rojo) div 2) {
+        Sacar_DeColor(2,Rojo)
+        Sacar_DeColor(3,Negro)
+    }    
+}
+
+
+/*c. esCeldaIndefensa() que indica si no hay soldados en la celda actual.*/
+
+function esCeldaIndefensa() {
+    /*
+    PROPOSITO:
+        Indica si no hay soldados en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */        
+    return (nroBolitas(Rojo) /=0)
+}
+/*d. estadoDeEmergencia() que indica si existen más de 100 soldados enemigos, y además la
+celda está indefensa.*/
+
+function estadoDeEmergencia() {
+    /*
+    PROPOSITO:
+        Indica si la celda está indefensa y si hay mas de 100 soldados enemigos.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */      
+    return (nroBolitas(Negro)>100 && esCeldaIndefensa())
+}
+
+/*e. hayAlMenos_AliadosPorCada_Atacantes(cantidadDefensa, cantidadAtaque)
+que indica si hay por lo menos cantidadDefensa soldados aliados por cada
+cantidadAtaque soldados enemigos en la celda actual. Por ejemplos si en la celda actual
+hubiera 10 soldados aliados y 5 enemigos, la función invocada como
+hayAlMenos_AliadosPorCada_Atacantes(2, 1), describiría Verdadero, pues hay al
+menos dos aliados por cada atacante. Si se invocara con esos mismos argumentos en una
+celda donde hay 7 aliados y 5 enemigos, describiría Falso.*/
+
+function hayAlMenos_AliadosPorCada_Atacantes(cantidadDefensa, cantidadAtaque) {
+    /*
+    PROPOSITO:
+        Indica si hay al por lo menos **cantidadDefensa** soldados aliados por cada **cantidadAtaque** soldados enemigos.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */     
+    return (nroBolitas(Rojo) > cantidadDefensa && nroBolitas(Negro) > cantidadAtaque)
+}
+
+/*f. aliadosNecesariosParaDefensaEficazContra_(
+cantidadDeSoldadosEnemigosAdicionales) que describe el número de soldados
+aliados que faltan para defender la celda actual si a ella se suman la cantidad de soldados
+enemigos dada. Tener en cuenta que en la celda actual puede ser que haya soldados, pero que
+es precondición de esta función que no hay suficientes aliados. Recordemos que 2 soldados
+enemigos pelean contra 3 soldados aliados y todos mueren.*/
+
+function aliadosNecesariosParaDefensaEficazContra_(cantidadDeSoldadosEnemigosAdicionales) {
+    /*
+    PROPOSITO:
+        Indica si hay al por lo menos **cantidadDefensa** soldados aliados por cada **cantidadAtaque** soldados enemigos.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */      
+    return ()
+}
+
+/*4. Utilizando dichas funciones, se pide que se definan las siguientes, sin hacer suposiciones sobre la
+representación.
+a. sePuedeAterrizarA_Hacia_(distanciaAPlaneta, direcciónAPlaneta), que
+asumiendo que el cabezal se encuentra sobre la nave y hay al menos distanciaAPlanera celdas
+en dirección direcciónAPlaneta, indica si hay un planeta a distanciaAPlaneta en la dirección
+direcciónAPlaneta y sí el combustible es suficiente para llegar al mismo.
+La nave consume una única unidad de combustibe por cada celda que deba moverse.*/
+function sePuedeAterrizarA_Hacia_(distanciaAPlaneta, direcciónAPlaneta) {
+    /*
+    PROPOSITO:
+        
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */    
+    return ()
+}
+
+/*b. Sabiendo que el cabezal se encuentra sobre la nave y a exactamente 3 celdas de distancia de
+todos los bordes, se pide que escriba la función hayUnPlanetaRecto(), que indica que
+existe un planeta en cualquiera de las direcciones, a cualquier distancia desde la nave.*/
+
+function hayUnPlanetaRecto() {
+    /*
+    PROPOSITO:
+        
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Los soldados aliados se representan como bolitas rojas.
+    */        
+    return ()
+}
+
+/*5. El bosque, parte 4
+Continuaremos utilizando el mismo dominio del bosque que venimos utilizando en las prácticas
+anteriores. Esta vez se pide escribir los siguientes procedimientos que modelan el bosque. Considerar
+la reutilización de los procedimientos hechos en las partes anteriores y la definición de nuevas
+funciones necesarias para no tener que depender de la representación dada.
+a. GerminarSemilla(), que transforma una semilla en un árbol en la celda actual. La
+germinación consume tres unidades de nutrientes. Si en la celda no hay semilla, o no hay
+suficientes nutrientes, no se hace nada*/
+
+procedure GerminarSemilla() {
+    /*
+    PROPOSITO: 
+        Transformar una semilla en un árbol en la celda actual
+    PRECONDICIONES: //TENGO DUDAS 
+        Debe haber al menos una semilla.
+        Debe haber al menos 3 nutrientes.
+    */    
+    if(podesGerminar()){
+        SacarUnaSemilla() //se hizo en el TP2
+        Sacar3Nutrientes()
+        PonerUnArbol() //se hizo en el TP2
+    }
+}
+
+procedure Sacar3Nutrientes() {
+/*
+    PROPOSITO: 
+        Transforma una semilla en un árbol en la celda actual
+    PRECONDICIONES: 
+        Debe haber al menos 3 nutrientes.
+*/
+    Sacar_Nutrientes(3) //Se hizo en el TP4
+}
+
+function podesGerminar() {
+    /*
+    PROPOSITO:
+        Indica si es posible poner un arbol en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    OBSERVACIONES: 
+        Un nutrientes es identificado por una bolita de color Azul.
+        Una semilla es identificado por una bolita de color Roja.
+    */        
+    return (nroBolitas(Rojo) >= 1 && nroBolitas(Azul) >= 3)
+}
+
+/*b. AlimentarÁrboles(), que hace que los árboles de la celda actual se alimenten,
+consumiendo un nutriente cada uno. El único cambio que hay que hacer es la eliminación de
+los nutrientes. Si hay menos nutrientes de lo que se necesita, se consumen todos los que hay*/
+
+procedure AlimentarÁrboles() {
+    /*
+    PROPOSITO: 
+        Alimentar arboles consumiendo un nutriente por cada arbol.
+    PRECONDICIONES: //TENGO DUDAS 
+        Debe haber al menos un nutriente.
+        Debe haber al menos un arbol.
+    */      
+    if (cantidadArboles() >= cantidadNutrientes()) {
+        Sacar_Nutrientes(cantidadNutrientes())
+    }else{
+        Sacar_Nutrientes(cantidadArboles())
+    }
+
+}
+
+function cantidadDeArboles() {
+    /*
+    PROPOSITO:
+        Describe la cantidad de arboles en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Numero
+    OBSERVACIONES: 
+        Un arbol es representado por una bolita Verde.
+    */        
+    return (nroBolitas(Verde))
+}
+
+function cantidadDeNutrientes() {
+    /*
+    PROPOSITO:
+        Describe la cantidad de nutrientes en la celda actual.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Numero
+    OBSERVACIONES: 
+        Un nutriente es representado por una bolita Azul.
+    */       
+    return (nroBolitas(Azul))
+}
+
+/*c. ExplotarBomba(), que explota una bomba en la celda actual, eliminando árboles. Al explotar,
+una bomba derriba 5 árboles en la celda actual y 3 en la celda lindante al Norte. Si la celda
+actual está en el borde Norte, entonces solo se eliminan los árboles de la celda actual.
+Atención: cuando haya menos árboles de los que la bomba puede eliminar, entonces elimina
+los que haya. La bomba se consume en el proceso, o sea, hay que eliminarla.*/
+
+procedure ExplotarBomba() {
+    /*
+    PROPOSITO: 
+        Explotar una bomba eliminado 5 arboles en la celda actual y 3 arboles en la celda lindante al norte.
+    PRECONDICIONES: 
+        Debe existir al menos una bomba en la celda actual.
+    */     
+    DerribarALoSumo_Arboles(5)
+    if(hayEspacioHacia_(Norte)){
+        Mover(Norte)
+        DerribarALoSumo_Arboles(3)
+    }
+    SacarUnaBomba() //En el TP1
+}
+
+procedure DerribarALoSumo_Arboles(cantidadArbolesASacar) {
+    /*
+    PROPOSITO: 
+        Determinar la cantidad de arboles a sacar de la ubicación actual.
+    PARAMETROS:
+        *cantidadArbolesASacar: Número: Se refiere a la cantidad de arboles a sacar.
+    PRECONDICIONES: 
+        Debe existir al menos un arbol.
+    */        
+    if(cantidadArboles()>=5){
+        Sacar_Árboles(5) //EN el TP4
+    }else{
+         Sacar_Árboles(cantidadArboles()) //EN el TP4
+    }
+   
+}
+
+function hayEspacioHacia_(ubicacionAMover) {
+    /*
+    PROPOSITO:
+        Indica si hay una celda disponible al Norte de la celda actual.
+    PARAMETROS:
+        *ubicacionAMover: Direccion - Direccion a la que se se puede mover.    
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    */     
+    return (puedeMover(ubicacionAMover))
+}
+/*d. Polinizar(), los árboles en la celda actual polinizan la celda lindante en la dirección Este,
+generando tantas semillas en esa celda como árboles haya en la celda actual, menos 3. Por
+ejemplo, si en la celda actual hay 5 árboles, se generan 2 semillas en la celda lindante al Este. Si
+en la celda actual hay menos de 3 árboles, o no tiene lindante al Este, entonces no se hace
+nada.*/
+
+procedure Polinizar() {
+    /*
+    PROPOSITO: 
+        Generar semillas en la celda lindante al Este dependiendo la cantidad de arboles de la celda actual menos 3.
+    PRECONDICIONES: 
+        Deben existir al menos 3 arboles o NO TIENE ????
+    */
+    if(podesPolinizar()){
+        Mover(Este)
+        Poner_Semillas(cantidadArboles() - 3) //NO ESTOY SEGURO.. ESTA SENSANDO LA DEL ESTE O RECUERDA LO ANTERIOR???? pero como hago para llevarme lo de otra celda ?¿
+    }
+}
+
+function podesPolinizar() {
+    /*
+    PROPOSITO:
+        Indica si hay suficientes arboles para polinizar en la ubicacion lindante inmediata.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Boleano
+    */    
+    return (cantidadDeArboles()>3 && hayEspacioHacia_(Este))
+}

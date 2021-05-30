@@ -411,3 +411,108 @@ procedure DibujarDigito_EnPosicion_ConDistancia_RegresandoAl_(unaHora, haciaDire
 
 }
 
+/*17. El bosque, parte 2
+Continuaremos representando el bosque que comenzamos en la práctica anterior. Esta vez queremos
+ser capaces de poner o sacar múltiples elementos de una sola vez.
+*/
+
+procedure Poner_Semillas(cantidadDeSemillasAPoner)(){
+    /*
+        PROPOSITO: 
+            Poner **cantidadDeSemillasAPoner** de semillas en la celda actual.
+        PARAMETROS:
+            *cantidadDeSemillasAPoner - Numero: Se refiere a la cantidad de semillas.
+        PRECONDICIONES: 
+            *No tiene
+        OBSERVACIONES: Una semilla es representada por una bolita Roja.
+    */
+    repeat (cantidadDeSemillasAPoner) {
+       Poner(Rojo)     
+    }
+
+}
+procedure Sacar_Semillas(cantidadDeSemillasASacar)
+{
+    /*
+        PROPOSITO: 
+            Sacar **cantidadDeSemillasASacar** de semillas en la celda actual.
+        PARAMETROS:
+           *cantidadDeSemillasAPoner - Numero: Se refiere a la cantidad de semillas.
+        PRECONDICIONES: 
+            * Debe haber al menos **cantidadDeSemillasASacar** en la celda actual.
+        OBSERVACIONES: Una semilla es representada por una bolita Roja.
+    */
+    repeat (cantidadDeSemillasASacar) {
+        Sacar(Rojo)
+    }
+}
+
+procedure Poner_Árboles(cantidadDeÁrbolesAPoner)
+{
+    /*
+        PROPOSITO: 
+            Poner **cantidadDeÁrbolesAPoner** de arboles en la celda actual.
+        PARAMETROS:
+           *cantidadDeÁrbolesAPoner - Numero: Se refiere a la cantidad de arboles.
+        PRECONDICIONES: 
+            * No tiene.
+        OBSERVACIONES: 
+            Un arbol es representado por una bolita Verde.
+    */
+    repeat (cantidadDeÁrbolesAPoner) {
+        Poner(Verde) 
+    }
+
+}
+
+procedure Sacar_Árboles(cantidadDeÁrbolesASacar){
+    /*
+        PROPOSITO: 
+            Sacar **cantidadDeÁrbolesAPoner** de arboles en la celda actual.
+        PARAMETROS:
+           *cantidadDeÁrbolesAPoner - Numero: Se refiere a la cantidad de arboles.
+        PRECONDICIONES: 
+            * Debe existir al menos **cantidadDeÁrbolesAPoner** arboles.
+        OBSERVACIONES: 
+            Un arbol es representado por una bolita Verde.
+    */
+    repeat (cantidadDeÁrbolesAPoner) {
+        Sacar(Verde) 
+    }
+
+}
+
+procedure Poner_Nutrientes(cantidadDeNutrientesAPoner){
+    /*
+        PROPOSITO: 
+            Poner **cantidadDeNutrientesAPoner** nutrientes en la celda actual.
+        PARAMETROS:
+            *cantidadDeNutrientesAPoner - Numero - Se refiere a la cantidad de nutrientes.
+        PRECONDICIONES: 
+            * No tiene.
+        OBSERVACIONES: Un nutriente es representado por una bolita Azul.
+    */
+    repeat (cantidadDeNutrientesAPoner) {
+        Poner(Azul)  
+    }
+
+}
+
+procedure Sacar_Nutrientes(cantidadDeNutrientesASacar){
+    /*
+        PROPOSITO: 
+            Sacar **cantidadDeNutrientesAPoner** nutrientes en la celda actual.
+        PARAMETROS:
+            *cantidadDeNutrientesAPoner - Numero - Se refiere a la cantidad de nutrientes.
+        PRECONDICIONES: 
+            * debe existir al menos **cantidadDeNutrientesASacar** en la celda actual
+        OBSERVACIONES: 
+            Un nutriente es representado por una bolita Azul.
+    */
+    repeat (cantidadDeNutrientesAPoner) {
+        Sacar(Azul)  
+    }
+
+}
+
+
