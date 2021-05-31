@@ -74,7 +74,13 @@ function escribirError(tipo){
 function escribirHtml(unaLista, elementoUl){
      const nuevoArray = unaLista.map(
         (valor) =>
-        `<li key=${valor.id}> <div class="item">${valor.id}</div> <div class="item">${valor.dni}</div> <div class="item">${valor.nombre}</div> <div class="item">${valor.dolar}</div> <button id="eliminar">Eliminar</button></li>`
+        `<li key=${valor.id}> 
+            <div class="item">${valor.id}</div> 
+            <div class="item">${valor.dni}</div> 
+            <div class="item">${valor.nombre}</div> 
+            <div class="item">${valor.dolar}</div> 
+            <button id="eliminar">Eliminar</button>
+        </li>`
       );
       const nuevoArrayJoineado = nuevoArray.join("");
       elementoUl.innerHTML = `<li> <div class="item-titulo">CLAVE</div> <div class="item-titulo">DNI</div> <div class="item-titulo">NOMBRES</div> <div class="item-titulo">U$S</div> <div class="item-titulo">Acción</div> </li>` + nuevoArrayJoineado;

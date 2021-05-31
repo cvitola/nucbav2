@@ -15,7 +15,7 @@ function recuperarIDPoke(idDelPokemon){
         const obj = resp.filter(
             (valor) => valor.idPokemon === Number(idDelPokemon)
         )
-        carritoPokes.push(obj);
+        carritoPokes.push(obj[0]);
         actualizarMonto(obj[0].importe)
         dibujarTarjetasEnCarrito(carritoPokes)
     });   
@@ -54,19 +54,18 @@ function dibujarTarjetas(pokemones){
 }
 
 function dibujarTarjetasEnCarrito(listitaCompra){
-    debugger
-    const listaTarjetasCompra = listitaCompra.map(
-        (objeto) => 
+    const nuevoArray = listitaCompra.map(
+        (valor) => 
             `<li>
-                <article key=${objeto.idPokemon} class="carro-item">
-                <img src=${objeto.urlImagen} alt=${objeto.nombre}
-                <p class="precio">$ ${objeto.importe}</p>
+                <article key=${valor.idPokemon} class="carro-item">
+                <img src=${valor.urlImagen} alt=${valor.nombre}
+                <p class="precio">$ ${valor.importe}</p>
                 <button id="quitar" class="btn">QUITAR</button>
                 <article>
             </li>`
         );
-    console.log(listaTarjetasCompra)
-    const arrayJoineado = listaTarjetasCompra.join("");
+
+    const arrayJoineado = nuevoArray.join("");
    // console.log(arrayJoineado)
     carrito.innerHTML = arrayJoineado;
 }
