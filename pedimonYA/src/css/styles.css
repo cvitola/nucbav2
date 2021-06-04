@@ -224,17 +224,20 @@ header label:hover{/*nueva*/
     header label {
         display: block;
     }
+    header{
+        padding: 10px;
+    }
     .menu {
         position: absolute;
-        background: #4E94AB;
+        background: #84a1aa;
         padding: 10px;
         text-align: center;
-        width: 70%;
+        width: 95%;
         margin-left: -100%;
         font-size: 48px;
         transition: all 1s;
         flex-direction: column;
-
+        border-radius: 0.5rem;
     }
     .menu ul{
         flex-direction: column;
@@ -256,6 +259,10 @@ header label:hover{/*nueva*/
     }
     #carro{
         padding: 10px;
+        font-size: 12px;
+        margin-top: 330%;
+        margin-left: -80%;
+        width: 250%;
     }
     .caracteristica{
         flex-direction: column;
