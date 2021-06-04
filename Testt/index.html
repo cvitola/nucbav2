@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 600vh;
+  background-color: burlywood;
+}
+
+.fondito {
+  width: 100%;
+  height: 100vh;
+
+  background-image: url("https://img.vixdata.io/pd/jpg-large/es/sites/default/files/btg/curiosidades.batanga.com/files/Como-se-forma-la-nieve-2.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: fixed;
+}
+
+.fondito::after {
+  content: "";
+  background: rgba(0, 0, 0, 0.452);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  mix-blend-mode: color-dodge;
+}
+
+.zindex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  position: relative;
+}
+
+ul {
+  display: none;
+}
+
+input:checked ~ ul {
+  display: block;
+  padding: 0;
+  /* position: absolute;
+  top: 45px;
+  left: 0; */
+}
+
+label {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  border: 1px solid red;
+  border-radius: 40px;
+  line-height: 40px;
+  font-weight: bold;
+}
+
+input {
+  display: none;
+}
+
+li {
+  display: block;
+  background-color: gainsboro;
+  color: green;
+  margin: 0;
+  padding: 25px;
+  border: 1px solid red;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: hotpink;
+  color: blue;
+}
+
+.iconitoPiola {
+  font-size: 30px;
+}
+    </style>
+    <script
+      src="https://kit.fontawesome.com/dd0ead48da.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="fondito">
+      <div class="zindex">
+      <nav>
+        <input type="checkbox" name="menucitoLindo" id="menucitoLindo" />
+        <!-- <label for="menucitoLindo">☰</label> -->
+        <label for="menucitoLindo">
+          <i class="fas fa-hamburger"></i>
+        </label>
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+        </ul>
+      </nav>
+      <h1>Mi pagina linda</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum
+        accusantium assumenda dolor, ducimus voluptas reiciendis molestiae autem
+        dolorem magni eligendi iusto, facilis molestias ex. A aspernatur, eius
+        voluptatem esse hic ab accusantium, dolor totam eligendi sed tenetur
+        debitis quia reiciendis sunt. Laborum error, omnis obcaecati dicta ex
+        magni assumenda numquam.
+      </p>
+      <button>
+        <i class="fas fa-hamburger iconitoPiola"></i> Holis tengo hambre
+      </button>
+    </div>
+    </div>
+  </body>
+</html>

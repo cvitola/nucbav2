@@ -64,3 +64,69 @@ procedure LlevarPasajeroActualADestinoEnLínea() {
         MoverVehiculoAl_(direcciónADestinoEnLíneaDe_(idDePasajero))
     }
 }
+
+
+
+/*CASTILLO C **/
+Se pide escriba la función esDestinoDePasajero que indica si la ubicación actual es el destino del pasajero en el vehículo. 
+Para esto puede asumir que el cabezal se encuentra sobre el vehículo, y que este tiene un pasajero.
+
+function esDestinoDePasajero() {
+/*
+    PROPOSITO:
+        Indica si la ubicación actual es el destino del pasajero en el vehículo.
+    PRECONDICIONES:
+        No tiene.
+    TIPO:
+        Booleano.
+*/
+    return (nroBolitas(Verde) == nroBolitas(Rojo))
+}
+
+Se pide desarrolle el procedimiento BajarPasajeroSiCorresponde que, 
+sí hubiera un pasajero en el vehículo y si la ubicación actual es el destino de dicho pasajero, lo baja. 
+Para esto puede asumir que el cabezal se encuentra sobre el vehículo.
+
+procedure BajarPasajeroSiCorresponde() {
+/*
+    PROPOSITO:
+        Bajar un pasajero en el caso que sea su ubicación destino.
+    PRECONDICIONES:
+        No tiene.
+*/
+    if(esDestinoDePasajero()){
+        bajarPasajero()
+    }    
+
+}
+
+procedure BajarPasajero() {
+/*
+    PROPOSITO:
+        Bajar al pasajero del vehiculo dejando el vehiculo vacío.
+    PRECONDICIONES:
+        Debe existir un pasajero dentro del vehiculo.
+    OBSERVACIONES:
+        El vehiculo con un pasajero se representa con 2 bolitas negras.
+        Un pasajero se representa con bolitas de color Verde
+        Una parada se representa con bolitas de color Rojo
+*/
+    Sacar_DeColor_(nroBolitas(Verde), Verde)
+    Sacar_DeColor_(nroBolitas(Rojo), Rojo)
+    Sacar_DeColor_(1, Negro)
+}
+
+Se pide escriba el procedimiento AcercarseUnaUbicaciónAlDestinoEnLínea que mueve el vehículo una celda hacia el destino, 
+cualquiera sea la dirección del mismo. Para esto se asume que el cabezal se encuentra sobre el vehículo, 
+que hay un pasajero en el mismo, y que el destino del pasajero se encuentra en línea recta de la ubicación actual en cualquiera de las direcciones.
+
+procedure AcercarseUnaUbicaciónAlDestinoEnLínea() {
+/*
+    PROPOSITO:
+        Acercar al vehiculo con un pasajero una posición hacia el destino que se encuentra en linea.
+    PRECONDICIONES:
+        Debe existir al menos una celda para moverse
+*/
+    MoverVehiculoAl_(direcciónADestinoEnLíneaDe_(idDePasajero))
+
+}

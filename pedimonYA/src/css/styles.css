@@ -8,25 +8,66 @@ body{
     min-height: 100vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-#cabecera{
+header{
+    width: 100%; /*nueva*/
     background-color: rgb(247 222 130);
     padding: 50px;
 }
-#menu{
+
+#btn-menu{/*nueva*/
+    display: none;
+}
+
+header label {/*nueva*/
+    display: none;
+    font-size: 30px;
+    margin: 30px;
+    cursor: pointer;
+}
+
+header label:hover{/*nueva*/
+    cursor: pointer;
+    background: rgba(0,0,0,0.3);
+}
+
+.menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+}
+
+.menu ul li{
+    padding: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+.menu li a {
+
+    color: darkblue;
+    text-decoration: none;
+}
+.menu li:hover{
+    background: rgba(0,0,0,0.3);
+}
+
+
+.menu{
     color: darkblue;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 5rem;
+    margin-bottom: 3rem;
 }
-#menu ul li{
+/*
+.menu ul li{
     list-style: none;
     display: inline-block;
     padding: 10px;
 }
-#menu ul li:hover{
+.menu ul li:hover{
     background-color: blanchedalmond;
-}
+}*/
 #inicio{
     display: flex;
     justify-content: space-around;
@@ -36,7 +77,8 @@ body{
 .contenido{
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    justify-content: center;
+    max-width: 40%;
 }
 .btn{
     padding: 0.7rem;
@@ -119,20 +161,32 @@ body{
 }
 
 #carro{
-    padding: 50px;
-    display: flex;
+    padding: 10px;
+    display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    background-color: blueviolet;
+    
+    position: absolute;
+    margin-top: 20%;
+    border-radius: 1rem;
+    box-shadow: 0 1rem 1rem rgba(0,0,0,0.2);
+    overflow: hidden;
+    backdrop-filter: blur(5rem);
 }
+
 #lista-pokemones{
     list-style: none;
 
 }
-#carro ul li{
+
+#carro ul{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
     list-style: none;
+    padding: 0;
 }
+
 .carro-item{
     display: flex;
     justify-content:space-around;
@@ -167,17 +221,35 @@ body{
 /*Puntos de quiebre*/
 
 @media screen and (max-width: 500px) {
-    #menu{
+    header label {
+        display: block;
+    }
+    .menu {
+        position: absolute;
+        background: #4E94AB;
+        padding: 10px;
+        text-align: center;
+        width: 70%;
+        margin-left: -100%;
+        font-size: 48px;
+        transition: all 1s;
+        flex-direction: column;
+
+    }
+    .menu ul{
         flex-direction: column;
     }
+
+
+    #btn-menu:checked ~ .menu {
+        margin: 0;
+    }
+
     #inicio{
         flex-direction: column;
     }
     .contenido{
         max-width: 100%;
-    }
-    #cabecera{
-        padding: 10px;
     }
     .informacion{
         padding: 10px;
@@ -202,5 +274,11 @@ body{
     .contorno{
         flex-direction: column;
         max-width: 70%;
+    }
+}
+
+@media screen and (min-width: 1296px){
+    .contenido{
+        max-width: 30%;
     }
 }

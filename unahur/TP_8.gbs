@@ -1,0 +1,116 @@
+1. Un nuevo IrAlBorde
+Definir el procedimiento IrAlBorde_(dirección), que lleva al cabezal al borde dado por el
+parámetro dirección.
+¡Atención! Debe realizar el ejercicio sin utilizar el comando primitivo IrAlBorde. Dado que el único otro comando
+primitivo que permite mover el cabezal es Mover, debe repetirse su uso hasta que se haya cumplido el propósito.
+Reflexionamos ¿Cuál es la condición que indica que el propósito se cumplió?
+
+procedure IrAlBorde_(dirección) {
+/*
+    PROPOSITO:
+        Llevar el cabezal al borde dado por el parametro **direccion**.
+    PRECONDICIONES:
+        El cabezal no debe estar en el borde de **direccion**
+*/
+    while (puedeMover(dirección)) {
+        Mover(dirección)
+    }
+}
+
+2. Otra forma de sacar todas
+Volver a definir el procedimiento SacarTodasLasDeColor_(color), que quita todas las bolitas del
+color dado por el parámetro color de la celda actual, pero esta vez SIN utilizar la expresión primitiva
+nroBolitas (directa o indirectamente).
+
+procedure SacarTodasLasDeColor_(color) {
+/*
+    PROPOSITO:
+        Quitar todas las bolitas del color **color** de la celda actual.
+    PRECONDICIONES:
+        Que exista al menos una bolita de color **color**
+*/
+    while (hayBolitas(color)) {
+        Sacar(color)
+    }    
+}
+
+3. Vaciando una fila
+Considerar el procedimiento VaciarFilaDe_(color), que debe quitar todas las bolitas del color
+dado por el parámetro color de cada una de las celdas de la fila actual . El cabezal puede empezar en
+1
+cualquier celda de la fila, y también puede terminar en cualquier celda de la fila (ya sea celda inicial o
+cualquier otra).
+a. Definir el procedimiento, como siempre, comenzando por establecer el contrato, y luego recién
+el código.
+b. ¿La solución dada funciona si el cabezal se encuentra en medio de una fila? Si no es así,
+corregir el programa para que funcione en este caso también.
+c. Al recorrer la fila, ¿en qué dirección se movió el cabezal? ¿Podría haberse movido en la
+dirección opuesta?
+d. A partir de la respuesta anterior, ¿de cuántas formas posibles se puede realizar el recorrido de
+una fila?
+e. Volver a definir el procedimiento con direcciones distintas.
+f. ¿Y si tuviéramos que vaciar la columna en lugar de la fila? ¿Qué cambia entre las distintas
+formas de moverse?
+
+procedure VaciarFilaDe_(color) {
+/*
+    PROPOSITO:
+        Quitar todas las bolitas del color **color** de cada una de las celdas de la fila actual considerando que el cabezal puede empezar en cualquier celda de la fila.
+    PARAMETROS:
+        *color - Color: Se refiere a las bolitas de color a remover.
+    PRECONDICIONES:
+        No tiene.
+*/
+    IrAlBorde_(Oeste)
+    while (puedeMover(Este)) {
+        SacarTodasLasDeColor_(color)
+        Mover(Este)
+    }
+    SacarTodasLasDeColor_(color)
+}
+
+4. Vaciando una fila hacia...
+Defina ahora el procedimiento VaciarFilaDe_HaciaEl_(color, dirección), que debe quitar
+todas las bolitas del color dado por el parámetro color de cada una de las celdas de la fila actual,
+desde la celda en donde se encuentra el cabezal (incluyendo esta) hacia el final de la fila en la
+dirección dada por dirección. Tras definir el código y el contrato considere.
+a. ¿Qué valores puede tomar el parámetro dirección para que el propósito sea consistente con su
+nombre? Ni Norte ni Sur porque estaria hablando de una Columna y no de una fila.
+a. ¿Qué nombre podría recibir el procedimiento para que sea correcto utilizarlo con cualquier
+dirección? VaciarFilaOColumna
+
+procedure VaciarFilaDe_HaciaEl_(color, dirección) {
+/*
+    PROPOSITO:
+        Quitar todas las bolitas del color dado por el parametro **color** de cada una de las celdas
+        de la fila actual desde la celda donde se encuentra el cabezal hacia el final de la fila.
+    PARAMETROS:
+        *color - Color: se refiere al color de las bolitas a quitar.
+        *dirección - Direccion: se refiere a la direccion en que se moverá el cabezal.
+    PRECONDICIONES:
+        El valor de **direccion** no puede ser Norte ni Sur.
+*/
+    while(puedeMover(dirección)){
+        SacarTodasLasDeColor_(color)
+        Mover(direccion)
+    }
+    SacarTodasLasDeColor_(color)
+}
+
+5. Vaciando un tablero
+En cada uno de los casos siguientes, definir de la forma indicada el procedimiento
+VaciarTableroDe_(color), que quite todas las bolitas del color dado por el parámetro color de
+cada una de las celdas del tablero. El cabezal debe poder comenzar en cualquier celda del tablero, y no
+es relevante para el problema donde finaliza, basta con que lo declare en su propósito.
+a. Estructurar el procedimiento como un recorrido sobre las filas . ¿Qué subtareas van a
+2
+precisarse en este caso? ¿Es necesario volver a definirlas o se pueden encontrar en esta
+práctica?
+b. Estructurar el procedimiento como un recorrido sobre las celdas del tablero. Las subtareas
+necesarias serán diferentes, y puede ser que sea necesario definir alguna que aún no está
+disponible en esta práctica.
+c. En este última opción, ¿Cuántas formas distintas hay de recorrer el las celdas del tablero? ¿Se
+podría elegir valores distintos para los movimientos?
+d. Implemente ahora nuevamente el procedimiento de 2 formas distintas.
+Reflexionamos ¿Qué diferencias hay entre los recorridos anteriores del punto a y del b? ¿Qué subtareas son más
+complejas en cada caso? ¿Podrían considerarse otros recorridos que no fueran sobre celdas o filas?

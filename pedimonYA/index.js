@@ -1,5 +1,6 @@
 const listaPokemons = document.getElementById('grilla');
 const carrito = document.getElementById('carro-poke');
+const botonCarrito = document.getElementById('ver-carrito');
 let precioCarrito=0;
 let carritoPokes = [];
 function levantarDatos() {
@@ -75,8 +76,22 @@ function actualizarMonto(importe){
     const precioHtml = document.getElementById("precioCarrito");
     precioHtml.innerHTML = `$ ${precioCarrito}`;
 }
+
 document.addEventListener("click", comprarPokemon);
 document.addEventListener("click", quitarPokemon);
+botonCarrito.addEventListener("click", visualizarCarrito)
+
+function visualizarCarrito(){
+    const obtenerCarrito = document.getElementById("carro");
+    console.dir(obtenerCarrito.style.display) // por que diablos viene vacio????
+    if(obtenerCarrito.style.display ==="none"){
+        obtenerCarrito.style.display = "flex";
+    }else{
+        obtenerCarrito.style.display = "none"
+    }
+
+}
+
 function comprarPokemon(event){
     if (event.target.id ==="agregar"){
         const idPoke = event.target.parentElement.attributes.key.value; //recupero el ID del poKe
