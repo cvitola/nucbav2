@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -5,13 +6,13 @@
 }
 
 body{
-    min-height: 100vh;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    font-family: 'Ropa Sans', sans-serif;;
 }
 header{
-    width: 100%; /*nueva*/
+    width: 100%;
     background-color: rgb(247 222 130);
-    padding: 50px;
+    padding: 50px 150px;
 }
 
 #btn-menu{/*nueva*/
@@ -58,6 +59,29 @@ header label:hover{/*nueva*/
     justify-content: space-around;
     align-items: center;
     margin-bottom: 3rem;
+
+    position: fixed;
+    background-color: #fafafa;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+
+#numerito{
+    position: absolute;
+    /* top: -20px; */
+    /* left: -20px; */
+    right: -1px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    font-size: 10px;
+    background: tomato;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
 }
 /*
 .menu ul li{
@@ -72,6 +96,7 @@ header label:hover{/*nueva*/
     display: flex;
     justify-content: space-around;
     gap: 45px;
+    padding-top: 5rem;
 }
 
 .contenido{
@@ -98,7 +123,7 @@ header label:hover{/*nueva*/
     background-color: rgb(12 77 162);
     text-align: center;
     color: white;
-    padding: 50px;
+    padding: 50px 150px;
 }
 .informacion .subtitulo{
     margin-bottom: 20px;
@@ -120,17 +145,17 @@ header label:hover{/*nueva*/
     text-justify: auto;
 }
 .tarjeta-caracteristica{
-    width: 10rem;
+    max-width: 20rem;
 }
 .tarjeta-caracteristica p{
     padding: 15px;
 }
 #grilla{
     display: grid;
-    grid-gap: 0.1rem;
+    grid-gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
-    padding: 50px;
+    padding: 50px 150px;
 
 }
 #grilla h2{
@@ -148,24 +173,47 @@ header label:hover{/*nueva*/
     margin-bottom: 0.2rem;
 }
 .card-poke img{
-    height: 215px;
-    width: 215px;
+    max-width: 215px;
 }
 .card-poke p{
     padding: 0.2rem;
     margin: 0;
     text-align: center;
 }
-.card-poke .btn{
-    background-color: rgb(247 222 130);
+.precio{
+    color: rgb(54, 17, 88);
+    font-size: 2rem;
+    font-weight: bolder;
+    text-shadow: 1px 1px 1px #915ba5;
 }
+
+.btn-grad {background-image: linear-gradient(to right, #AA076B 0%, #61045F  51%, #AA076B  100%)}
+.btn-grad {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: white;            
+   box-shadow: 0 0 20px #eee;
+   border-radius: 10px;
+   border-style: none;
+   display: block;
+ }
+
+ .btn-grad:hover {
+   background-position: right center; /* change the direction of the change here */
+   color: #fff;
+   text-decoration: none;
+ }
+
 
 #carro{
     padding: 10px;
     display: none;
     flex-direction: column;
     align-items: center;
-    
     position: absolute;
     margin-top: 20%;
     border-radius: 1rem;
@@ -187,6 +235,10 @@ header label:hover{/*nueva*/
     padding: 0;
 }
 
+#carro h2{
+    padding: 10px;
+}
+
 .carro-item{
     display: flex;
     justify-content:space-around;
@@ -198,34 +250,29 @@ header label:hover{/*nueva*/
     height: 50px;
     border-radius: 50%;
 }
-#footer{
+footer{
     display: flex;
     flex-direction: column;
     background-color: rgb(12 77 162);
-    padding: 50px;
-}
-.sub-contorno{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-.sub-contorno i{
-    margin-right: 1rem;
-}
-.contorno{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    padding: 50px 150px;
 }
 
+footer article{
+    display: flex;
+    padding: 20px 0;
+    gap: 1rem;
+}
+footer img{
+    max-width: 50%;
+}
 /*Puntos de quiebre*/
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 576px) {
     header label {
         display: block;
     }
     header{
-        padding: 10px;
+        padding: 5px 5px;
     }
     .menu {
         position: absolute;
@@ -250,9 +297,11 @@ header label:hover{/*nueva*/
 
     #inicio{
         flex-direction: column;
+        align-items: center;
+        padding: 5px 5px;
     }
     .contenido{
-        max-width: 100%;
+        max-width: 75%;
     }
     .informacion{
         padding: 10px;
@@ -273,15 +322,42 @@ header label:hover{/*nueva*/
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 5px 5px;
     }
-    #footer{
-        padding: 10px;
+    footer{
+        padding: 5px 5px;
+        align-items: center;
     }
     .contorno{
         flex-direction: column;
         max-width: 70%;
     }
+}
+
+@media screen and (max-width: 926px){
+    
+    header{
+        padding: 50px 10px;
+    }
+
+    #inicio{
+        padding: 80px 10px;
+    }
+    .informacion{
+        padding: 50px 10px;
+    }
+    #grilla{
+       /* display: flex;
+        flex-direction: column;
+        align-items: center;*/
+        padding: 50px 10px;
+    }
+
+    footer{
+        padding: 50px 10px;
+        align-items: center;
+    }
+
 }
 
 @media screen and (min-width: 1296px){
