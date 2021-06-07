@@ -2,6 +2,7 @@ const listaPokemons = document.getElementById('grilla');
 const carrito = document.getElementById('carro-poke');
 const botonCarrito = document.getElementById('ver-carrito');
 const numerito = document.getElementById("numerito");
+
 let precioCarrito=0;
 let listaPokemones = []; //los que levanto del JSON
 let carritoPokes = [];
@@ -27,7 +28,7 @@ function dibujarTarjetas(pokemones){
             <p class="precio">$ ${objeto.importe}</p>
             <p class="">${objeto.peso} kg</p>
             <p class="">${objeto.tipo}</p>
-            <button id="agregar" class="btn btn-grad">COMPRAR</button>
+            <button id="agregar" class="btn btn-grad">ATRAPAR</button>
         <article>`
         }else{
             return `<article key=${objeto.idPokemon} class="card-poke">
@@ -37,7 +38,7 @@ function dibujarTarjetas(pokemones){
             <p class="precio">$ ${objeto.importe}</p>
             <p class="">${objeto.peso} kg</p>
             <p class="">${objeto.tipo}</p>
-            <button id="agregar" disabled class="btn btn-grad">COMPRAR</button>
+            <button id="agregar" disabled class="btn btn-grad">ATRAPAR</button>
         <article>`
         }
 
@@ -56,7 +57,14 @@ function dibujarTarjetasEnCarrito(listitaCompra){
                 <article key=${valor.idPokemon} class="carro-item">
                 <img src=${valor.urlImagen} alt=${valor.nombre}
                 <p class="precio">$ ${valor.importe}</p>
-                <button id="quitar" class="btn">QUITAR</button>
+            
+                <div class="cantidad">
+                    <button id="resta" class="btn btn-min">-</button>   
+                    <input id="cantidadDePokes" type="number" value="1" disabled>
+                    <button id="suma" class="btn btn-min">+</button>
+                </div>    
+
+                <button id="quitar" class="btn"><i id="suma" class="far fa-trash-alt"></i></button>
                 <article>
             </li>`
         );
@@ -69,15 +77,19 @@ function dibujarTarjetasEnCarrito(listitaCompra){
 function actualizarMonto(){
     let sumatoria = 0;
     carritoPokes.forEach((elemento) => {
-        sumatoria+=elemento.importe;
+        sumatoria+=elemento.importe*elemento.cantidadComprada;
     })
     const precioHtml = document.getElementById("precioCarrito");
     precioHtml.innerHTML = `$ ${sumatoria}`;
     numerito.innerHTML = `${carritoPokes.length}`;
 }
 
+
+
 document.addEventListener("click", comprarPokemon);
 document.addEventListener("click", quitarPokemon);
+document.addEventListener("click", sumarUnItem);
+document.addEventListener("click", restarUnItem);
 botonCarrito.addEventListener("click", visualizarCarrito)
 
 function visualizarCarrito(){
@@ -104,6 +116,7 @@ function obtenerPokemon(idDelPokemon){
         const pokeAlCarrito = listaPokemones.filter(
             (element) => element.idPokemon === Number(idDelPokemon)
         )
+        pokeAlCarrito[0].cantidadComprada = 1; 
         carritoPokes.push(pokeAlCarrito[0]);
         actualizarMonto();
         dibujarTarjetasEnCarrito(carritoPokes)
@@ -139,4 +152,41 @@ function quitarPokemonDelCarro(identificador){
         carritoPokes = nuevoArray;
         actualizarMonto()
         dibujarTarjetasEnCarrito(carritoPokes);
+}
+
+
+function sumarUnItem(event){
+    
+    if(event.target.id ==="suma"){
+        let inputCantidad = Number(event.target.parentElement.childNodes[3].value);
+        const idPoke = event.target.parentElement.parentElement.attributes.key.value; //recupero el ID del poKe
+        const arrayPoke = listaPokemones.filter(
+            (element) => element.idPokemon === Number(idPoke)
+        )
+        limitePokes = Number((arrayPoke[0].cantidad))
+
+        if(inputCantidad < limitePokes){
+            inputCantidad++;
+        }
+        arrayPoke[0].cantidadComprada = inputCantidad
+        event.target.parentElement.childNodes[3].value = inputCantidad;
+        actualizarMonto();
+        }
+}
+
+function restarUnItem(event){
+    if(event.target.id ==="resta"){
+        let inputCantidad = Number(event.target.parentElement.childNodes[3].value);
+        const idPoke = event.target.parentElement.parentElement.attributes.key.value; //recupero el ID del poKe
+        const arrayPoke = listaPokemones.filter(
+            (element) => element.idPokemon === Number(idPoke)
+        )
+
+        if(inputCantidad > 1){
+            inputCantidad--;
+        }
+        arrayPoke[0].cantidadComprada = inputCantidad
+        event.target.parentElement.childNodes[3].value = inputCantidad;
+        actualizarMonto();
+    }
 }

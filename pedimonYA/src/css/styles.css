@@ -41,12 +41,13 @@ header label:hover{/*nueva*/
 .menu ul li{
     padding: 10px;
     font-size: 22px;
-    cursor: pointer;
 }
-.menu li a {
+
+.menu ul li a {
 
     color: darkblue;
     text-decoration: none;
+    cursor: pointer;
 }
 .menu li:hover{
     background: rgba(0,0,0,0.3);
@@ -106,13 +107,18 @@ header label:hover{/*nueva*/
     max-width: 40%;
 }
 .btn{
-    padding: 0.7rem;
+    padding: 1rem;
     margin: 0.8rem;
     border-radius: 0.5rem;
     background-color: rgb(12 77 162);
     color: white;
     border-style: none;
     cursor: pointer;
+}
+.btn-min{
+    padding: 6px;
+    background-color: #361158;
+    font-size: 1.5rem;
 }
 .btn:hover{
     box-shadow: 2px 2px 2px palevioletred;
@@ -222,6 +228,23 @@ header label:hover{/*nueva*/
     backdrop-filter: blur(5rem);
 }
 
+.cantidad{
+    display: flex;
+    text-align: center;
+    padding: 5px;
+    align-items: center;
+}
+
+.cantidad input{
+    width: 2rem;
+    text-align: center;
+    height: 2rem;
+}
+
+.cantidad button{
+    cursor: pointer;
+}
+
 #lista-pokemones{
     list-style: none;
 
@@ -243,7 +266,7 @@ header label:hover{/*nueva*/
     display: flex;
     justify-content:space-around;
     align-items: center;
-    width: 250px;
+    width: 350px;
 }
 .carro-item img{
     height: 50px;
@@ -253,6 +276,7 @@ header label:hover{/*nueva*/
 footer{
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: rgb(12 77 162);
     padding: 50px 150px;
 }
@@ -261,6 +285,7 @@ footer article{
     display: flex;
     padding: 20px 0;
     gap: 1rem;
+    font-size: 36px;
 }
 footer img{
     max-width: 50%;
@@ -311,7 +336,7 @@ footer img{
         font-size: 12px;
         margin-top: 330%;
         margin-left: -80%;
-        width: 250%;
+        width: 350%;
     }
     .caracteristica{
         flex-direction: column;
@@ -326,7 +351,7 @@ footer img{
     }
     footer{
         padding: 5px 5px;
-        align-items: center;
+        
     }
     .contorno{
         flex-direction: column;
@@ -355,7 +380,7 @@ footer img{
 
     footer{
         padding: 50px 10px;
-        align-items: center;
+
     }
 
 }
