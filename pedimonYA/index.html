@@ -14,23 +14,24 @@
         <input type="checkbox" id="btn-menu">
         <label for="btn-menu">
             <i class="fas fa-bars"></i>
+            <p>PEDIMON</p>
         </label>
+
         <nav class="menu">
             <img src="src/images/pedimon-logo.png" alt="">
             <ul>
-                <li><a href="#">ABOUT</a> </li>
-                <li><a href="#">CONTACT</a></li>
+                <li><a href="#about">ABOUT</a> </li>
+                <li><a href="#footer">CONTACT</a></li>
                 <li><a href="#" id="ver-carrito">SHOP <i class="fas fa-shopping-cart"></i></a></li>
                 <div id="numerito">0</div>
                 <div id="carro">
                     <h2>Tu compra</h2>
                     <h3 id="precioCarrito" class="precio"></h3>
                     <button id="comprar" class="btn">COMPRAR CARRITO</button>
+                    <p id="observacion"></p>
                     <ul id="carro-poke"></ul>
                 </div>
             </ul>
-
-
         </nav>		
         <article id="inicio">
             <div class="contenido">
@@ -45,7 +46,7 @@
     </header>
 
     <main>
-        <article class="informacion">
+        <article id="about" class="informacion">
             <div class="subtitulo">
                 <h2>NO TE QUEDES SIN TU PEDI!</h2>
                 <p>Dale Perri!, no podes quedarte sin tu Pedimón! Mirá lo facil que es...</p>
@@ -53,26 +54,24 @@
             <div class="caracteristica">
                 <div class="tarjeta-caracteristica">
                     <img src="src/images/info-icon-1.png" alt="">
-                    <p>Elegís el Pedi que vos querés de la lista que hay acá abajo (si hay...)</p>
+                    <p>Los Pokémon de Agua son uno de los tres tipos básicos de la saga en base a que estos siempre han estado presentes en la primera elección de nuestro Pokémon inicial, ganándose con el ello el cariño de todos. Sin embargo, el agua y su uso en los juegos va mucho más allá, reflejándose esto en los Pokémon que conforman este top.</p>
                 </div>
                 <div class="tarjeta-caracteristica">
                     <img src="src/images/info-icon-2.png" alt="">
-                    <p>Lo agregas al carrito que la camada tuvo que haber metido por algun lado...</p>
+                    <p>Los Pokémon de tipo eléctrico almacenan electricidad estática en sus cuerpos y luego la liberan en forma de un ataque como Rayo por diferentes partes: las mejillas, la cola, las orejas o antenas. Pero cuando un Pokémon de tipo eléctrico absorbe demasiada electricidad (ya sea por tormentas eléctricas o por aparatos que funcionen con electricidad).</p>
                 </div>
                 <div class="tarjeta-caracteristica">
                     <img src="src/images/info-icon-3.png" alt="">
-                    <p>Le das al comprar comprar y LISTO! ya tenés tus Pedis en tu casa me vuelvo LOKEE</p>
+                    <p>El tipo Fuego ha sido desde siempre uno de los favoritos por parte de la comunidad, contando entre sus filas a Pokémn que han conseguido encandilar a miles de personas en todo el mundo, ya sea por su ferocidad o por su aspecto adorable. Y ante esta idea, hemos recopilado a los 10 mejores Pokémon de Tipo Fuego, los cuales además han salido directamente de los comentarios de la comunidad.</p>
                 </div>
             </div>
         </article>
-
         <section id="grilla">
             <h2>Listado de Pokemones!</h2> 
         </section>
-   
     </main>
 
-    <footer>
+    <footer id="footer">
         <img class="" src="src/images/pedimon-text-white.png" alt="">
         <article>
             <div><i class="fab fa-facebook-f text-2xl"></i></div>
@@ -81,35 +80,7 @@
             <div><i class="fab fa-whatsapp text-2xl"></i></div>
             <div><i class="fab fa-pinterest text-2xl"></i></div>
         </article>
-        
     </footer>
-<!--
-    <footer id="footer">
-        <div class="">
-            <img class="" src="src/images/pedimon-text-white.png" alt="">
-        </div>
-        <div class="">
-            <div>
-                <p>Contacto</p>
-                <div class="">
-                    <i class="fas fa-phone"></i>
-                    <p>0303456 nananana</p>
-                </div>
-                <div class="">
-                    <i class="fas fa-home"></i>
-                    <p>Calle Falsa 123</p>
-                </div>
-            </div>
-            <div>
-                <p>LEGALES</p>
-                <div class="">
-                    <p>Debe dirigirse a lo de Santu para arreglar kilombos legales</p>
-                </div>
-            </div>        
-        </div>
-        
-    </footer>
-    -->
     <script src="index.js"></script>
 </body>
 </html>

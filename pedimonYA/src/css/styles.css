@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
 
     font-family: 'Ropa Sans', sans-serif;;
@@ -53,14 +57,12 @@ header label:hover{/*nueva*/
     background: rgba(0,0,0,0.3);
 }
 
-
 .menu{
     color: darkblue;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-bottom: 3rem;
-
     position: fixed;
     background-color: #fafafa;
     left: 0;
@@ -70,29 +72,19 @@ header label:hover{/*nueva*/
 
 #numerito{
     position: absolute;
-    /* top: -20px; */
-    /* left: -20px; */
     right: -1px;
     width: 9px;
     height: 9px;
     border-radius: 50%;
     font-size: 10px;
-    background: tomato;
-    color: black;
+    background: rgb(255, 0, 0);
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 8px;
 }
-/*
-.menu ul li{
-    list-style: none;
-    display: inline-block;
-    padding: 10px;
-}
-.menu ul li:hover{
-    background-color: blanchedalmond;
-}*/
+
 #inicio{
     display: flex;
     justify-content: space-around;
@@ -147,20 +139,23 @@ header label:hover{/*nueva*/
 }
 .caracteristica{
     display: flex;
-    justify-content: space-around;
-    text-justify: auto;
+    padding: 10px;
 }
 .tarjeta-caracteristica{
-    max-width: 20rem;
+   padding: 10px;
+
 }
 .tarjeta-caracteristica p{
-    padding: 15px;
+    text-align: justify;
+
 }
 #grilla{
     display: grid;
     grid-gap: 1rem;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    background-color: #A9C9FF;
+    background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
     padding: 50px 150px;
 
 }
@@ -214,7 +209,6 @@ header label:hover{/*nueva*/
    text-decoration: none;
  }
 
-
 #carro{
     padding: 10px;
     display: none;
@@ -262,6 +256,12 @@ header label:hover{/*nueva*/
     padding: 10px;
 }
 
+#observacion{
+    font-size: 14px;
+    padding: 10px;
+    color: red;
+}
+
 .carro-item{
     display: flex;
     justify-content:space-around;
@@ -301,11 +301,10 @@ footer img{
     }
     .menu {
         position: absolute;
-        background: #84a1aa;
         padding: 10px;
         text-align: center;
-        width: 95%;
-        margin-left: -100%;
+        width: 85%;
+        margin-left: 100%;
         font-size: 48px;
         transition: all 1s;
         flex-direction: column;
@@ -313,6 +312,10 @@ footer img{
     }
     .menu ul{
         flex-direction: column;
+    }
+
+    .btn-min{
+        font-size: 1rem;
     }
 
 
@@ -331,17 +334,30 @@ footer img{
     .informacion{
         padding: 10px;
     }
+
+    #numerito{
+        top: 90px;
+    }
+
+    .precio{
+        font-size: 1.5rem;
+
+    }
+
+    .btn{
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }
     #carro{
         padding: 10px;
         font-size: 12px;
         margin-top: 330%;
-        margin-left: -80%;
+        margin-left: -100%;
         width: 350%;
     }
     .caracteristica{
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+
     }
     #grilla{
         display: flex;
@@ -388,5 +404,9 @@ footer img{
 @media screen and (min-width: 1296px){
     .contenido{
         max-width: 30%;
+    }
+
+    .caracteristica{
+        padding: 10px 50px;
     }
 }

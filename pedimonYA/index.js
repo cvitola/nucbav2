@@ -1,24 +1,31 @@
-const listaPokemons = document.getElementById('grilla');
-const carrito = document.getElementById('carro-poke');
+const grillaPokemones = document.getElementById('grilla');
+const ulCarrito = document.getElementById('carro-poke');
 const botonCarrito = document.getElementById('ver-carrito');
 const numerito = document.getElementById("numerito");
+const msgCarrito = document.getElementById("observacion");
+const btnComprarCarro = document.getElementById("comprar");
 
 let precioCarrito=0;
 let listaPokemones = []; //los que levanto del JSON
 let carritoPokes = [];
 
 
+levantarDatos();
+document.addEventListener("click", comprarPokemon);
+document.addEventListener("click", quitarPokemon);
+document.addEventListener("click", sumarUnItem);
+document.addEventListener("click", restarUnItem);
+botonCarrito.addEventListener("click", visualizarCarrito)
+btnComprarCarro.addEventListener("click", comprarCarrito);
+
 function levantarDatos() {
     fetch('poke.json')
         .then(resp => resp.json())
-        .then(resp => {dibujarTarjetas(resp)})
+        .then(resp => {dibujarTarjetasEnGrilla(resp)})
 }
 
-
-
-levantarDatos();
-
-function dibujarTarjetas(pokemones){
+function dibujarTarjetasEnGrilla(pokemones){
+    listaPokemones = [];//la vacio cada vez que llamo.
     const tarjetasHtml = pokemones.map((objeto) => {
         listaPokemones.push(objeto);
         if(objeto.cantidad != 0){
@@ -46,7 +53,7 @@ function dibujarTarjetas(pokemones){
 
     //Se resuelve como tirar las imagenes en la grilla
     tarjetasHtml.forEach(element => {
-        listaPokemons.innerHTML += element;
+        grillaPokemones.innerHTML += element;
     });
 }
 
@@ -57,21 +64,17 @@ function dibujarTarjetasEnCarrito(listitaCompra){
                 <article key=${valor.idPokemon} class="carro-item">
                 <img src=${valor.urlImagen} alt=${valor.nombre}
                 <p class="precio">$ ${valor.importe}</p>
-            
                 <div class="cantidad">
                     <button id="resta" class="btn btn-min">-</button>   
                     <input id="cantidadDePokes" type="number" value="1" disabled>
                     <button id="suma" class="btn btn-min">+</button>
                 </div>    
-
                 <button id="quitar" class="btn"><i id="suma" class="far fa-trash-alt"></i></button>
-                <article>
             </li>`
         );
 
     const arrayJoineado = nuevoArray.join("");
-   // console.log(arrayJoineado)
-    carrito.innerHTML = arrayJoineado;
+    ulCarrito.innerHTML = arrayJoineado;
 }
 
 function actualizarMonto(){
@@ -84,27 +87,19 @@ function actualizarMonto(){
     numerito.innerHTML = `${carritoPokes.length}`;
 }
 
-
-
-document.addEventListener("click", comprarPokemon);
-document.addEventListener("click", quitarPokemon);
-document.addEventListener("click", sumarUnItem);
-document.addEventListener("click", restarUnItem);
-botonCarrito.addEventListener("click", visualizarCarrito)
-
 function visualizarCarrito(){
     const obtenerCarrito = document.getElementById("carro");
     console.dir(obtenerCarrito.style.display) // por que diablos viene vacio????
-    if(obtenerCarrito.style.display ==="none"){
+    if(obtenerCarrito.style.display ==="none" || obtenerCarrito.style.display==""){
         obtenerCarrito.style.display = "flex";
     }else{
         obtenerCarrito.style.display = "none"
     }
-
 }
 
 function comprarPokemon(event){
     if (event.target.id ==="agregar"){
+        blanquearMensaje();
         const idPoke = event.target.parentElement.attributes.key.value; //recupero el ID del poKe
         //recuperarIDPoke(idPoke)
         obtenerPokemon(idPoke)
@@ -126,20 +121,13 @@ function obtenerPokemon(idDelPokemon){
 
 }
 
-    /*fetch('poke.json')
-    .then(resp => resp.json())
-    .then(resp => {
-        const obj = resp.filter(
-            (valor) => valor.idPokemon === Number(idDelPokemon)
-        )*/  
-
-
-function estasEnCarrito(id){
+const estasEnCarrito = (id)=> {
    return carritoPokes.some((val) => val.idPokemon === Number(id));
 }
 
 function quitarPokemon(event){
     if(event.target.id === "quitar"){
+        blanquearMensaje();
         const idPoke = event.target.parentElement.attributes.key.value; //recupero el ID del poKe
         quitarPokemonDelCarro(idPoke);
     }
@@ -155,9 +143,10 @@ function quitarPokemonDelCarro(identificador){
 }
 
 
-function sumarUnItem(event){
+function sumarUnItem(event) {
     
     if(event.target.id ==="suma"){
+        blanquearMensaje();
         let inputCantidad = Number(event.target.parentElement.childNodes[3].value);
         const idPoke = event.target.parentElement.parentElement.attributes.key.value; //recupero el ID del poKe
         const arrayPoke = listaPokemones.filter(
@@ -167,6 +156,8 @@ function sumarUnItem(event){
 
         if(inputCantidad < limitePokes){
             inputCantidad++;
+        }else{
+            darMensaje("No podes seguir atrapando.")
         }
         arrayPoke[0].cantidadComprada = inputCantidad
         event.target.parentElement.childNodes[3].value = inputCantidad;
@@ -175,7 +166,9 @@ function sumarUnItem(event){
 }
 
 function restarUnItem(event){
+    
     if(event.target.id ==="resta"){
+        blanquearMensaje()
         let inputCantidad = Number(event.target.parentElement.childNodes[3].value);
         const idPoke = event.target.parentElement.parentElement.attributes.key.value; //recupero el ID del poKe
         const arrayPoke = listaPokemones.filter(
@@ -184,9 +177,53 @@ function restarUnItem(event){
 
         if(inputCantidad > 1){
             inputCantidad--;
+        }else{
+            darMensaje("Si queres desatraparlo hace clic en el tacho")
         }
         arrayPoke[0].cantidadComprada = inputCantidad
         event.target.parentElement.childNodes[3].value = inputCantidad;
         actualizarMonto();
     }
+}
+
+const darMensaje = (msg) => {
+    msgCarrito.innerHTML = msg;
+}
+
+const blanquearMensaje = () => {
+    msgCarrito.innerHTML="";
+}
+
+function comprarCarrito() {
+    if(carritoPokes.length != 0){
+        carritoPokes.forEach(
+            (element) => actualizarStock(element)
+        )
+        const nroCarrito = Math.floor(Math.random() * 50000);
+        darMensaje(`Adquiriste el carro Numero: ${nroCarrito}`);
+        vaciarCarrito();
+    }else{
+        darMensaje("No podes comprar un carrito vacío");
+    }
+
+}
+
+
+//Solamente actualiza el Stock de ListaPokemones.-
+
+const actualizarStock = (id)=>{
+    //debugger
+    //const cantidadActualizada = id.cantidad - id.cantidadComprada
+    const pokemonParaActualizar = listaPokemones.find(
+        (element) => element.idPokemon === id.idPokemon
+    )
+    pokemonParaActualizar.cantidad = pokemonParaActualizar.cantidad - id.cantidadComprada
+}
+
+const vaciarCarrito = ()=>{
+    carritoPokes = [];
+    dibujarTarjetasEnCarrito(carritoPokes);
+    actualizarMonto();
+    grillaPokemones.innerHTML ="";
+    dibujarTarjetasEnGrilla(listaPokemones)
 }
