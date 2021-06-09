@@ -295,20 +295,26 @@ footer img{
 @media screen and (max-width: 576px) {
     header label {
         display: block;
+        font-size: 30px;
+        padding: 10px;
+        cursor: pointer;
+        margin: 5px;
     }
     header{
-        padding: 5px 5px;
+        padding: 5px 10px;
     }
     .menu {
         position: absolute;
         padding: 10px;
         text-align: center;
-        width: 85%;
-        margin-left: 100%;
+        top: 9%;
+        margin-left: 185%;
         font-size: 48px;
         transition: all 1s;
         flex-direction: column;
         border-radius: 0.5rem;
+
+        
     }
     .menu ul{
         flex-direction: column;
@@ -352,7 +358,7 @@ footer img{
         padding: 10px;
         font-size: 12px;
         margin-top: 330%;
-        margin-left: -100%;
+        margin-left: -125%;
         width: 350%;
     }
     .caracteristica{
@@ -375,7 +381,7 @@ footer img{
     }
 }
 
-@media screen and (max-width: 926px){
+@media screen and (min-width: 576px) and(max-width: 926px){
     
     header{
         padding: 50px 10px;
