@@ -107,6 +107,12 @@ header label:hover{/*nueva*/
     border-style: none;
     cursor: pointer;
 }
+
+.btn a{
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
 .btn-min{
     padding: 6px;
     background-color: #361158;
@@ -381,7 +387,7 @@ footer img{
     }
 }
 
-@media screen and (min-width: 576px) and(max-width: 926px){
+@media screen and (min-width: 576px) and (max-width: 926px){
     
     header{
         padding: 50px 10px;
