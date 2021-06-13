@@ -68,15 +68,16 @@ header label:hover{/*nueva*/
     left: 0;
     right: 0;
     top: 0;
+    z-index: 10;
 }
 
 #numerito{
     position: absolute;
     right: -1px;
-    width: 9px;
-    height: 9px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
-    font-size: 10px;
+    font-size: 14px;
     background: rgb(255, 0, 0);
     color: rgb(255, 255, 255);
     display: flex;
@@ -108,6 +109,9 @@ header label:hover{/*nueva*/
     cursor: pointer;
 }
 
+.modal{
+    font-size: 0.5rem;
+}
 .btn a{
     color: white;
     text-decoration: none;
@@ -142,6 +146,7 @@ header label:hover{/*nueva*/
     border-radius: 0.5rem;
    /* visibility: hidden;*/
     transform: rotate(-0.1turn);
+    z-index: 0;
 }
 .caracteristica{
     display: flex;
@@ -214,6 +219,24 @@ header label:hover{/*nueva*/
    color: #fff;
    text-decoration: none;
  }
+
+ .btn-grad-none {background-image: linear-gradient(to right, #c9a7bc 0%, #9c9c9c  51%, #5f4c58  100%)}
+.btn-grad-none {
+   margin: 10px;
+   padding: 15px 45px;
+   text-align: center;
+   text-transform: uppercase;
+   transition: 0.5s;
+   background-size: 200% auto;
+   color: rgb(41, 39, 39);            
+   box-shadow: 0 0 20px rgb(109, 104, 104);
+   border-radius: 10px;
+   border-style: none;
+   display: block;
+   cursor: not-allowed;
+ }
+
+
 
 #carro{
     padding: 10px;

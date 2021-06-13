@@ -4,6 +4,7 @@ const botonCarrito = document.getElementById('ver-carrito');
 const numerito = document.getElementById("numerito");
 const msgCarrito = document.getElementById("observacion");
 const btnComprarCarro = document.getElementById("comprar");
+const btnCerrar = document.getElementById("cerrar");
 
 let precioCarrito=0;
 let listaPokemones = []; //los que levanto del JSON
@@ -17,6 +18,11 @@ document.addEventListener("click", sumarUnItem);
 document.addEventListener("click", restarUnItem);
 botonCarrito.addEventListener("click", visualizarCarrito)
 btnComprarCarro.addEventListener("click", comprarCarrito);
+btnCerrar.addEventListener("click", () =>{
+    const obtenerCarrito = document.getElementById("carro");
+    obtenerCarrito.style.display = "none"
+    
+});
 
 function levantarDatos() {
     fetch('poke.json')
@@ -45,7 +51,7 @@ function dibujarTarjetasEnGrilla(pokemones){
             <p class="precio">$ ${objeto.importe}</p>
             <p class="">${objeto.peso} kg</p>
             <p class="">${objeto.tipo}</p>
-            <button id="agregar" disabled class="btn btn-grad">ATRAPAR</button>
+            <button id="agregar" disabled class="btn btn-grad-none ">ATRAPAR</button>
         <article>`
         }
 

@@ -1,0 +1,86 @@
+
+
+function  tieneBolitas_Al_(colorAMirar, direcciónAMirar){
+    /*
+    PROPOSITO:
+         Indica si en la celda lindante hacia **direcciónAMirar** a la misma tiene o no bolitas 
+         del color **colorAMirar**.
+    PARAMETROS:
+        colorAMirar - Color: se refiere al color de las bolitas a mirar en la celda.
+        direcciónAMirar - Dirección: se refiere a la dirección a la cual hay que mirar
+    PRECONDICIONES:
+        No Tiene.
+    Tipo:
+        Booleano
+    */
+    Mover(direcciónAMirar)
+    return(hayBolitas(colorAMirar))
+    
+}
+
+2. Mirando la celda vecina, incluso si no hay vecina
+BIBLIOTECA Escribir la función hayBolitas_Al_(colorAMirar, direcciónAMirar), que indica
+si hay una celda lindante en la dirección indicada y la misma tiene bolitas del color dado. Sí no hay
+celda lindante describe Falso.
+
+function hayBolitas_Al_(colorAMirar, direcciónAMirar) {
+    /*
+    PROPOSITO:
+         Indica si en la celda lindante hacia **direcciónAMirar** hay una celda y si en la misma hay bolitas del color **colorAMirar**
+    PARAMETROS:
+        colorAMirar - Color: se refiere al color de las bolitas a mirar en la celda.
+        direcciónAMirar - Dirección: se refiere a la dirección a la cual hay que mirar
+    PRECONDICIONES:
+        No Tiene.
+    Tipo:
+        Booleano
+    */
+
+    return (puedeMover(direcciónAMirar) && tieneBolitas_Al_(colorAMirar, direcciónAMirar))
+}
+
+3. Mirando en la celda al borde
+Escribir la función hayBolitas_EnElBorde_(colorAMirar, direcciónDelBorde), que indica
+si en la celda que se encuentra en el borde dado por la dirección, hay bolitas del color indicado.
+
+function hayBolitas_EnElBorde_(colorAMirar, direcciónDelBorde) {
+    /*
+    PROPOSITO:
+         Indica si en la celda que se encuentra en el borde dado por la dirección **direcciónDelBorde**, hay bolitas del color **colorAMirar**.
+    PARAMETROS:
+        colorAMirar - Color: se refiere al color de las bolitas a mirar en la celda.
+        direcciónAMirar - Dirección: se refiere a la dirección a la cual hay que mirar
+    PRECONDICIONES:
+        No Tiene.
+    Tipo:
+        Booleano
+    */    
+    IrAlBorde(direcciónDelBorde)
+    return (hayBolitas(colorAMirar))
+}
+
+4. Mirando en la fila o columna
+Escribir la función hayBolitas_Hacia_(colorAMirar, direcciónABuscar) que, asumiendo
+que en la celda actual no hay bolitas del color dado, indica si en alguna de las celdas hacia la dirección
+dada (sin incluir la celda actual) hay bolitas del color dado.
+
+
+function hayBolitas_Hacia_(colorAMirar, direcciónABuscar) {
+    /*
+    PROPOSITO:
+         Indica si en alguna de las celdas hacia la dirección **direcciónABuscar** (sin incluir la celda actual) hay bolitas del color **colorAMirar**
+    PARAMETROS:
+        colorAMirar - Color: se refiere al color de las bolitas a mirar en la celda.
+        direcciónAMirar - Dirección: se refiere a la dirección a la cual hay que mirar
+    PRECONDICIONES:
+        No Tiene.
+    Tipo:
+        Booleano
+    */     
+    bolitaEncontrada := 0
+    while (puedeMover(direcciónABuscar) && not(hayBolitas(colorMirar))) {
+        Mover(direcciónABuscar)
+    }
+    if
+    return ()
+}

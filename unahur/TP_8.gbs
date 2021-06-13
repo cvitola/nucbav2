@@ -97,13 +97,13 @@ procedure VaciarFilaDe_HaciaEl_(color, dirección) {
     SacarTodasLasDeColor_(color)
 }
 
+/*
 5. Vaciando un tablero
 En cada uno de los casos siguientes, definir de la forma indicada el procedimiento
 VaciarTableroDe_(color), que quite todas las bolitas del color dado por el parámetro color de
 cada una de las celdas del tablero. El cabezal debe poder comenzar en cualquier celda del tablero, y no
 es relevante para el problema donde finaliza, basta con que lo declare en su propósito.
 a. Estructurar el procedimiento como un recorrido sobre las filas . ¿Qué subtareas van a
-2
 precisarse en este caso? ¿Es necesario volver a definirlas o se pueden encontrar en esta
 práctica?
 b. Estructurar el procedimiento como un recorrido sobre las celdas del tablero. Las subtareas
@@ -112,5 +112,81 @@ disponible en esta práctica.
 c. En este última opción, ¿Cuántas formas distintas hay de recorrer el las celdas del tablero? ¿Se
 podría elegir valores distintos para los movimientos?
 d. Implemente ahora nuevamente el procedimiento de 2 formas distintas.
-Reflexionamos ¿Qué diferencias hay entre los recorridos anteriores del punto a y del b? ¿Qué subtareas son más
-complejas en cada caso? ¿Podrían considerarse otros recorridos que no fueran sobre celdas o filas?
+*/
+
+procedure VaciarTableroDe_(color) {
+    /*
+    PROPOSITO:
+        Vaciar el tablero del color **color**
+    PARAMETROS:
+        color - Color: se refiere a las bolitas a quitar del tablero.
+    PRECONDICIONES:
+        No tiene.
+    */
+    IrAlBorde_(Oeste)
+    IrAlBorde_(Sur)
+    while (puedeMover(Norte)) {
+        VaciarFilaDe_(color)
+        IrAlBorde_(Oeste)
+        Mover(Norte)
+    }
+    VaciarFilaDe_(color)
+}
+
+/*6. Las subtareas más útiles de la historia
+BIBLIOTECA Escribir los procedimientos necesarios para generalizar la noción de recorrido por celdas
+de un tablero, para que las direcciones de recorrido no estén fijas. En particular, definir (como siempre,
+comenzando por los contratos):
+a. IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+b. haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+c. IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+Que hacen precisamente lo que sugiere su nombre, permitiendo utilizarlas en un recorrido por celdas.
+Puede probarlas intentando colocar una bolita en cada celda del tablero, o volviendo a implementar el
+ejercicio anterior, ahorqa de forma parametrizada. Al escribir las precondiciones, tener en cuenta que
+las direcciones no pueden ser cualesquiera, sino que deben estar relacionadas. ¿Cuál es esa relación?
+¿Cómo expresarla?*/
+
+procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+    PROPOSITO:
+        Inicializar el cabezal en la posición origen del tablero 0,0.
+    PARAMETROS:
+        *dirPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *dirSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
+    */
+    IrAlBorde_(opuesto(dirPrincipal))
+    IrAlBorde_(opuesto(dirSecundaria))
+}
+
+procedure haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+    PROPOSITO:
+        Moverá si existe una celda lindante en ubicacion **dirPrincipal** o **dirSecundaria**
+    PARAMETROS:
+        *dirPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *dirSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
+    */
+    if(puedeMover(dirPrincipal)){
+        Mover(dirPrincipal)
+    }elseif (puedeMover(dirSecundaria)) {
+        Mover(dirSecundaria)
+    }
+}
+
+procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+    /*
+    PROPOSITO:
+        Indica si existe una celda lindante en ubicacion **dirPrincipal** o **dirSecundaria**
+    PARAMETROS:
+        *dirPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *dirSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
+    */   
+}
+
+
