@@ -1,0 +1,337 @@
+/*
+1. Días de la semana
+Declarar un tipo variante llamado DíaDeLaSemana, que sirva para identificar los días de la semana.
+Luego implementar las siguientes funciones (sin olvidar sus contratos):
+a. díaSiguiente_ que dado un día de la semana, devuelve el día siguiente.
+b. díaPrevio_ que dado un día de la semana, devuelve el día previo.
+c. esDíaDeFinDeSemana_, que indica si el día dado es uno del fin de semana.
+Reflexionamos: ¿De qué tipo es el parámetro dado a cada una de estas funciones?
+    Del tipo nuevo que se creó.
+                 ¿Cuál sería un buen nombre para el mismo? 
+                    Dia actual / 
+                 ¿Por qué las funciones siguiente y previo no pueden utilizarse para solucionar este problema?
+                    Por que no entienden el nuevo tipo creado.                 
+                ¿Qué beneficios trae tener ahora díaSiguiente y díaPrevio sí necesito saber algo cómo “en qué día ocurrió un suceso”?*/
+                    //Que puede indicarme cual es el sucedor o antesesor 
+
+type DíaDeLaSemana is variant {
+    /*
+    PROPOSITO: Modela los dias de la semana.
+    */
+    case Lunes {}
+    case Martes {}
+    case Miércoles {}
+    case Jueves {}
+    case Viernes {}
+    case Sábado {}
+    case Domingo {}
+}
+
+function díaSiguiente_(díaActual) {
+    /*
+        PROPÓSITO:  Devolver el día siguiente a **díaActual**
+        PARÁMETROS:
+            * díaActual: DíaDeLaSemana - se refiere al día de la semana actual.
+        TIPO: DíaDeLaSemana
+        PRECONDICIONES:
+            No tiene.
+    */
+    
+    return (choose
+        Martes when (díaActual == Lunes)
+        Miércoles when (díaActual == Martes)
+        Jueves when (díaActual == Miercoles)
+        Viernes when (díaActual == Jueves)
+        Sábado when (díaActual == Viernes)
+        Domingo when (díaActual == Sabado)
+        Lunes otherwise
+    })
+}
+
+function díaPrevio_(díaActual) {
+    /*
+        PROPÓSITO:  Devolver el dia anterior a **diaActual**
+        PARÁMETROS:
+            * díaActual: DíaDeLaSemana - se refiere al día de la semana actual.
+        TIPO: DíaDeLaSemana
+        PRECONDICIONES:
+            No tiene.
+    */
+    
+    return (choose
+        Domingo when (díaActual == Lunes)
+        Lunes when (díaActual == Martes)
+        Martes when (díaActual == Miercoles)
+        Miercoles when (díaActual == Jueves)
+        Jueves when (díaActual == Viernes)
+        Viernes when (díaActual == Sabado)
+        Sabado otherwise
+    })
+}
+
+function esDíaDeFinDeSemana_(díaActual) {
+    /*
+        PROPÓSITO:  Indica si el día **díaActaul** es un día de fin de semana.
+        PARÁMETROS:
+            * díaActual: DíaDeLaSemana - se refiere al día de la semana actual.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (díaActaul == Sabado || díaActaul == Domingo)
+}
+
+/*2. Partidos políticos
+EN PAPEL Se quiere modelar una serie de partidos politicos de un país, y poder realizar consultas
+sobre los mismos. Se cuenta entonces con la siguiente tabla de información:
+    Partido
+        Democracia por la Verdad
+        Unidos por la República
+        Liberales por la Libertad
+        Izquierda de los Obreros
+
+Se quiere entonces crear un tipo de datos variante PartidoPolítico que modele a los partidos
+mencionados. Además se les brinda la siguiente función como primitiva:
+    function cantidadDeVotosDe_(unPartido)
+        PROPÓSITO: Indica la cantidad de votos que recibió un partido.
+        PARÁMETROS
+        * unPartido: PartidoPolítico - El partido político del cual saber
+        su cantidad de votos.
+        TIPO: Número
+        PRECONDICIÓN: Ninguna
+
+Luego escriba las siguientes funciones:
+a. tieneMásVotantes_Que_ que dados dos partidos indique si el primero tiene más votos que
+el segundo.
+b. elQueTieneMásVotos que describe el partido con más votantes.
+c. habráBallotage que indica si en estas elecciones habrá ballotage. Esto se da cuando el
+partido con más votos no acumula más del 50% de los votos totales y no hay una diferencia de
+más del 10% sobre entre el primero y el segundo candidato */
+
+type PartidoPolítico is variant {
+    /*
+    PROPOSITO: Modela los partidos politicos de un pais.
+    */
+    case DemocraciaPorLaVerdad {}
+    case UnidosPorLaRepública {}
+    case LiberalesPorLaLibertad {}
+    case IzquierdaDeLosObreros {}
+}
+
+function tieneMásVotantes_Que_ (primerPartidoAComparar, segundoPartidoAComparar) {
+    /*
+        PROPÓSITO:  Indica si el partido **primerPartidoAComparar** tiene mas votantes que **segundoPartidoAComparar**
+        PARÁMETROS:
+            * primerPartidoAComparar: PartidoPolítico - es el primer partido politico a comparar.
+            * segundoPartidoAComparar: PartidoPolítico - es el segundo partido político a comparar.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (cantidadDeVotosDe_(primerPartidoAComparar) > cantidadDeVotosDe_(segundoPartidoAComparar))
+}
+
+function elQueTieneMásVotos() {
+    /*
+        PROPÓSITO:  Describe el partido con más votantes.
+        TIPO: Número
+        PRECONDICIONES:
+            No tiene.
+    */
+    return (choose
+        cantidadDeVotosDe_(DemocraciaPorLaVerdad) when (esDemocraciaPorLaVerdadConMasVotantes())
+        cantidadDeVotosDe_(UnidosPorLaRepública) when (esUnidosPorLaRepúblicaConMasVotantes())
+        cantidadDeVotosDe_(LiberalesPorLaLibertad) when (esLiberalesPorLaLibertadConMasVotantes())
+        cantidadDeVotosDe_(IzquierdaDeLosObreros) otherwise
+    })
+}
+
+//Necesito funciones para saber si cada Partido es el maximo
+
+function esDemocraciaPorLaVerdadConMasVotantes() {
+    /*
+        PROPÓSITO:  Indica que la mayor cantidad de votantes lo obtuvo el Partido Democracia Por La Verdad.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (tieneMásVotantes_Que_(DemocraciaPorLaVerdad,UnidosPorLaRepública)
+                                    &&
+            tieneMásVotantes_Que_(DemocraciaPorLaVerdad,LiberalesPorLaLibertad)
+                                    &&
+            tieneMásVotantes_Que_(DemocraciaPorLaVerdad, IzquierdaDeLosObreros))
+}
+
+function esUnidosPorLaRepúblicaConMasVotantes() {
+    /*
+        PROPÓSITO:  Indica que la mayor cantidad de votantes lo obtuvo el Partido Unidos Por La República.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (tieneMásVotantes_Que_(UnidosPorLaRepública,DemocraciaPorLaVerdad)
+                                    &&
+            tieneMásVotantes_Que_(UnidosPorLaRepública,LiberalesPorLaLibertad)
+                                    &&
+            tieneMásVotantes_Que_(UnidosPorLaRepública, IzquierdaDeLosObreros))
+}
+
+function esLiberalesPorLaLibertadConMasVotantes() {
+    /*
+        PROPÓSITO:  Indica que la mayor cantidad de votantes lo obtuvo el Partido Liberales Por La Libertad.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (tieneMásVotantes_Que_(LiberalesPorLaLibertad,DemocraciaPorLaVerdad)
+                                    &&
+            tieneMásVotantes_Que_(LiberalesPorLaLibertad,UnidosPorLaRepública)
+                                    &&
+            tieneMásVotantes_Que_(LiberalesPorLaLibertad, IzquierdaDeLosObreros))
+}
+
+function esIzquierdaDeLosObrerosConMasVotantes() {
+    /*
+        PROPÓSITO:  Indica que la mayor cantidad de votantes lo obtuvo el Partido Izquierda De Los Obreros.
+        TIPO: Booleano
+        PRECONDICIONES:
+            No Tiene.
+    */
+    
+    return (tieneMásVotantes_Que_(IzquierdaDeLosObreros,DemocraciaPorLaVerdad)
+                                    &&
+            tieneMásVotantes_Que_(IzquierdaDeLosObreros,UnidosPorLaRepública)
+                                    &&
+            tieneMásVotantes_Que_(IzquierdaDeLosObreros, IzquierdaDeLosObreros))
+}
+
+
+function habráBallotage() {
+    /*
+        PROPÓSITO:  Indica si en las elecciones habrá ballotage, Esto se da cuando el
+                    partido con más votos no acumula más del 50% de los votos totales y no hay una diferencia de
+                    más del 10% sobre entre el primero y el segundo candidato
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene
+    */
+    
+    return (tieneMasDel50PorcientoDeVotantes(elQueTieneMásVotos())
+                                &&
+            tieneMasDel10PorcientoDeDiferencia())
+}
+
+function tieneMasDel50PorcientoDeVotantes(cantidadDeVotos) {
+    /*
+        PROPÓSITO:  Indica si la cantidad de votos supera el 50% del total.
+        PARÁMETROS:
+            * cantidadDeVotos: Numero - Refleja la cantidad de votos del partido que sacó mas.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    totalVotos:=dameLaCantidadDeVotos()
+    return (cantidadDeVotos div totalVotos > 0,5)
+}
+
+
+//***********************************************************************************//
+/*3. Jugamos con cartas
+Declare el tipo variante Palo y el tipo registro Carta y escriba las siguientes funciones. No se olvide de
+ir probando en Gobstones cada función que realiza para saber sí el resultado es correcto.
+a. anchoDeEspadas que describe la carta 1 de Espadas.*/
+
+type Palo is variant {
+/*
+    PROPOSITO: Modelar los palos de las cartas españoñas.-
+    */
+    case Oros {}
+    case Espadas {}
+    case Bastos {}
+    case Copas {}
+}
+
+type Carta is record {
+    /*
+    PROPOSITO: Modela una carta española.
+    INVARIANTE DE REPRESENTACIÓN: 
+        El campo número debe estar comprendido entre 1 y 7 o entre 10 y 12
+    */
+    field palo		
+    field número		
+}
+
+function anchoDeEspadas() {
+    /*
+        PROPÓSITO:  Describe la carta 1 de Espada
+        TIPO: Carta
+        PRECONDICIONES:
+            * No Tiene
+    */
+    
+    return (Carta(palo <- Espadas, número <- 1))
+}
+
+//b. anchoDeBastos que describe la carta 1 de Bastos
+
+function anchoDeBastos() {
+    /*
+        PROPÓSITO:  Describe la carta 1 de Basto
+        TIPO: Carta
+        PRECONDICIONES:
+            * No Tiene
+    */
+    
+    return (Carta(palo <- Bastos, número <- 1))
+}
+
+//c. laCarta_de_ que dado un número y un palo que describe la carta con dicho número y dicho palo..
+
+function laCarta_de_(númeroDeCarta, paloDeCarta) {
+    /*
+        PROPÓSITO:  Describe la carta con dicho número y dicho palo.
+        PARÁMETROS:
+            * númeroDeCarta: Número - Número de la carta a decir.
+            * paloDeCarta: Palo - Palo de la carta a decir.
+        TIPO: Carta
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (Carta(palo <- paloDeCarta, número <- númeroDeCarta))
+}
+
+//d. esUnAncho_ que indica si la carta dada es un 1
+
+function esUnAncho_(carta) {
+    /*
+        PROPÓSITO:  Indica si la carta dada es un 1
+        PARÁMETROS:
+            * carta: Carta - es una carta
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (número(carta)==1) //utilizas la fx. observadora.
+}
+
+//e. esFigura_ que dada una carta, indica si la misma es una figura (las figuras son los 10s, los 11s y los 12s).
+
+function esFigura_(carta) {
+    /*
+        PROPÓSITO:  Indica si la carta recibida es una figura.
+        PARÁMETROS:
+            * carta: Carta - es una carta
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (número(carta)==10 || número(carta)==11 || número(carta)==12)
+}
