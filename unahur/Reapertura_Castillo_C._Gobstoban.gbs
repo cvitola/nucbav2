@@ -1,0 +1,81 @@
+// 1. Se pide escriba la función hayCaja que indica si en la celda actual hay una caja, ya sea sola o sobre una marca.
+
+function hayCaja() {
+    /*
+        PROPÓSITO:
+            Indica si en la celda actual hay una caja, ya sea sola o sobre una marca.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:   
+            Booleano.
+        OBSERVACIONES: 
+            Dos bolitas de color verde representan una caja.
+            Una bolita de color rojo representa una caja que se encuentra sobre un marcador de meta.
+    */
+    return (nroBolitas(Verde) == 2 || nroBolitas(Rojo) == 1)
+}
+
+// 2. Se pide desarrolle la función sePuedeMoverCajaAl_ que indica si hay una caja en la celda lindante a la dirección 
+// y la misma se puede mover una celda en dicha dirección. Recordar que para poder mover la caja no deben haber elementos
+// con los cuales la caja pueda “chocar” según lo planteado en las reglas del juego.
+// Para solucionar este problema se puede hacer uso del siguiente procedimiento primitivo.
+
+// hayCaja_LugaresAl_
+// PROPÓSITO: Indica si hay una caja en la ubicación **cantidadDeLugares** en la dirección **direcciónAMirar**.
+// PARÁMETROS:
+//    * cantidadDeLugares: Número - La distancia a la cual mirar si hay una caja.
+//    * direcciónAMirar: Dirección - La dirección hacia la cual mirar si hay una caja.
+// TIPO: Booleano
+// PRECONDICIONES:
+// * Ninguna
+
+function sePuedeMoverCajaAl_(direcciónAMover) {
+    /*
+        PROPÓSITO:
+            Indica si hay una caja en la celda lindante en dirección **direcciónAMover** y la misma se puede mover una celda en dicha dirección.
+        PRECONDICIONES:
+            Debe haber una caja hacia **direcciónAMover**.
+            No debe haber ninguna caja o pared lindante a la caja en **direcciónAMover**.
+        PARÁMETROS:
+            direcciónAMover: Dirección - indica la dirección en la que se analizará si es posible mover.
+        TIPO:   
+            Booleano.
+    */
+    return (hayCaja_LugaresAl_(1, direcciónAMover) && cantidadDeUbicacionesHastaParedAl_(direcciónAMover) >= 2)
+}
+
+// 3. Se pide escriba el procedimiento EmpujarCajaAl_SiEsPosible que dada una dirección empuja la caja en 
+// la celda lindante a la dirección dada. Se asume que el cabezal se encuentra sobre el encargado.
+
+procedure EmpujarCajaAl_SiEsPosible(direcciónAEmpujar) {
+    /*
+        PROPÓSITO:
+            Empujar la caja en la celda lindante hacia **direcciónAEmpujar** si es posible, de lo contrario no hacer nada.
+        PARÁMETROS:
+            direcciónAEmpujar: Dirección - indica la dirección en la cual se empujará la caja de ser posible
+        PRECONDICIONES:
+            El cabezal debe encontrarse sobre el encargado.
+    */
+    if( (direcciónAEmpujar)) {
+        EmpujarCajaHacia_(direcciónAEmpujar)
+    }
+}
+
+// procedure EmpujarCajaHacia_(direcciónAEmpujar) {
+// /*
+//         PROPÓSITO:
+//             Empujar la caja en la celda lindante hacia **direcciónAEmpujar**.
+//         PARÁMETROS:
+//             direcciónAEmpujar: Dirección - indica la dirección en la cual se empujará la caja
+//         PRECONDICIONES:
+//             El cabezal debe encontrarse sobre el encargado.
+//             Deben existir al menos 2 celdas en hacia **direcciónAEmpujar**.
+//     */
+//     SacarEncargado()
+//     Mover(direcciónAEmpujar)
+//     SacarCaja()
+//     PonerEncargado()
+//     Mover(direcciónAEmpujar)
+//     PonerCaja()
+//     Mover(opuesto(direcciónAEmpujar))
+// }

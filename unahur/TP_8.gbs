@@ -160,21 +160,17 @@ procedure IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
     IrAlBorde_(opuesto(dirSecundaria))
 }
 
-procedure haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
+function haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
     /*
     PROPOSITO:
-        Moverá si existe una celda lindante en ubicacion **dirPrincipal** o **dirSecundaria**
+        Indica si existe una celda lindante en ubicacion **dirPrincipal** o **dirSecundaria**
     PARAMETROS:
         *dirPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
         *dirSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
     PRECONDICIONES: 
         **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
     */
-    if(puedeMover(dirPrincipal)){
-        Mover(dirPrincipal)
-    }elseif (puedeMover(dirSecundaria)) {
-        Mover(dirSecundaria)
-    }
+    return((puedeMover(dirPrincipal) || puedeMover(dirSecundaria)))
 }
 
 procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
@@ -187,6 +183,12 @@ procedure IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria) {
     PRECONDICIONES: 
         **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
     */   
+    if (puedeMover(dirPrincipal)) {
+        Mover(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirprincipal))
+        Mover(dirSecundaria)
+    }
 }
 
 

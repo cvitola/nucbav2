@@ -58,12 +58,12 @@ function hayBolitas_EnElBorde_(colorAMirar, direcciónDelBorde) {
     IrAlBorde(direcciónDelBorde)
     return (hayBolitas(colorAMirar))
 }
-
+/*
 4. Mirando en la fila o columna
 Escribir la función hayBolitas_Hacia_(colorAMirar, direcciónABuscar) que, asumiendo
 que en la celda actual no hay bolitas del color dado, indica si en alguna de las celdas hacia la dirección
 dada (sin incluir la celda actual) hay bolitas del color dado.
-
+*/
 
 function hayBolitas_Hacia_(colorAMirar, direcciónABuscar) {
     /*
@@ -77,10 +77,230 @@ function hayBolitas_Hacia_(colorAMirar, direcciónABuscar) {
     Tipo:
         Booleano
     */     
-    bolitaEncontrada := 0
-    while (puedeMover(direcciónABuscar) && not(hayBolitas(colorMirar))) {
-        Mover(direcciónABuscar)
-    }
-    if
-    return ()
+
+    Mover(direcciónABuscar)
+    return (hayBolitas(colorAMirar))
 }
+
+/*5. Y volviendo a mirar en la fila o columna
+Escribir la función hayCeldaVacíaHacia_(colorAMirar, direcciónABuscar), que indica si en
+alguna de las celdas hacia la dirección dada (sin incluir la celda actual) hay una que esté vacía.*/
+
+function hayCeldaVacíaHacia_(direcciónABuscar) {
+    /*
+    PROPOSITO:
+        Indica si en alguna de las celdas hacia la direccion **direccionABuscar** hay una que esté vacía.
+    PARAMETROS:
+        direccionABuscar - Direccion: direccion hacia la que se mueve el cabezal.
+    PRECONDICIONES: 
+        No Tiene.
+    Tipo:
+        Booleano
+    */
+    if(puedeMover(direccionABuscar) && not(estáVacíaLaCelda())){
+        Mover(direccionABuscar)
+    }
+    return (estáVacíaLaCelda())
+}
+
+function estáVacíaLaCelda() {
+    /*
+    PROPOSITO:
+        Indica si en la celda actual está vacía.
+    PRECONDICIONES:
+        No tiene.
+    Tipo:
+        Booleano
+    */     
+    return ((nroBolitas(Rojo) == 0 && nroBolitas(Verde) == 0 && nroBolitas(Negro) == 0 && nroBolitas(Azul) == 0))
+}
+
+/*6. Y si miramos el tablero
+Escribir la función hayAlgunaBolita_(colorABuscar), que indica si en alguna de las celdas del
+tablero existe una bolita del color dado.*/
+
+function hayAlgunaBolita_(colorABuscar) {
+    /*
+    PROPOSITO:
+        Indica si existe en el tablero alguna bolita del color **colorABuscar**
+    PARAMETROS:
+        colorABuscar - es el color de la bolita a encontrar
+    PRECONDIONES:
+        No Tiene.
+    Tipo:
+        Booleano.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && hayBolitas(colorABuscar)) {
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    }
+    return (hayBolitas(colorABuscar))
+}
+
+/*.7 Y volvemos a mirar el tablero
+Escribir la función hayAlgunaCeldaVacía(), que indica si alguna de las celdas del tablero está
+vacía.
+*/
+
+function hayAlgunaCeldaVacía() {
+    /*
+    PROPOSITO:
+        Indica si existe en el tablero alguna celda vacía.
+    PRECONDIONES:
+        No Tiene.
+    Tipo:
+        Booleano.
+    */    
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && estáVacíaLaCelda()) {
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    }
+    return (estáVacíaLaCelda())
+}
+
+/*8. Copiamos una celda
+Escribir el procedimiento CopiarCeldaAl_(direcciónACopiar), que copia los contenidos de la
+celda actual a la celda lindante en la dirección dada. Note que se deben eliminar los contenidos
+originales que hubieran en la celda de destino.*/
+
+procedure  CopiarCeldaAl_(direcciónACopiar){
+    /*
+    PROPOSITO:
+        Copiar los contenidos de la celda actual a la celda lindante en la direccion **direcciónACopiar**
+    PARAMETROS:
+        direcciónACopiar - Dirección: Se refiere a la celda en la que se copiará el contenido.
+    PRECONDICIONES:
+        Debe existir una celda lindante en direccion **direcciónACopiar**.
+    */
+    contenidoACopiar := obtenerContenido()
+    Mover(direcciónACopiar)
+    RealizarCopia(contenidoACopiar)
+}
+
+function obtenerContenido() {
+    
+    return (nroBolitas(Azul))
+}
+
+procedure RealizarCopia(contenidoACopiar){
+    Poner(contenidoACopiar)
+}
+
+
+procedure ComerTodoLoQueSeEncuentreEnElNivel() {
+    /*
+    PROPOSITO:
+        Comer todo lo que se encuentra en el nivel.
+    PRECONDICIONES:
+        El cabezal 
+    */
+    ComerTodosLosCocosDelNivel()
+    ComerTodasLasCerezasDelNivel()
+    
+}
+
+
+procedure ComerTodoLoQueSeEncuentreEnElNivel() {
+    /*
+    PROPOSITO:
+        Hacer que GobsMan coma los cocos y las cerezas que existan en el nivel.
+    PRECONDICIONES:
+        El cabezal debe encontrarse sobre GobsMan.
+        Existe un coco o una cereza en la celda actual.
+    */
+    MoverAGobsManPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        ComerLoQueHayaEnLaCelda()
+        MoverAGobsManASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    }
+    ComerLoQueHayaEnLaCelda()
+
+}
+
+procedure ComerLoQueHayaEnLaCelda() {
+    /*
+    PROPOSITO:
+        Hacer que GobsMan consuma un coco o una cereza.
+    PRECONDICIONES:
+        No Tiene.
+    */
+    if(hayCereza()){
+        ComerCereza()
+    }else{
+        ComerCoco()
+    }
+}
+procedure MoverAGobsManASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria){
+    /*
+    PROPOSITO:
+        Mover a GobsMan una celda lindante en ubicacion **dirPrincipal** o **dirSecundaria**
+    PARAMETROS:
+        *dirPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *dirSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **dirPrincipal** y **dirSecundaria** deben ser ortogonales.
+    */   
+        if (puedeMover(dirPrincipal)) {
+        MoverGobsManAl_(dirPrincipal)
+    } else {
+        IrAlBorde(opuesto(dirprincipal))
+        MoverGobsManAl_(dirSecundaria)
+    }
+}
+
+
+procedure RecorrerNivelMuriendoEnElFantasma() {
+    /*
+    PROPOSITO:
+        Hacer que GobsMan muera cuando se encuestre con un fantasma.
+    PRECONDICIONES:
+        El cabezal debe encontrarse sobre GobsMan.
+        Existe al menos un fantasma en el nivel.
+    */
+    MoverAGobsManPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && not(hayFantasma())) {
+        MoverAGobsManASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    }    
+    MorirGobsMan()
+
+}
+
+
+procedure RecorrerNivelMuriendoSiHayFantasma() {
+    /*
+    PROPOSITO:
+        Hacer que GobsMan muera en caso que se encuentre con un fantasma.
+    PRECONDICIONES:
+        El cabezal debe encontrarse sobre GobsMan.
+    */  
+    MoverAGobsManPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && not(hayFantasma())) {
+        MoverAGobsManASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    }
+    if(hayFantasma()){
+        MorirGobsMan()
+    }
+}
+
+
+/* */
+
+function  puntajeAObtenerEnCeldaActual()  {
+/*
+    PROPOSITO:
+        Describe la cantidad de puntaje que obtendrá MsGobsMan en la celda actual.
+    PRECONDICIONES:
+        No Tiene.
+    Tipo:
+        Numero
+*/
+    return(
+        choose
+            100 when ( hayCoco() && not( hayCereza() ))
+            2000 when ( hayCereza() && not( hayCoco() ))
+            2100 when ( hayCereza() && hayCoco() )
+            0 otherwise
+    )
+
+}
+
