@@ -335,3 +335,160 @@ function esFigura_(carta) {
     
     return (número(carta)==10 || número(carta)==11 || número(carta)==12)
 }
+
+//f. esDeOro_ que indica si la carta dada es de Oros
+
+function esDeOro_(carta) {
+    /*
+        PROPÓSITO:  Indica si la carta dada es de Oros
+        PARÁMETROS:
+            * carta: Carta - es una carta
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (palo(carta) == Oros)
+}
+
+//g. tieneUnNúmeroMásGrande_Que_ que dadas dos cartas indica si la primera carta tiene un número más grande que la segunda.
+
+function tieneUnNúmeroMásGrande_Que_(primerCarta, segundaCarta) {
+    /*
+        PROPÓSITO:  Indica si la primera carta tiene un número más grande que la segunda.
+        PARÁMETROS:
+            * primerCarta: Carta - es una carta de tipo española
+            * segundaCarta: Carta - es una carta de tipo española
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (número(primerCarta) > número(segundaCarta))
+}
+
+//h. sonDelMismoPalo_Y_ que dadas dos cartas, indica si estas tienen el mismo palo.
+
+function sonDelMismoPalo_Y_(primerCarta, segundaCarta) {
+    /*
+        PROPÓSITO:  Indica si la primer y segunda carta son del mismo palo
+        PARÁMETROS:
+            * primerCarta: Carta - es una carta de tipo española
+            * segundaCarta: Carta - es una carta de tipo española
+        TIPO: Booleano
+        PRECONDICIONES:
+            * ....
+    */
+    
+    return (palo(primerCarta) == palo(segundaCarta))
+}
+
+//i. valorParaEnvidoDe_ que describa el número que aporta la carta dada en el canto del envido. El
+//número se corresponde al número de la carta, si la misma no es figura, y cero, si fuera figura.
+function valorParaEnvidoDe_(carta) {
+    /*
+        PROPÓSITO:  Describe el numero que aporta la carta dada en el canto del envido.
+        PARÁMETROS:
+            * primerCarta: Carta - es una carta de tipo española
+        TIPO: Numero
+        PRECONDICIONES:
+            * No tiene
+    */
+    
+    return (choose
+        0 when (esFigura_(carta))
+        número(carta) otherwise
+    )
+}
+
+//4. celdaActual que lee la información de la celda en donde está el cabezal y retorna un dato de tipo Celda.
+
+function celdaActual() {
+    /*
+        PROPÓSITO:  Devolver la informacion de la celda en donde esta el cabezal.
+        TIPO: Celda
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (Celda(
+            cantidadDeAzules <- nroBolitas(Azul),
+            cantidadDeRojas <- nroBolitas(Rojo),
+            cantidadDeVerdes <- nroBolitas(Verde),
+            cantidadDeNegras <- nroBolitas(Negro)
+    )
+}
+
+//b. EscribirEnCelda_ que dado el dato de una calda, escribe la información de este en el tablero en la celda actual.
+
+procedure EscribirEnCelda_(datoCelda) {
+    /*
+        PROPÓSITO:  Dado el dato de una celda **datoCelda** escribe el contenido en la celda actual.
+        PARÁMETROS:
+            * datoCelda: datoCelda - informacion de tipo Celda.
+        PRECONDICIONES:
+            * No Tiene
+    */
+    Celda(
+        cantidadDeAzules(datoCelda),
+        cantidadDeRojas(datoCelda),
+        cantidadDeVerdes(datoCelda),
+        cantidadDeNegras(datoCelda),
+    )
+    Poner(Celda)
+
+}
+
+//c. tienenMismaCantidadDeRojas_Y_ que dados dos datos del tipo celda, indica si efectivamente ambos tienen la misma cantidad de bolitas rojas.
+
+function tienenMismaCantidadDeRojas_Y_(primerCelda, segundaCelda) {
+    /*
+        PROPÓSITO:  Indica si ambas celdas tienen la misma cantidad de bolitas rojas.
+        PARÁMETROS:
+            * primerCelda: tipo - descripción.
+            * segundaCelda: tipo - descripción.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (cantidadDeRojas(primerCelda) == cantidadDeRojas(segundaCelda))
+}
+
+
+/*5. Mis primeras personas
+a. Declarar un tipo de registros llamado Persona, que contenga el número de DNI y el domicilio
+representados mediante Strings, y un Booleano indicando si la persona es donante de
+órganos. */
+
+type Persona is record {
+    field dni
+    field domicilio  
+    field esDonante 
+}
+
+//b. sonConvivientes_Y_, que dadas dos personas indique si comparten domicilio.
+
+function sonConvivientes_Y_(persona1, persona2) {
+    /*
+        PROPÓSITO:  Indica si dos personas comparten domicilio.
+        PARÁMETROS:
+            * persona1: Persona - describe una persona a ser comparada.
+            * persona2: Persona - describe una persona a ser comparada.
+        TIPO: Tipo
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (domicilio(persona1) == domicilio(persona2))
+}
+
+/*c. personaNacidaDe_ que, dada una persona madre, describe a una nueva persona que haya
+nacido de la misma, y por lo tanto conviva con la madre, no tenga DNI asignado y en principio
+se indica que no es donante de órganos.
+Para registrar el DNI sin asignar, escribir la función sinAsignar, que denote el string vacío y
+utilizarla adecuadamente.*/
+
+
+
+
