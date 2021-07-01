@@ -1,0 +1,198 @@
+Procedimientos disponibles:
+BajarPasajero
+IrAPrimeraCeldaEnUnRecorridoAl_Y_
+IrASiguienteCeldaEnUnRecorridoAl_Y_
+MoverVehículoAlBordeAl_
+MoverVehículoAl_
+Mover_Si_
+Mover_VecesAl_
+PonerUnaDeCada
+Poner_DeColor_
+Poner_Si_
+RecogerSolicitante
+SacarTodasLasDeColor_
+Sacar_DeColor_
+Sacar_Si_
+VaciarCelda
+
+Funciones disponibles:
+coordenadaX
+coordenadaY
+distanciaAlBorde_
+elegir_Si_Sino
+esCeldaConBolitas
+esCeldaVacía
+esDestinoDe_
+estadoDelVehículo
+hayBolitas_Al_
+hayPersonaAcá
+haySiguienteCeldaEnUnRecorridoAl_Y_
+máximoEntre_Y_
+mínimoEntre_Y_
+nroBolitasTotalDeColor_
+nroColumnas
+nroFilas
+nroVacías
+personaAcá
+personaEnVehículo
+tieneBolitas_Al_
+tieneUnaDeCada
+unoSi_CeroSino
+
+//Se pide realice la función personasSolicitandoVehículo que describe la cantidad de personas que están esperando un vehículo en el mapa.
+
+function personasSolicitandoVehículo() {
+    /*
+        PROPÓSITO:  Describir la cantidad de personas que están esperando un vehículo en el mapa.
+        TIPO: Número
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    cantidadPersonasEsperandoUnVehículo := unoSi_CeroSiNo(haySolicitanteEsperando())
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        cantidadPersonasEsperandoUnVehículo := cantidadPersonasEsperandoUnVehículo + unoSi_CeroSiNo(haySolicitanteEsperando())
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    }
+    
+    return (cantidadPersonasEsperandoUnVehículo)
+}
+
+function haySolicitanteEsperando() {
+    /*
+        PROPÓSITO:  Indica si hay un solicitante en espera
+        TIPO: Número
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    return (
+        (hayPersonaAcá() 
+            &&
+        estado(personaAcá()==Esperando))
+    )
+}
+
+
+
+//Se pide realice el procedimiento RecogerYLlevarAlSolicitanteConId_ que dado un número que representa al id de un solicitante 
+//(del cual sabemos que se encuentra esperando en el mapa y cuyo destino existe en el mapa) recoge a dicho solicitante llevándolo hasta su destino.
+
+procedure RecogerYLlevarAlSolicitanteConId_(idATransportar) {
+    /*
+        PROPÓSITO:  Recoger a un solicitante con id **idATransportar ** llevándolo hasta su destino.
+        PARÁMETROS:
+            * idATransportar: Número - Se refiere al solicitante identificado por ese id el cual hay que transportar.
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    IrHastaElSolicitante(idATransportar)
+    RecogerSolicitante()
+    IrHastaElDestino()
+    BajarPasajero()
+    
+}
+
+procedure IrHastaElSolicitante(idATransportar) {
+    /*
+        PROPÓSITO:  Buscar al solicitante con id **idATransportar** en el mapa.
+        PARÁMETROS:
+            * idATransportar: Número - Se refiere al solicitante identificado por ese id el cual hay que transportar.
+        PRECONDICIONES:
+            * No tiene.
+    */
+
+    MoverVehículoAPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && hayPersonaAcáConId_(idATransportar)) {
+        MoverVehículoASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    }
+
+}
+
+function hayPersonaAcáConId(numeroIdentificador) {
+    /*
+        PROPÓSITO:  Indica si en la celda actual hay una persona con **numeroIdentificador**
+        PARÁMETROS:
+            * numeroIdentificador: Numero - Se refiere al id del solicitante que esta esperando a ser transportado.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (hayPersonaAcá()
+                &&
+            id(personaAcá() == numeroIdentificador))
+}
+
+procedure MoverVehículoASiguienteCeldaEnUnRecorridoAl_Y_(direcciónPrincipal,direcciónSecundaria) {
+    /*
+    PROPOSITO:
+        Mover el vehículo una celda lindante en ubicacion **direcciónPrincipal** o **direcciónSecundaria**
+    PARAMETROS:
+        *direcciónPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *direcciónSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **direcciónPrincipal** y **direcciónSecundaria** deben ser ortogonales.
+    */
+    if (puedeMover(direcciónPrincipal)) {
+        MoverVehículoAl_(direcciónPrincipal)
+    }else {
+        MoverVehículoAl_(opuesto(direcciónPrincipal))
+        MoverVehículoAl_(direcciónSecundaria)
+    }
+    
+}
+
+procedure MoverVehículoAPrimeraCeldaEnUnRecorridoAl_Y_(direcciónPrincipal,direcciónSecundaria) {
+    /*
+    PROPOSITO:
+        Mover al vehículo la posición origen del mapa.
+    PARAMETROS:
+        *direcciónPrincipal: Dirección - Se refiere a la primer dirección que se moverá el cabezal
+        *direcciónSecundaria: Dirección - Se refiere a la segunda dirección que se moverá el cabezal.
+    PRECONDICIONES: 
+        **direcciónPrincipal** y **direcciónSecundaria** deben ser ortogonales.
+    */
+    MoverVehículoAlBordeAl_(opuesto(direcciónPrincipal))
+    MoverVehículoAlBordeAl_(opuesto(direcciónSecundaria))
+    
+}
+
+procedure IrHastaElDestino() {
+    /*
+        PROPÓSITO:  Ir hasta el destino del pasajero
+        PRECONDICIONES:
+            * No se....
+    */
+    MoverVehículoAPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && esDestinoDe_(idATransportar)) {
+        MoverVehículoASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
+    }
+
+}
+
+*********************
+
+/*Se pide que realice la función costoDelViajeDe_ que dado un número que representa al id de un solicitante
+(del cual sabemos que se encuentra esperando en el mapa y cuyo destino existe en el mapa) indica el costo del viaje para el mismo.
+El costo del viaje es de 30 pesos por kilómetro, a excepción de los viajes de las personas con nombre “John Doe”, que tienen un costo de 20 pesos por kilómetro.*/
+
+function costoDelViajeDe_(idDelSolicitante) {
+    /*
+        PROPÓSITO:  Describir el costo del viaje de un solicitante en espera con id **idDelSolicitante**
+        PARÁMETROS:
+            * idDelSolicitante: Número - Es el Identidicador de un solicitante en espera.
+        TIPO: Número
+        PRECONDICIONES:
+            * El solicitante debe estar Esperando.
+    */
+    IrHastaElSolicitante(idDelSolicitante)
+    cantidadKM:=kmRecorridos(EstadoVehiculo)
+    RecogerSolicitante()
+    IrHastaElDestino()
+    cantidadKm:= kmRecorridos(EstadoVehiculo) - cantidadKM
+
+    choose
+        20 * cantidadKm when (nombre(pasajeroEnVehiculo) == "John Doe")
+        30 * cantidadKm otherwise
+    }
+}

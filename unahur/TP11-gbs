@@ -401,6 +401,75 @@ function valorParaEnvidoDe_(carta) {
     )
 }
 
+/*j. mayorValorEntre_Y_ que describe el valor más grande entre dos cartas, según lo que aporta
+cada una para el envido. Por ejemplo, si las cartas son un 7 y un 12, describe 7, pues el 12 no
+aporta nada para el envido.*/
+
+function mayorValorEntre_Y_(primerCarta, segundaCarta) {
+    /*
+        PROPÓSITO:  Describe el valor más grande entre dos cartas
+        PARÁMETROS:
+            * primerCarta: Carta - es una carta de tipo española.
+            * segundaCarta: Carta - es una carta de tipo española.
+        TIPO: Numero
+        PRECONDICIONES:
+            * No tiene.
+    */
+    maximo := 0
+    if(valorParaEnvidoDe_(primerCarta) > valorParaEnvidoDe_(segundaCarta)){
+        maximo := valorParaEnvidoDe_(primerCarta)
+    }else{
+        maximo := valorParaEnvidoDe_(segundaCarta)
+    }
+    return(maximo)
+    
+}
+
+/*k. sumaParaElEnvidoCon_Y_ que dadas dos cartas, describe el número que tienen las mismas
+para el envido. El envido se calcula como la suma los valores del envido de cada carta más 20,
+si las cartas son del mismo palo, o como el mayor valor entre ellas, cuando son de distinto
+palo.*/
+
+function sumaParaElEnvidoCon_Y_(primerCarta, segundaCarta) {
+    /*
+        PROPÓSITO:  Describe el número que tienen las mismas para el envido.
+        PARÁMETROS:
+            * primerCarta: Carta - es una carta de tipo española.
+            * segundaCarta: Carta - es una carta de tipo española.
+        TIPO: Numero
+        PRECONDICIONES:
+            * No tiene.
+    */
+    cantidadEnvido := 0
+    if(sonDelMismoPalo_Y_(primerCarta, segundaCarta)){
+        cantidadEnvido =  valorParaEnvidoDe_(primerCarta) + valorParaEnvidoDe_(segundaCarta) + 20
+    }else{
+        cantidadEnvido =  mayorValorEntre_Y_(primeraCarta, segundaCarta)
+    }
+    
+    return ( cantidadEnvido)
+}
+
+/*l. sonMejores_Y_Que_Y_ que dadas 4 cartas, donde las dos primeras son las cartas del primer
+jugador para cantar envido, y las segundas dos las del segundo jugador, indica si el envido del
+primer jugador es más grande que el envido del segundo jugador.*/
+
+function sonMejores_Y_Que_Y_(carta1, carta2, carta3, carta4) {
+    /*
+        PROPÓSITO:  Indica cual par de cartas es mejor para ganar el envido
+        PARÁMETROS:
+            * carta1: Carta - Carta del primer jugador para cantar envido.
+            * carta1: Carta - Carta del primer jugador para cantar envido.
+            * carta3: Carta - Carta deñ segundo jugador para cantar envido.
+            * carta4: Carta - Carta deñ segundo jugador para cantar envido.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No tiene
+    */
+    
+    return (sumaParaElEnvidoCon_Y_(carta1, carta2) > sumaParaElEnvidoCon_Y_(carta3, carta4))
+}
+
 //4. celdaActual que lee la información de la celda en donde está el cabezal y retorna un dato de tipo Celda.
 
 function celdaActual() {
@@ -462,9 +531,14 @@ representados mediante Strings, y un Booleano indicando si la persona es donante
 órganos. */
 
 type Persona is record {
-    field dni
-    field domicilio  
-    field esDonante 
+    /*
+    PROPOSITO: Modelar una persona.
+    INVARIANTE DE REPRESENTACIÓN:
+        No Tiene.
+    */
+    field dni           //String
+    field domicilio     //String
+    field esDonante     //Boolean
 }
 
 //b. sonConvivientes_Y_, que dadas dos personas indique si comparten domicilio.
@@ -475,7 +549,7 @@ function sonConvivientes_Y_(persona1, persona2) {
         PARÁMETROS:
             * persona1: Persona - describe una persona a ser comparada.
             * persona2: Persona - describe una persona a ser comparada.
-        TIPO: Tipo
+        TIPO: Boolean
         PRECONDICIONES:
             * No tiene.
     */
@@ -489,6 +563,92 @@ se indica que no es donante de órganos.
 Para registrar el DNI sin asignar, escribir la función sinAsignar, que denote el string vacío y
 utilizarla adecuadamente.*/
 
+function personaNacidaDe_ (personaMadre) {
+    /*
+        PROPÓSITO:  Describe una persona que haya nacido de **personaMadre**.
+        PARÁMETROS:
+            * personaMadre: Persona - la persona de la cual va a nacer la nueva.
+        TIPO: Persona
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    return(
+        Persona(
+            dni <- sinAsignar()
+            domicilio <- domicilio(personaMadre)
+            esDonante <- false
+        )
+    )
+    
+}
 
+function sinAsignar() {
+    /*
+        TIPO: String
 
+    */
+    
+    return ("")
+}
 
+/*d. persona_RegistradaCon_, que dada una persona con DNI sin asignar y un DNI de registro,
+describe a la persona pero con el DNI asignado al dado*/
+
+function persona_RegistradaCon_(personaSinDniAsignado, dniDeRegistro) {
+    /*
+        PROPÓSITO:  Asignar a **personaSinDniAsignado** y agregarle el dni **dniDeRegistro**.
+        PARÁMETROS:
+            * personaSinDniAsignado: Persona - descripción.
+            * dniDeRegistro: Persona - descripción.
+        TIPO: Tipo
+        PRECONDICIONES:
+            * La **personaSinDniAsignado** no debe tener DNI asignado.
+    */
+    
+    return (
+        Persona(
+            dni <- dniDeRegistro
+            domicilio <- domicilio(personaSinDniAsignado)
+            esDonante <- esDonante(personaSinDniAsignado)
+        )
+    )
+}
+
+/*e. persona_ConDomicilioNuevoEn_, que recibe una persona y un nuevo domicilio y describe
+a la persona con el domicilio cambiado.*/
+
+function persona_ConDomicilioNuevoEn_(personaAMudar, unDomicilio) {
+    /*
+        PROPÓSITO:  Cambiar el domicilio de **persona** por el domicilio recibido.
+        PARÁMETROS:
+            * personaAMudar: Persona - una persona a cambiarle el domicilio
+            * unDomicilio: String - un nuevo domicilio a asignarle a la persona.
+        TIPO: Tipo
+        PRECONDICIONES:
+            * La **personaSinDniAsignado** no debe tener DNI asignado.
+    */
+    
+    return (
+        Persona(personaAMudar |
+        domicilio <- unDomicilio)
+    )
+}
+
+/*f. persona_ConSituaciónComoDonanteCambiada, que recibe una persona y retorna la
+persona con su situación como donante cambiada.*/
+
+function persona_ConSituaciónComoDonanteCambiada(personaACambiarDonante) {
+    /*
+        PROPÓSITO:  Cambiar la situacion de donante de una persona.
+        PARÁMETROS:
+            * personaACambiarDonante: Persona - la persona a la que se le cambiará su situacion de donante.
+        TIPO: Persona
+        PRECONDICIONES:
+            * No Tiene
+    */
+    
+    return (
+        Persona(personaACambiarDonante |
+        esDonante <- not(esDonante(personaACambiarDonante)))
+    )
+}
