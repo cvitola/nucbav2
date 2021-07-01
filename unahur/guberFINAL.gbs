@@ -193,8 +193,9 @@ function costoDelViajeDe_(idDelSolicitante) {
     IrHastaElDestino()
     cantidadKm:= kmRecorridos(estadoVehiculo) - cantidadKM
 
-    choose
-        20 * cantidadKm when (nombre(pasajeroEnVehiculo) == "John Doe")
-        30 * cantidadKm otherwise
-    }
+    return(
+        choose
+            20 * cantidadKm when (nombre(pasajeroEnVehiculo) == "John Doe")
+            30 * cantidadKm otherwise
+    )
 }
