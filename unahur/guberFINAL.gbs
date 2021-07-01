@@ -1,4 +1,4 @@
-Procedimientos disponibles:
+/*Procedimientos disponibles:
 BajarPasajero
 IrAPrimeraCeldaEnUnRecorridoAl_Y_
 IrASiguienteCeldaEnUnRecorridoAl_Y_
@@ -37,7 +37,7 @@ personaAcá
 personaEnVehículo
 tieneBolitas_Al_
 tieneUnaDeCada
-unoSi_CeroSino
+unoSi_CeroSino*/
 
 //Se pide realice la función personasSolicitandoVehículo que describe la cantidad de personas que están esperando un vehículo en el mapa.
 
@@ -83,7 +83,7 @@ procedure RecogerYLlevarAlSolicitanteConId_(idATransportar) {
         PARÁMETROS:
             * idATransportar: Número - Se refiere al solicitante identificado por ese id el cual hay que transportar.
         PRECONDICIONES:
-            * No Tiene.
+            * El cabezal está sobre el vehículo.
     */
     IrHastaElSolicitante(idATransportar)
     RecogerSolicitante()
@@ -98,7 +98,8 @@ procedure IrHastaElSolicitante(idATransportar) {
         PARÁMETROS:
             * idATransportar: Número - Se refiere al solicitante identificado por ese id el cual hay que transportar.
         PRECONDICIONES:
-            * No tiene.
+            * El cabezal está sobre el vehículo.
+            * La persona con id **idAtransportar** tiene estado Esperando.
     */
 
     MoverVehículoAPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
@@ -161,7 +162,8 @@ procedure IrHastaElDestino() {
     /*
         PROPÓSITO:  Ir hasta el destino del pasajero
         PRECONDICIONES:
-            * No se....
+            * El cabezal está sobre el vehículo.
+            * El vehículo esta ocupado.
     */
     MoverVehículoAPrimeraCeldaEnUnRecorridoAl_Y_(Este,Norte)
     while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && esDestinoDe_(idATransportar)) {
@@ -183,13 +185,13 @@ function costoDelViajeDe_(idDelSolicitante) {
             * idDelSolicitante: Número - Es el Identidicador de un solicitante en espera.
         TIPO: Número
         PRECONDICIONES:
-            * El solicitante debe estar Esperando.
+            * El cabezal está sobre el vehículo.
     */
     IrHastaElSolicitante(idDelSolicitante)
-    cantidadKM:=kmRecorridos(EstadoVehiculo)
+    cantidadKM:=kmRecorridos(estadoVehiculo)
     RecogerSolicitante()
     IrHastaElDestino()
-    cantidadKm:= kmRecorridos(EstadoVehiculo) - cantidadKM
+    cantidadKm:= kmRecorridos(estadoVehiculo) - cantidadKM
 
     choose
         20 * cantidadKm when (nombre(pasajeroEnVehiculo) == "John Doe")
