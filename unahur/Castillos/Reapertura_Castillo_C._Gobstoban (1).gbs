@@ -1,0 +1,48 @@
+function hayCaja() {
+    /*
+        PROPÓSITO:
+            Indica si en la celda actual hay una caja, ya sea sola o sobre una marca.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:   
+            Booleano.
+        OBSERVACIONES: 
+            Dos bolitas de color verde representan una caja.
+            Una bolita de color rojo representa una caja que se encuentra sobre un marcador de meta.
+    */
+    return (nroBolitas(Verde) == 2 || nroBolitas(Rojo) == 1)
+}
+
+// ---------------------------------------------------------------------------------------------------
+
+function sePuedeMoverCajaAl_(direcciónAMover) {
+    /*
+        PROPÓSITO:
+            Indica si hay una caja en la celda lindante al **direcciónAMover** y la misma se puede mover 
+            una celda en dicha dirección.
+        PRECONDICIONES:
+            Debe haber una caja hacia **direcciónAMover**.
+            No debe haber ninguna caja o pared lindante a la caja en **direcciónAMover**.
+        PARÁMETROS:
+            direcciónAMover: Dirección - indica la dirección en la que se analizará si es posible mover.
+        TIPO:   
+            Booleano.
+    */
+    return (hayCaja_LugaresAl_(1, direcciónAMover) && cantidadDeUbicacionesHastaParedAl_(direcciónAMover) > 2)
+}
+
+// ---------------------------------------------------------------------------------------------------
+
+procedure EmpujarCajaAl_SiEsPosible(direcciónAEmpujar) {
+    /*
+        PROPÓSITO:
+            Empujar la caja en la celda lindante hacia **direcciónAEmpujar** si es posible, de lo contrario no hacer nada.
+        PARÁMETROS:
+            direcciónAEmpujar: Dirección - indica la dirección en la cual se empujará la caja de ser posible
+        PRECONDICIONES:
+            El cabezal debe encontrarse sobre el encargado.
+    */
+    if(sePuedeMoverCajaAl_(direcciónAEmpujar)) {
+        EmpujarCajaHacia_(direcciónAEmpujar)
+    }
+}

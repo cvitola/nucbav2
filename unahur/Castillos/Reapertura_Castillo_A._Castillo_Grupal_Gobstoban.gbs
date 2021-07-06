@@ -1,0 +1,148 @@
+procedure EmpujarCajaHaciaElEste() {
+   /*
+        PROPÓSITO:
+            Empujar la caja que se encuentra en la ubicación lindante al Este una ubicación más hacia dicha dirección.
+        PRECONDICIONES:
+            Debe existir un encargado en la ubicación actual.
+            Deben existir al menos dos ubicaciones al Este.
+            Debe existir una caja en la ubicación lindante al Este.
+            La ubicación dos lugares hacia el este de la ubicación inicial no debe estar ocupada por una pared o una caja.
+        OBSERVACIONES:
+            El cabezal se encuentra sobre el encargado al iniciar y al finalizar el procedimiento.
+    */
+    SacarEncargado()
+    Mover(Este)
+    SacarCaja()
+    PonerEncargado()
+    Mover(Este)
+    PonerCaja()
+    Mover(Oeste)
+}
+
+procedure SacarEncargado() {
+   /*
+        PROPÓSITO: 
+            Sacar al encargado de la ubicación actual.
+        PRECONDICIONES: 
+            Que exista el encargado en la ubicación actual.
+        OBSERVACIONES: 
+            El encargado se representa como una bolita de color azul.
+            
+    */    
+    Sacar(Azul)
+}
+
+procedure PonerEncargado() {
+   /*
+        PROPÓSITO: 
+            Poner al encargado en la ubicación actual.
+        PRECONDICIONES: 
+            No debe existir una caja o pared en la ubicación actual.
+        OBSERVACIONES: 
+            El encargado se representa como una bolita de color azul.
+    */    
+    Poner(Azul)
+}
+
+procedure SacarCaja() {
+   /*
+        PROPÓSITO: 
+            Sacar la caja de la ubicación actual.
+        PRECONDICIONES: 
+            Que exista una caja en la ubicación actual.
+        OBSERVACIONES: 
+            Una caja es representada por dos bolitas verdes.
+            
+    */    
+    Sacar(Verde)
+    Sacar(Verde)
+}
+
+procedure PonerCaja() {
+   /*
+        PROPÓSITO: 
+            Poner la caja de la ubicación actual.
+        PRECONDICIONES: 
+            No debe existir una caja en la ubicacion actual.
+            No debe existir una pared en la ubicacion actual.
+            No debe existir un encargado en la ubicacion actual.
+        OBSERVACIONES: Una caja es representada por dos bolitas verdes.
+            
+    */    
+    Poner(Verde)
+    Poner(Verde)
+}
+
+procedure SacarCajaDeMarcadorAlNorte() {
+   /*
+        PROPÓSITO:
+            Empujar la caja que se encuentra en la ubicación lindante al Norte sobre un marcador de meta 
+            una ubicación más hacia dicha dirección.
+        PRECONDICIONES:
+            Debe existir un encargado en la ubicación actual.
+            Deben existir al menos dos ubicaciones al Norte. 
+            Debe existir una caja sobre un marcador de meta al Norte de la ubicación actual.
+            La ubicación dos lugares hacia el Norte de la ubicación inicial no debe estar ocupada por una pared o una caja.
+        OBSERVACIONES:
+            El cabezal se encuentra sobre el encargado al iniciar y al finalizar el procedimiento.
+    */    
+    SacarEncargado()
+    Mover(Norte)
+    SacarCajaDelMarcador()
+    PonerEncargado()
+    Mover(Norte)
+    PonerCaja()
+    Mover(Sur)
+}
+
+procedure SacarCajaDelMarcador() {
+   /*
+        PROPÓSITO: 
+            Sacar la caja del que se encuentra sobre el marcador de meta.
+        PRECONDICIONES:
+            Debe existir una caja en la ubicación actual.
+            Debe existir un marcador de meta en la ubicación actual.
+        OBSERVACIONES:
+            Una caja sobre el marcador de meta se representa con una bolita roja.
+            Un marcador de meta se representa con una bolita verde.
+    */     
+    Sacar(Rojo)
+    Poner(Verde)  
+}
+
+procedure MoverCajaSobreMarcadorAlEste() { 
+   /*
+        PROPÓSITO: 
+            Empujar la caja que se encuentra en la ubicación lindante al Este una ubicación más hacia dicha
+            dirección, dejándola sobre el marcador de meta.
+        PRECONDICIONES:
+            Debe existir un encargado en la ubicación actual.
+            Deben existir al menos 2 ubicaciones al Este.
+            Debe existir un marcador de meta sin caja en la ubicación lindante al Este de la caja.
+        OBSERVACIONES:
+            El cabezal se encuentra sobre el encargado al iniciar y al finalizar el procedimiento.
+    */  
+    SacarEncargado()
+    Mover(Este)
+    SacarCaja()
+    PonerEncargado()
+    Mover(Este)
+    PonerCaja()
+    MarcarMetaComoOcupada()
+    Mover(Oeste)
+}
+
+procedure MarcarMetaComoOcupada() {
+    /*
+        PROPÓSITO: 
+            Marcar la meta como ocupada por una caja.
+        PRECONDICIONES: 
+            Debe existir un marcador de meta en la ubicación actual.
+            Debe existir una caja en la ubicación actual.
+        OBSERVACIONES: 
+            Un marcador de meta es representado por una bolita verde.
+            Una caja es representada por dos bolitas verdes.
+            Una caja sobre el marcador se representa con una bolita roja.
+    */
+    Reemplazar3De_PorUnaDe_(Verde, Rojo)
+}

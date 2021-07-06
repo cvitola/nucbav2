@@ -1,0 +1,126 @@
+// Se pide escriba el código de las funciones (previamente dadas como primitivas) fichaActual, fichaCirculo, 
+// fichaTriángulo, fichaRombo y fichaEstrella.
+
+function fichaCirculo() {
+    /*
+        PROPÓSITO: 
+            Describe el número de bolitas azules que representa a la ficha con forma de círculo.
+        TIPO: 
+            Número.
+        PRECONDICIONES: 
+            Ninguna.
+    */
+    return (2)
+}
+
+function fichaTriángulo() {
+    /*
+        PROPÓSITO: 
+            Describe el número de bolitas azules que representa a la ficha con forma de triángulo.
+        TIPO: 
+            Número.
+        PRECONDICIONES: 
+            Ninguna.
+    */
+    return (3)
+}
+
+function fichaRombo() {
+    /*
+        PROPÓSITO: 
+            Describe el número de bolitas azules que representa a la ficha con forma de rombo.
+        TIPO: 
+            Número.
+        PRECONDICIONES: 
+            Ninguna.
+    */
+    return (4)
+}
+
+function fichaEstrella() {
+    /*
+        PROPÓSITO: 
+            Describe el número de bolitas azules que representa a la ficha con forma de estrella.
+        TIPO: 
+            Número.
+        PRECONDICIONES: 
+            Ninguna.
+    */
+    return (5)
+}
+
+function fichaActual() {
+    /*
+        PROPÓSITO: 
+            Describe el código (número de bolitas azules) que representa la ficha en la celda actual.
+        TIPO: 
+            Número.
+        PRECONDICIONES:
+            El cabezal se encuentra sobre una ficha.
+    */
+    return (nroBolitas(Azul))
+}
+
+// Se pide desarrolle la función haySucesiónAl_ que indica si hay una sucesión de al menos 3 fichas 
+// hacia la dirección dada, comenzando por la ficha en la celda actual. Puede asumir que hay al menos
+// 2 celdas en la dirección dada.
+
+function haySucesiónAl_(direcciónAMirar) {
+    /*
+        PROPÓSITO:
+            Indicar si hay una sucesión de al menos 3 fichas hacia **dirección**, 
+            comenzando por la ficha en la celda actual.
+        PARÁMETROS:
+            direcciónAMirar: Dirección - indica la dirección en la cual se analizará si hay sucesión de fichas
+        PRECONDICIONES:
+            Hay al menos 2 celdas en **dirección**.
+        TIPO:
+            Booleano.
+    */
+    return (
+            // hayFichaIgual_(fichaA_Al_(1, direcciónAMirar))
+            // &&
+            // CompararFichaCon_(fichaA_Al_(2, direcciónAMirar))
+            (fichaActual() == fichaA_Al_(1, direcciónAMirar))
+            &&
+            (fichaActual() == fichaA_Al_(2, direcciónAMirar))
+        )
+}
+
+// function CompararFichaAcutalCon_(primerFicha, segundaFicha) {
+
+// }
+
+// Se pide escriba el procedimiento QuemarSucesiónSiHubiera que quema la sucesión de 
+// fichas que comienza en la celda actual, si hubiera una, y sino, no hace nada. 
+// Notar que la sucesión comienza en la celda actual, y va hacia alguna dirección
+// sin determinar a priori,y que puede ser de 3 o más fichas.
+
+procedure QuemarSucesiónSiHubiera() {
+    /*
+        PROPÓSITO:
+            Quemar la sucesión de fichas que comienza en la celda actual, si hubiera una.
+            De lo contrario, no hacer nada.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:
+            Booleano.
+    */
+    // if(haySucesiónAl_(Norte)) {
+    //     QuemarSucesión()
+    // } elseif(haySucesiónAl_(Sur)) {
+    //     QuemarSucesión()
+    // } elseif(haySucesiónAl_(Este)) {
+    //     QuemarSucesión()
+    // } elseif(haySucesiónAl_(Oeste)) {
+    //     QuemarSucesión()
+    // }
+
+    if(haySucesión) {
+        QuemarSucesión()
+    }
+}
+
+function haySucesión() {
+    return (haySucesiónAl_(Sur) || haySucesiónAl_(Norte) || haySucesiónAl_(Este) || haySucesiónAl_(Oeste))
+}

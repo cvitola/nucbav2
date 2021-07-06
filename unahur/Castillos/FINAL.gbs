@@ -1,0 +1,417 @@
+/*Realice la función fichaAleatoria que describe la forma de ficha con la cual reponer un espacio vacío según un proceso pseudo-aleatorio, 
+basado en las fichas alrededor (en direcciones ortogonales, es decir, línea recta) con las reglas que siguen:
+
+Si la ubicación a reponer tiene 2 fichas triángulo pero no círculo alrededor y no está sobre un borde, se rellena con un rombo.
+Si la ubicación a reponer tiene 3 fichas iguales alrededor, se rellena con una ficha triángulo.
+Si la ubicación a reponer tiene a lo sumo dos obstáculos alrededor, se rellena con un círuclo.
+Cualquier otro caso se rellena con una estrella.*/
+
+function fichaAleatoria() {
+    /*
+        PROPÓSITO:  Describir la forma de la ficha con la cual reponer un espacio vacío según proceso pseudo-aleatorio.
+        TIPO: FormaDeFicha
+        PRECONDICIONES:
+            * El cabezal se encuentra sobre una celda libre.
+    */
+    
+    return (
+        choose
+            Rombo when (esUbicaciónAReponerConRombo())
+            Triángulo when (tiene3FichasIgualesAlrededor())
+            Círculo when (hay2ObstaculosAlRededor())
+            Esterlla otherwise
+        }
+    )
+}
+
+function esUbicaciónAReponerConRombo() {
+    /*
+        PROPÓSITO:  Indica si en la posicion libre debe ir un Rombo.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * El cabezal se encuentra sobre una celda libre.
+    */
+    
+    return (not estáSobreUnBorde() 
+                    &&
+            hay2TriángulosAlRededor() 
+                    &&
+            not hay1CírculoAlRededor()
+    )
+}
+
+function hay2TriángulosAlRededor() {
+    /*
+        PROPÓSITO:  Indica si existen 2 fichas Triángulos al rededor del espacio libre.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * La celda libre no debe estar sobre un borde.
+    */
+    
+    return (hayTriánguloAl_(Este) && hayTriánguloAl(Norte)
+                                 ||
+            hayTriánguloAl_(Este) && hayTriánguloAl_(Oeste)
+                                ||
+            hayTriánguloAl_(Este) && hayTriánguloAl_(Sur)
+                                ||
+            hayTriánguloAl_(Norte) && hayTriánguloAl(Sur)
+                                ||
+            hayTriánguloAl(Norte) && hayTriánguloAl_(Oeste)
+                                ||
+            hayTriánguloAl_(Oeste) && hayTriánguloAl(Sur)
+    )
+}
+
+function hayTriánguloAl(direcciónARevisar) {
+    /*
+        PROPÓSITO:  Indica si hay un Triangulo en direccion a **direcciónARevisar**
+        PARÁMETROS:
+            * direcciónARevisar: Dirección - Se refiere a la dirección donde se busca que haya un triangulo.
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * Debe haber al menos una celda lindante hacia **direcciónARevisar**
+    */
+    Mover(direcciónARevisar)
+    return (fichaAcá == Triángulo)
+}
+
+
+function hay1CírculoAlRededor() {
+    /*
+        PROPÓSITO:  Indica si hay 1 Círculo alrededor de la posicion libre.
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * La celda libre no debe estar sobre un borde.
+    */
+    
+    return (hay1CírculoAl_(Este) || hay1CírculoAl_(Oeste) || hay1CírculoAl_(Norte) || hay1CírculoAl_(Sur))
+}
+
+function hay1Círculo(direcciónARevisar) {
+    /*
+        PROPÓSITO:  Indica si hay una ficha Círculo en dirección a **direcciónARevisar**
+        PARÁMETROS:
+            * direcciónARevisar: Dirección - Se refiere a la dirección donde se busca que haya un Círculo.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Debe haber al menos una celda lindante hacia **direcciónARevisar**
+    */
+    Mover(direcciónARevisar)
+    return (fichaAcá == Círculo)
+}
+
+function estáSobreUnBorde() {
+    /*
+        PROPÓSITO:  Indica si la posicion libre está sobre algun borde del tablero.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (puedeMover(Este) && puedeMover(Norte) && puedeMover(Oeste) && puedeMover(Sur))
+}
+
+function tiene3FichasIgualesAlrededor() {
+    /*
+        PROPÓSITO:  Indica si alrededor del espacio libre hay 3 fichas iguales.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * La celda libre no debe estar sobre un borde.
+    */
+    
+    return (hay3FichasDeTipo_(Triangulo) || hay3FichasDeTipo_(Círculo) || hay3FichasDeTipo_(Estrella) || hay3FichasDeTipo_(Rombo))
+}
+
+function hay3FichasDeTipo_(fichaARevisar) {
+    /*
+        PROPÓSITO:  Indica si hay 3 fichas iguales al rededor del espacio.
+        PARÁMETROS:
+            * fichaARevisar: FormaDeFicha - Describe la ficha que hay que verificar si se encuentra al rededor.
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * La celda libre no debe estar sobre un borde.
+    */
+    
+    return (hayFicha_Al_(fichaARevisar,Este) &&  hayFicha_Al_(fichaARevisar,Norte) && hayFicha_Al_(fichaARevisar,Oeste)
+                                                ||
+            hayFicha_Al_(fichaARevisar,Este) && hayFicha_Al_(fichaARevisar,Norte) && hayFicha_Al_(fichaARevisar,Sur)
+                                                ||
+            hayFicha_Al_(fichaARevisar,Norte) && hayFicha_Al_(fichaARevisar,Oeste) && hayFicha_Al_(fichaARevisar,Este)
+                                                ||
+             hayFicha_Al_(fichaARevisar,Norte) && hayFicha_Al_(fichaARevisar,Sur) && hayFicha_Al_(fichaARevisar,Este)
+                                                ||
+            hayFicha_Al_(fichaARevisar,Oeste) && hayFicha_Al_(fichaARevisar,Sur) && hayFicha_Al_(fichaARevisar,Norte)
+                                                ||
+             hayFicha_Al_(fichaARevisar,Oeste) && hayFicha_Al_(fichaARevisar,Sur) && hayFicha_Al_(fichaARevisar,Este))
+}
+
+function hayFicha_Al_(unaFicha, direcciónARevisar) {
+    /*
+        PROPÓSITO:  Índica si hay un ficha de tipo **unaFicha** en dirección al **direcciónARevisar**
+        PARÁMETROS:
+            * unaFicha: FormaDeFicha - describe la ficha a revisar.
+            * dirección: Dirección - Se refiere a la dirección donde se mueve el cabezal
+        TIPO: Tipo
+        PRECONDICIONES:
+            * Debe haber al menos una celda lindante hacia **direcciónARevisar**
+    */
+    Mover(dirección)
+    return (fichaAcá == unaFicha)
+}
+
+function hay2ObstaculosAlRededor() {
+    /*
+        PROPÓSITO:  Indica si hay 2 obstaculos al rededor del espacio libre.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * La celda libre no debe estar sobre un borde.
+    */
+    
+        return (hayObstaculosAl_(Este) && hayObstaculosAl_(Norte)
+                                 ||
+            hayObstaculosAl_(Este) && hayObstaculosAl_(Oeste)
+                                ||
+            hayObstaculosAl_(Este) && hayObstaculosAl_(Sur)
+                                ||
+            hayObstaculosAl_(Norte) && hayObstaculosAl_(Sur)
+                                ||
+            hayObstaculosAl_(Norte) && hayObstaculosAl_(Oeste)
+                                ||
+            hayObstaculosAl_(Oeste) && hayObstaculosAl_(Sur)
+    )
+}
+
+function hayObstaculosAl_(direcciónARevisar) {
+    /*
+        PROPÓSITO:  Indica si hay un obstáculo en direccion a **direccionARevisar**
+        PARÁMETROS:
+            * direcciónARevisar: Dirección - Se refiere a la dirección donde se mueve el cabezal.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Debe haber al menos una celda lindante hacia **direcciónARevisar**
+    */
+    Mover(direcciónARevisar)
+    return (elementoAcá == Obstáculo)
+}
+
+
+//Realice la función cantidadDeFichasConForma_EnGrilla que dada una forma de ficha describe la cantidad de fichas con la forma dada en la grilla.
+
+function cantidadDeFichasConForma_EnGrilla(unaFicha) {
+    /*
+        PROPÓSITO:  Describe la cantidad de fichas de la forma **unaFicha** en toda la grilla.
+        PARÁMETROS:
+            * unaFicha: FormaDeFicha - Describe la forma de la ficha a contar en la grilla.
+        TIPO: Número
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    cantidadDeFichasVistas := unoSi_CeroSiNo(hayFichaConForma_(unaFicha))
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        cantidadDeFichasVistas := cantidadDeFichasVistas + unoSi_CeroSiNo(hayFichaConForma_(unaFicha))
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    }
+    
+    return (cantidadDeFichasVistas)
+}
+
+function hayFichaConForma_(fichaConForma) {
+    /*
+        PROPÓSITO:  Indica si en la celda actual se encuentra una ficha **fichaConForma**
+        PARÁMETROS:
+            * fichaConForma: FormaDeFicha - Describe la forma de la ficha a contar en la grilla.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (hayFichaAcá() && FormaDeFicha == fichaConForma)
+}
+
+function hayFichaAcá() {
+    /*
+        PROPÓSITO:  Indica si hay una ficha en la celda actual
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (elementoAcá() == Ficha)
+}
+
+/*Sí se queman una hilera de 6 o más fichas de la misma forma, el juego aplica un bonus especial, quemando la totalidad de los obstáculos del tablero.
+Realice el procedimiento QuitarLosObstáculosDeLaGrilla que quema la totalidad de obstáculos en el tablero. 
+Notar que no se espera compruebe sí se quemaron 6 o más fichas, sino que simplemente realice el efecto posterior, dado por el bonus*/
+
+procedure QuitarLosObstáculosDeLaGrilla() {
+    /*
+        PROPÓSITO:  Quitar la totalidad de los obstaculos del tablero.
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    QuitarObstáculoSiLoHay()
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+        QuitarObstáculoSiLoHay()
+    }
+}
+
+procedure QuitarObstáculoSiLoHay() {
+    /*
+        PROPÓSITO:  Quitar obstáculo de la celda actual si lo hay.
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    if(elementoAcá() == Obstáculo){
+        SacarObstáculo()
+    }
+}
+
+/*Se desea poder recuperar el estado del juego como un dato que se pueda manipular y analizar. Para esto, los desarrolladores definieron el siguiente tipo:
+type EstadoDelJuego is record {
+  // PROPÓSITO: Modela el estado del juego de Sharikistones.
+  // INVARIANTE DE REPRESENTACIÓN: La cantidad de triangulos es >= 0.
+   field cantidadDeEspaciosLibres // Número
+   field hayMásRombosQueCírculos // Booleano
+   field quedanEstrellas // Booleano
+   field fichaDeLaCualHayMenos // FormaDeFicha
+}
+Se pide programe la función estadoActualDelJuego que, asumiendo que hay una forma de ficha de la cual hay menos cantidad que las otras, describe el estado actual del juego.*/
+
+function estadoActualDelJuego() {
+    /*
+        PROPÓSITO:  Describir el estado actual del Juego.
+        TIPO: EstadoDelJuego
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (
+        EstadoDelJuego(
+                cantidadDeEspaciosLibres <- contarEspaciosLibres()
+                hayMásRombosQueCírculos <- indicarSiHayMasRombosQueCírculos()
+                quedanEstrellas <- indicarSiQuedanEstrellas()
+                fichaDeLaCualHayMenos <- decirFichaConMenorCantidad()
+        )
+    )
+}
+
+function contarEspaciosLibres() {
+    /*
+        PROPÓSITO:  Contar la cantidad de Espacios libres del tablero.
+        TIPO: Número
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    cantidadDeEspaciosLibresVistos := unoSi_CeroSiNo(hayEspacioLibreAcá())
+    while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+         IrASiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+         cantidadDeEspaciosLibresVistos := cantidadDeEspaciosLibresVistos + unoSi_CeroSiNo(hayEspacioLibreAcá())
+    }
+    return (cantidadDeEspaciosLibresVistos)
+}
+
+function hayEspacioLibreAcá() {
+    /*
+        PROPÓSITO:  Indica si hay un espacio libre en la celda actual
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (elementoAcá() == Libre)
+}
+
+function indicarSiHayMasRombosQueCírculos() {
+    /*
+        PROPÓSITO:  Indica si hay mas rombos que círculos
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (cantidadDeFichasConForma_EnGrilla(Rombo) > cantidadDeFichasConForma_EnGrilla(Círculo))
+}
+
+function indicarSiQuedanEstrellas() {
+    /*
+        PROPÓSITO:  Indica si quedan estrellas en el tablero.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (cantidadDeFichasConForma_EnGrilla(Estrella) > 0)
+}
+
+function decirFichaConMenorCantidad() {
+    /*
+        PROPÓSITO:  Describe la ficha con menor cantidad en el tablero.
+        TIPO: FormaDeFicha
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (
+        choose
+            Rombo when (esRomboMenorQueTodos())
+            Círculo when (esCirculoMenorQueTodos())
+            Triángulo when (esTriánguloMenorQueTodos())
+            Estrella otherwise
+        
+    )
+}
+
+function esRomboMenorQueTodos() {
+    /*
+        PROPÓSITO:  Indica si la figura Rombo es la que menor cantidad hay en el tablero.
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (
+        cantidadDeFichasConForma_EnGrilla(Rombo) > cantidadDeFichasConForma_EnGrilla(Círculo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Rombo) > cantidadDeFichasConForma_EnGrilla(Triángulo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Rombo) > cantidadDeFichasConForma_EnGrilla(Estrella)   
+    )
+}
+
+function esCirculoMenorQueTodos() {
+    /*
+        PROPÓSITO:  Indica si la figura Círculo es la que menor cantidad hay en el tablero.
+        TIPO: Booleano.
+        PRECONDICIONES:
+            * Ninguna.
+    */
+    
+    return (
+        cantidadDeFichasConForma_EnGrilla(Círculo) > cantidadDeFichasConForma_EnGrilla(Rombo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Círculo) > cantidadDeFichasConForma_EnGrilla(Triángulo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Círculo) > cantidadDeFichasConForma_EnGrilla(Estrella)   
+    )
+}
+
+    function esTriánguloMenorQueTodos() {
+    /*
+        PROPÓSITO:  Indica si la figura Triángulo es la que menor cantidad hay en el tablero.
+        TIPO: Booleano
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (
+        cantidadDeFichasConForma_EnGrilla(Triángulo) > cantidadDeFichasConForma_EnGrilla(Círculo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Triángulo) > cantidadDeFichasConForma_EnGrilla(Rombo)
+                                &&
+        cantidadDeFichasConForma_EnGrilla(Triángulo) > cantidadDeFichasConForma_EnGrilla(Estrella)   
+    )
+}

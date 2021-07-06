@@ -1,0 +1,172 @@
+function nivelDeDificultad() {
+    /*
+        PROPÓSITO:
+            Describe el nivel de dificultad del juego.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:
+            Número.
+        OBSERVACIONES:
+            El nivel de dificultad está dado por la cantidad de obstáculos que hay en el juego.
+            Se utilizará un recorrido de procesamiento.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    cantidadDeObstáculosVistosAlMomento := cantidadDeObstáculosEnLaCeldaActual() 
+    while(haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        IrALaSiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+        cantidadDeObstáculosVistosAlMomento := cantidadDeObstáculosVistosAlMomento + cantidadDeObstáculosEnLaCeldaActual()
+    }
+    return (cantidadDeObstáculosVistosAlMomento)
+}
+
+function cantidadDeObstáculosEnLaCeldaActual() {
+    /*
+        PROPÓSITO:
+            Describe 1 si hay un obstáculo en la celda actual, 0 si no hay ninguno.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:
+            Número.
+    */
+    return (
+        choose
+            1 when (hayUnObstáculo())
+            0 otherwise
+    )
+}
+
+function hayUnObstáculo() {
+    /*
+        PROPÓSITO:
+            Indica si hay un obstáculo en la celda actual.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:
+            Booleano.
+        OBSERVACIONES:
+            Un obstáculo se representa con 2 bolitas negras.
+    */
+    return (nroBolitas(Negro) == 2)
+}
+
+// --------------------------------------------------------------------------------------------
+
+function haySucesiónAcá() {
+    /*
+        PROPÓSITO:
+            Indica si la celda actual pertenece a una sucesión de 3 fichas en cualquiera de las direcciones. 
+            La sucesión puede o no comenzar en la celda actual.
+        PRECONDICIONES:
+            Deben haber 2 celdas más partiendo de la actual en caso de que sea comienzo de una sucesión
+            o una celda lindante a cada lado en caso de que se encuentre en el medio de una sucesión.
+        TIPO:
+            Booleano.
+    */
+    return (esComienzoDeSucesión() || formaParteDeSucesión())
+}
+
+function formaParteDeSucesión() {
+    /*
+        PROPÓSITO:
+            Indica si la ficha actual forma parte una sucesión de 3 fichas en cualquier orientación, sea vertical u horizontal.
+        PRECONDICIONES:
+            Debe haber una celda lindante hacia dos direcciones opuestas entre sí con respecto a la ficha actual.
+        TIPO:
+            Booleano.
+    */
+    return (
+            formaParteDeSucesiónAl_(Este) || formaParteDeSucesiónAl_(Norte)
+    )
+}
+
+function formaParteDeSucesiónAl_(direcciónPrincipal) {
+     /*
+        PROPÓSITO:
+            Indica si la ficha actual forma parte de una sucesión con una ficha lindante al **direcciónPrincipal**.
+            y otra en la dirección opuesta.
+        PRECONDICIONES:
+            Que exista al menos una celda lindante en **direcciónPrincipal**, y otra en la dirección opuesta.
+        PARÁMETROS:
+            direcciónPrincipal: Dirección - indica la dirección principal de la sucesión.
+        TIPO:
+            Booleano.
+    */
+    return (
+        (fichaActual() == fichaA_Al_(1, direcciónPrincipal))
+                        &&
+        (fichaActual() == fichaA_Al_(1, opuesto(direcciónPrincipal)))    
+    )
+}
+
+function esComienzoDeSucesión() {
+    /*
+        PROPÓSITO:
+            Indica si la celda actual pertenece a una sucesión de 3 fichas en cualquiera de las direcciones. 
+            La sucesión comienza en la celda actual.
+        PRECONDICIONES:
+            Hay al menos 2 celdas en alguna de las direcciones.
+        TIPO:
+            Booleano.
+    */
+    return (
+        haySucesiónAl_(Norte) || haySucesiónAl_(Sur) || haySucesiónAl_(Este) || haySucesiónAl_(Oeste)
+    )
+}
+
+// --------------------------------------------------------------------------------------------
+
+function hayFichasExplotadas() {
+    /*
+        PROPÓSITO:
+            Indica si en algún lugar del tablero explotaron fichas.
+        PRECONDICIONES:
+            Ninguna.
+        TIPO:
+            Booleano
+        OBSERVACIONES:
+            Sí una ficha explotó quiere decir que no hay fichas en esa ubicación, y por tanto la celda está vacía.
+            Se utilizará un recorrido de búsqueda.
+    */
+    IrAPrimeraCeldaEnUnRecorridoAl_Y_(Este, Norte) 
+    while(not esCeldaVacía() && haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)) {
+        IrALaSiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte)
+    }
+    return (esCeldaVacía())
+}
+
+/// --------------------------------------------------------------------------------------------
+
+function hayMovimientoVálidoAcá() {
+    /*
+        PROPÓSITO:
+            Indica si la ficha actual puede ser movida de forma tal de realizar un movimiento válido
+            hacia alguna de las 4 direcciones posibles.
+        PRECONDICIONES:
+            Debe haber al menos una celda hacia todas las direcciones.
+        TIPO:
+            Booleano
+        OBSERVACIONES:
+            Un movimiento es válido siempre y cuando haya una ficha en esa dirección y el proceso de intercambiar fichas
+            genera una línea de 3 o más fichas conteniendo la actual o conteniendo aquella por la cual se intercambió
+
+    */
+    return (
+        esMovimientoVálidoAl_(Norte) || esMovimientoVálidoAl_(Sur) || esMovimientoVálidoAl_(Este) || esMovimientoVálidoAl_(Oeste)
+    ) 
+}
+
+function esMovimientoVálidoAl_(dirección) {
+    /*
+        PROPÓSITO:
+            Indica si la ficha actual puede ser movida de forma tal de realizar un movimiento válido
+            en dirección **dirección**.
+        PRECONDICIONES:
+            Debe haber al menos una celda hacia **dirección**.
+        TIPO:
+            Booleano.
+    */
+    Intercambiar_Por_Al_(fichaActual(), fichaA_Al_(1, dirección), dirección) 
+    return (
+        haySucesiónAcá()
+    )
+}

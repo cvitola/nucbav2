@@ -277,11 +277,17 @@ procedure RecorrerNivelMuriendoSiHayFantasma() {
     while (haySiguienteCeldaEnUnRecorridoAl_Y_(Este, Norte) && not(hayFantasma())) {
         MoverAGobsManASiguienteCeldaEnUnRecorridoAl_Y_(Este,Norte)
     }
-    if(hayFantasma()){
-        MorirGobsMan()
-    }
+    MorirGobsmanSiHayFantasma()
+
 }
 
+procedure MorirGobsmanSiHayFantasma() {
+    /*...  */
+        if(hayFantasma()){
+        MorirGobsMan()
+    }
+    
+}
 
 /* */
 

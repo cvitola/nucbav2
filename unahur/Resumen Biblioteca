@@ -1,0 +1,101 @@
+TP2 
+PonerUnaDeCada()
+TP4
+Poner_DeColor_(cantidadAPoner, colorAPoner)
+Mover_VecesAl_(cantidadAMover, direcciónAMover)
+Sacar_DeColor_(cantidadASacar, colorASacar) que dado un número cantidadASacar y un color colorASacar, saque tantas bolitas como se indica del
+                                            color dado de la celda actual
+TP5
+SacarTodasLasDeColor_(colorASacar), que quite de la celda actual todas las bolitas del color indicado por el parámetro.
+TP6
+Poner_Si_(color, condición) que dado un color y un valor de verdad llamado condición, ponga en la celda actual una bolita del color dado si el
+                                            valor de verdad de la condición es verdadero, y no lo ponga si no.
+Sacar_Si_(color, condición) que actúa de forma similar al anterior, pero ahora sacando bolitas si la condición se cumple.
+Mover_Si_(dirección, condición) que actúa de forma similar a los anteriores, pero ahora moviendo solo sí se cumple la condición dada..
+TP7
+esCeldaVacía(), que indica si la celda actual se encuentra vacía.
+tieneUnaDeCada(), que indica si la celda actual tiene al menos una bolita de cada color.
+esCeldaConBolitas(), que indica si la celda actual tiene al menos una bolita, de cualquier color.
+TP8
+IrAPrimeraCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+haySiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+IrASiguienteCeldaEnUnRecorridoAl_Y_(dirPrincipal, dirSecundaria)
+TP9
+hayBolitas_Al_(colorAMirar, direcciónAMirar), que indica si hay una celda lindante en la dirección indicada y la misma tiene bolitas del color dado. 
+                                            Sí no hay celda lindante describe Falso.
+distanciaAlBorde_(direcciónDelBorde), que describe la cantidad de celdas que hay entre la celda actual y el borde indicado                                            
+coordenadaX() y coordenadaY() que retornen la coordenada de la columna y la coordenada de la fila de la celda actual, respectivamente. 
+                                            Suponer que 0 es la coordenada de la primer fila y columna.
+nroFilas() y nroColumnas() que describan la cantidad de filas y columnas del tablero respectivamente.                                            
+nroBolitasTotalDeColor_(colorAContar) que describa la cantidad de bolitas del color dado que hay en total en todo el tablero. 
+                                            Estructurar el código como recorrido por las celdas del tablero.
+nroVacías() que describa la cantidad de celdas vacías del tablero. Estructurar el código como recorrido por las celdas del tablero.                                            
+IrAVacíaNúmero_(númeroDeVacía) que posicione el cabezal en la celda vacía número númeroDeVacía que se encuentra en un recorrido del tablero por
+                                            celdas en las direcciones Este y Norte. Si no hay suficientes celdas vacías, deja el cabezal en la esquina NorEste.
+TP10
+mínimoEntre_Y_(valor1, valor2), que dados dos valores describe aquel que sea más chico.
+máximoEntre_Y_(valor1, valor2) que dados dos valores describe aquel que sea el más grande.
+nroVacías() que realizó en la práctica anterior, solucionando el inconveniente de tener una alternativa condicional dentro de la repetición condicional.
+unoSi_ceroSino(condición)
+elegir_Si_Sino_(valor1, condición, valor2) describe el valor q cumple la condicional
+
+program{
+    unaCoordenadaActual:=coordenadaActual()
+   return(cambiarCoordenada(unaCoordenadaActual))
+}
+
+type Coordenada is record{
+    field x
+    field y
+}
+
+function coordenadaActual(){
+    return(Coordenada(x <- coordenadaX(), y <- coordenadaY()))
+}
+
+function distanciaAlBorde_(direcciónDelBorde) {
+    /*
+        PROPÓSITO:  Describe la cantidad de celdas que hay entre la cenda actual y el borde indicado.
+        PARÁMETROS:
+            * direcciónDelBorde: Dirección - Es hacia la orientación que debe moverse el cabezal.
+        TIPO: Número
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    cantidadCeldasVistas:=0
+    while(puedeMover(direcciónDelBorde)){
+        cantidadCeldasVistas:=cantidadCeldasVistas+1
+        Mover(direcciónDelBorde)
+    }
+    return (cantidadCeldasVistas)
+}
+
+
+function coordenadaX() {
+    /*
+        PROPÓSITO:  Describir la fila en la que se encuemtra la celda actual.
+        TIPO: Número
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (distanciaAlBorde_(Sur))
+}
+
+function coordenadaY() {
+    /*
+        PROPÓSITO:  Describir la columna en la que se encuemtra la celda actual.
+        TIPO: Número
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (distanciaAlBorde_(Oeste))
+}
+
+function cambiarCoordenada(coordenadaActual){
+    return(
+        Coordenada(coordenadaActual |
+                    x<-150)
+    )
+}

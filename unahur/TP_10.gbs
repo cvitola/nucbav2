@@ -1,0 +1,71 @@
+/*Escribir la función mínimoEntre_Y_(valor1, valor2), que dados dos valores
+describe aquel que sea más chico. Por ejemplo, mínimoEntre_Y_(3, 7) describe 3, mientras que
+mínimoEntre_Y_(9, 4) describe 4.
+a. ¿De qué tipo son los parámetros?
+b. ¿Es válida la expresión mínimoEntre_Y_(Rojo, Azul)? ¿Qué describe?
+c. ¿Qué se describe si son iguales? ¿Es relevante si es uno o el otro?*/
+
+function mínimoEntre_Y_(valor1, valor2) {
+    /*
+        PROPÓSITO:  Describe el valor mas chico entre **valor1** y **valor2**
+        PARÁMETROS:
+            * valor1: Número - se refiere a un valor numerico a evaluar si es el minimo.
+            * valor2: Número - Se refiere a otro valor numero a evaluar si es el minimo.
+        TIPO: Tipo
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    
+    return (
+        choose
+            valor1 when (valor1>valor2)
+            valor2 otherwise
+    )
+}
+
+/*distanciaAlBorde_(direcciónDelBorde), que describe la
+cantidad de celdas que hay entre la celda actual y el borde indicado.*/
+
+function distanciaAlBorde_(direcciónDelBorde) {
+    /*
+        PROPÓSITO:  Describe la cantidad de celdas que hay entre la cenda actual y el borde indicado.
+        PARÁMETROS:
+            * direcciónDelBorde: Dirección - Es hacia la orientación que debe moverse el cabezal.
+        TIPO: Número
+        PRECONDICIONES:
+            * No Tiene.
+    */
+    cantidadCeldasVistas:=0
+    while(puedeMover(direcciónDelBorde)){
+        cantidadCeldasVistas:=cantidadCeldasVistas+1
+        Mover(direcciónDelBorde)
+    }
+    return (cantidadCeldasVistas)
+}
+
+/* coordenadaX() y coordenadaY() que retornen la coordenada
+de la columna y la coordenada de la fila de la celda actual, respectivamente. Suponer que 0 es la
+coordenada de la primer fila y columna.*/
+
+function coordenadaX() {
+    /*
+        PROPÓSITO:  Describir la fila en la que se encuemtra la celda actual.
+        TIPO: Número
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (distanciaAlBorde_(Sur))
+}
+
+function coordenadaY() {
+    /*
+        PROPÓSITO:  Describir la columna en la que se encuemtra la celda actual.
+        TIPO: Número
+        PRECONDICIONES:
+            * No tiene.
+    */
+    
+    return (distanciaAlBorde_(Oeste))
+}
+
