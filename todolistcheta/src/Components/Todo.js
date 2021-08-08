@@ -41,7 +41,8 @@ function Todo({todo}) {
             <input type="checkbox" 
             name="checkbox" 
             id="checkbox" 
-            onClick={handlerComplete}/>
+            onClick={handlerComplete} 
+            checked={todo.complete ? "checked" : ""}/>
             
             {
                 todo.editMode ? (

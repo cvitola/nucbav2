@@ -7,9 +7,9 @@ import {
     EDIT_MODE,
     EDIT_TODO,
     SET_TODOS,
-} from './Constants';
+} from '../actions/Constants';
 
-export const TodosReducer = (state, action) => {
+export const TodosReducer = (state = [], action) => {
     switch (action.type) {
         case ADD_TODO:
             return [...state, action.payload];
@@ -50,7 +50,7 @@ export const TodosReducer = (state, action) => {
                 return todo;
             })
             return state; 
-        case SET_TODOS:
+        case SET_TODOS: //2. se genera el reducer y lo transform,a al modelo ... vamos al Store
             const nuevoArray = action.payload.map(valor =>(
                 {
                     id: valor.id,

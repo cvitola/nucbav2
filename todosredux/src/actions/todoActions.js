@@ -1,6 +1,5 @@
-//vista depachará una accion -> Redux -> devolvera un nuevo estado.
 import * as constants from './Constants';
-import {Todo} from './TodoModel';
+import {Todo} from '../models/TodoModel';
 
 //primer accion. siempre son Objetos planos.
 export const addTodo = tareita =>({
@@ -36,10 +35,9 @@ export const setTodos = (todosNuevos) => ({
     payload: todosNuevos,
 })
 
-export const cargarPosts = () => async(dispatch) =>{
+export const cargarPosts = () => async(dispatch) =>{ //1. se crea la accion asincrona y vamos al reducer
     const posts = await fetch('https://jsonplaceholder.typicode.com/todos');
     const data = await posts.json();
     dispatch(setTodos(data))
 
 }
-
